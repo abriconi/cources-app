@@ -28,8 +28,8 @@ function Courses() {
 				<CourseCard key={course.title} courseData={course}></CourseCard>
 			))}
 			<CreateCourse
-				authorsList={authorsList}
-				setAuthorsList={setAuthorsList} // primary list of authors
+				authorsList={authorsList} // primary list of authors
+				setAuthorsList={setAuthorsList}
 			></CreateCourse>
 		</div>
 	);
