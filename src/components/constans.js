@@ -79,4 +79,5 @@ export const PLACEHOLDER_TEXT = {
 	enterCourseName: 'Enter course name...',
 	enterDuration: 'Enter duration in minutes',
 	enterAuthorName: 'Enter author name...',
+	enterTitle: 'Enter title',
 };
