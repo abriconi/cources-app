@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../common/Button/Button';
 import './courseCard.css';
-import { mockedAuthorsListObject } from '../../../constans';
+import { mockedAuthorsListObject, BUTTON_TEXT } from '../../../constans';
 import { pipeDuration } from '../../../helpers/pipeDuration';
 import { dateGenerator } from '../../../helpers/dateGeneratop';
 
@@ -32,7 +32,7 @@ function CourseCard(props) {
 						{dateGenerator(props.courseData.creationDate)}
 					</p>
 				</div>
-				<Button buttonText='Show course' aligning='center' />
+				<Button buttonText={BUTTON_TEXT.showCourse} aligning='center' />
 			</div>
 		</div>
 	);

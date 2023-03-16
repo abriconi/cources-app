@@ -1,5 +1,6 @@
 import Button from '../../../common/Button/Button';
 import Input from '../../../common/Input/Input';
+import { BUTTON_TEXT } from '../../../constans';
 
 import './searchBar.css';
 
@@ -19,9 +20,10 @@ function SearchBar(props) {
 			<Input
 				placeholder='Enter course name...'
 				name='searchText'
+				minLength='2'
 				onChange={handleClearInputField}
 			/>
-			<Button buttonText='Search' type='submit' />
+			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>
 	);
 }
