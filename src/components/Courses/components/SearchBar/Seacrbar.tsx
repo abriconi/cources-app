@@ -1,15 +1,23 @@
+import React from 'react';
 import Button from '../../../common/Button/Button';
 import Input from '../../../common/Input/Input';
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../constans';
 
 import './searchBar.css';
 
-function SearchBar(props) {
-	function handleSubmit(event) {
+type Props = {
+	onSearch: (value: string) => void;
+};
+
+function SearchBar(props: Props) {
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		props.onSearch(event.target.searchText.value);
+		const searchText = (
+			event.currentTarget.elements.namedItem('searchText') as HTMLInputElement
+		)?.value;
+		props.onSearch(searchText);
 	}
-	function handleClearInputField(event) {
+	function handleClearInputField(event: React.ChangeEvent<HTMLInputElement>) {
 		if (event.target.value === '') {
 			props.onSearch(event.target.value);
 		}
