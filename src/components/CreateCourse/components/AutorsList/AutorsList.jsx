@@ -25,6 +25,4 @@ function AutorsList(props) {
 	);
 }
 
-AutorsList.proptypes
-
 export default AutorsList;
