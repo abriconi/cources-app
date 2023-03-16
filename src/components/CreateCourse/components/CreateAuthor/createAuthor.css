@@ -1,0 +1,9 @@
+.addAuthorSectionWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.addAuthorForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}

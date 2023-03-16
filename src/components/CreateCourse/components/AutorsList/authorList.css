@@ -1,0 +1,14 @@
+.authorListWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.authorlist {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}

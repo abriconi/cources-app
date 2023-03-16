@@ -1,0 +1,11 @@
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.titleFieldWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}

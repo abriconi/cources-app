@@ -1,0 +1,19 @@
+.inputField{
+    padding-top: 10px;
+    padding: 5px 0 5px 5px;
+    border: 1px solid #e7ceb5;
+    max-width: 300px;
+}
+
+.inputField:focus {
+   outline: none;
+}
+
+.inputField:focus::placeholder {
+    color: transparent;
+}
+.labelWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
