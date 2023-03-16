@@ -1,6 +1,16 @@
+import React from 'react';
 import './input.css';
 
-function Input(props) {
+type Props = {
+	labelText: string;
+	name: string;
+	placeholder: string;
+	onChange: any;
+	id?: string;
+	minLength?: any;
+};
+
+function Input(props: Props) {
 	return (
 		<label className='labelWrapper'>
 			{props.labelText}

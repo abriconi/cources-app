@@ -1,4 +1,5 @@
 import './textarea.css';
+import { PLACEHOLDER_TEXT } from '../../constans';
 
 function Textarea(props) {
 	return (
@@ -8,7 +9,7 @@ function Textarea(props) {
 				rows='4'
 				cols='50'
 				name={props.name}
-				placeholder='Description'
+				placeholder={PLACEHOLDER_TEXT.description}
 				className='teaxtAreaInputField'
 			></textarea>
 		</label>
