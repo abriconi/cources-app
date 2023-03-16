@@ -73,3 +73,10 @@ export const BUTTON_TEXT = {
 	addAuthor: 'Add author',
 	search: 'Search',
 };
+
+export const PLACEHOLDER_TEXT = {
+	description: 'Description',
+	enterCourseName: 'Enter course name...',
+	enterDuration: 'Enter duration in minutes',
+	enterAuthorName: 'Enter author name...',
+};

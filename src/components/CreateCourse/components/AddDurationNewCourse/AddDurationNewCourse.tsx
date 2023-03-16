@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Input from '../../../common/Input/Input';
 import './addDurationNewCourse.css';
 import { pipeDuration } from '../../../helpers/pipeDuration';
+import { PLACEHOLDER_TEXT } from '../../../constans';
 
 function AddDurationNewCourse() {
 	const [formattedDuration, setFormattedDuration] = useState(pipeDuration('0'));
@@ -18,7 +19,7 @@ function AddDurationNewCourse() {
 	return (
 		<div>
 			<Input
-				placeholder='Enter duration in minutes'
+				placeholder={PLACEHOLDER_TEXT.enterDuration}
 				labelText='Duration'
 				name='duration'
 				minLength='1'

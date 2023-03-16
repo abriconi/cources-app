@@ -1,6 +1,6 @@
 import Button from '../../../common/Button/Button';
 import Input from '../../../common/Input/Input';
-import { BUTTON_TEXT } from '../../../constans';
+import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../constans';
 
 import './searchBar.css';
 
@@ -18,7 +18,7 @@ function SearchBar(props) {
 	return (
 		<form className='formWrapper' onSubmit={handleSubmit}>
 			<Input
-				placeholder='Enter course name...'
+				placeholder={PLACEHOLDER_TEXT.enterCourseName}
 				name='searchText'
 				minLength='2'
 				onChange={handleClearInputField}

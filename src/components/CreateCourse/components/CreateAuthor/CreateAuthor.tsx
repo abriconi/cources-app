@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Input from '../../../common/Input/Input';
 import Button from '../../../common/Button/Button';
-import { BUTTON_TEXT } from '../../../constans';
+import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../constans';
 
 import { generateUUID } from '../../../helpers/generateUUID';
 
@@ -49,7 +49,7 @@ function CreateAuthor(props: Props) {
 				<Input
 					name='createAuthor'
 					labelText='Author name'
-					placeholder='Enter author name...'
+					placeholder={PLACEHOLDER_TEXT.enterAuthorName}
 					onChange={handleOnChange}
 					id='authorName'
 				></Input>
