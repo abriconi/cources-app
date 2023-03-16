@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import Input from '../../../common/Input/Input';
 import Button from '../../../common/Button/Button';
@@ -5,23 +6,31 @@ import Button from '../../../common/Button/Button';
 import { generateUUID } from '../../../helpers/generateUUID';
 
 import './createAuthor.css';
+import { Author } from '../../../../interfaces';
 
-function CreateAuthor(props) {
+type Props = {
+	authorsList: Author[];
+	setAuthorsList: (authors: Author[]) => void;
+};
+
+function CreateAuthor(props: Props) {
 	const [newAutorName, setNewAutorName] = useState('');
-	function handleOnChange(event) {
+	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
 		setNewAutorName(event.target.value);
 	}
 
-	function createAuthorObject(inputText) {
+	function createAuthorObject(inputText: string) {
 		const newAuthor = {
 			id: generateUUID(),
 			name: inputText,
 		};
-		props.setAuthorsList([...props.authorsList, newAuthor]);
+		props.setAuthorsList([...props.authorsList, newAuthor]); // primary list of authors
 	}
 
-	function clearInput() {
-		const inputFieldAuthorName = document.getElementById('authorName');
+	function clearInput(): void {
+		const inputFieldAuthorName = document.getElementById(
+			'authorName'
+		) as HTMLInputElement;
 		if (inputFieldAuthorName.value !== '') {
 			inputFieldAuthorName.value = '';
 		}

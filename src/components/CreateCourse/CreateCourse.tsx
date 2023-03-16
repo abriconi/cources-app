@@ -49,7 +49,7 @@ function CreateCourse(props: any) {
 				top={
 					<>
 						<CreateAuthor
-							authorsList={props.authorsList}
+							authorsList={props.authorsList} // primary list of authors
 							setAuthorsList={props.setAuthorsList}
 						/>
 						<AddDurationNewCourse />
