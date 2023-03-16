@@ -2,9 +2,9 @@ import Input from '../../../common/Input/Input';
 import Textarea from '../../../common/Textarea/Textrarea';
 
 import './createTitle.css';
-function CreateTitle(props) {
+function CreateTitle() {
 	return (
-		<div className='titleWrapper' onChangeTextArea={props}>
+		<div className='titleWrapper'>
 			<Input labelText='Title' name='courseTitle' placeholder='Enter title' />
 			<Textarea
 				minlength='2'
