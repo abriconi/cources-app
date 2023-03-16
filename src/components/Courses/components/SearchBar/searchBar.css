@@ -1,0 +1,6 @@
+.formWrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 60%;
+}
