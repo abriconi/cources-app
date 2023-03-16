@@ -2,7 +2,7 @@ import React from 'react';
 import './input.css';
 
 type Props = {
-	labelText: string;
+	labelText?: string;
 	name: string;
 	placeholder: string;
 	onChange: any;
