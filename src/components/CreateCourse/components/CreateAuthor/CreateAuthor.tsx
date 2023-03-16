@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Input from '../../../common/Input/Input';
 import Button from '../../../common/Button/Button';
+import { BUTTON_TEXT } from '../../../constans';
 
 import { generateUUID } from '../../../helpers/generateUUID';
 
@@ -54,7 +55,7 @@ function CreateAuthor(props: Props) {
 				></Input>
 				<Button
 					type='button'
-					buttonText='Create author'
+					buttonText={BUTTON_TEXT.createAuthor}
 					aligning='center'
 					onClick={handleClick}
 				></Button>

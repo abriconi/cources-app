@@ -63,3 +63,13 @@ export const mockedAuthorsListObject = mockedAuthorsList.reduce(
 	},
 	{}
 );
+
+export const BUTTON_TEXT = {
+	logout: 'Logout',
+	addNewCourse: 'Add new course',
+	showCourse: 'Show course',
+	createCourse: 'Create course',
+	createAuthor: 'Create author',
+	addAuthor: 'Add author',
+	search: 'Search',
+};

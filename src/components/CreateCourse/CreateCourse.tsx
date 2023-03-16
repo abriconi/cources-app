@@ -4,6 +4,7 @@ import CreateCourseBody from './components/CreateCourseBody/CreateCourseBody';
 import Button from '../common/Button/Button';
 import { generateUUID } from '../helpers/generateUUID';
 import { useState } from 'react';
+import { BUTTON_TEXT } from '../constans';
 
 import './createCourse.css';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
@@ -20,12 +21,12 @@ function CreateCourse(props: any) {
 			id: generateUUID(),
 			title: e.target.courseTitle.value,
 			description: e.target.courseDescription.value,
+			creationDate: new Date().toLocaleDateString('en-GB'),
 			duration: Number(e.target.duration.value),
-			authors,
+			authors: authors,
 		};
-		console.log('newCourse', newCourse);
-		e.target.courseTitle.value = '';
-		e.target.courseDescription.value = '';
+		e.target.reset();
+		props.setCourses([...props.courses, newCourse]);
 	}
 
 	function addAuthorToCourse(authorId: string) {
@@ -41,7 +42,7 @@ function CreateCourse(props: any) {
 		<form className='createCourseForm' onSubmit={submitHandler}>
 			<CreateTitle />
 			<Button
-				buttonText='Create course'
+				buttonText={BUTTON_TEXT.createCourse}
 				type='submit'
 				position='positionAbsolute'
 			/>

@@ -1,5 +1,6 @@
 import Logo from './components/Logo/Logo';
 import Button from '../common/Button/Button';
+import { BUTTON_TEXT } from '../constans';
 import './header.css';
 
 function Header() {
@@ -8,7 +9,7 @@ function Header() {
 			<Logo />
 			<div className='loginWrapper'>
 				<p>Dave</p>
-				<Button buttonText='Logout' btnSize='small'></Button>
+				<Button buttonText={BUTTON_TEXT.logout} btnSize='small'></Button>
 			</div>
 		</div>
 	);

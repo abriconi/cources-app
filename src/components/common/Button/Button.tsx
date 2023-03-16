@@ -1,7 +1,16 @@
 import React from 'react';
 import './button.css';
 
-function Button(props) {
+type Props = {
+	aligning?: string;
+	btnSize?: string;
+	position?: string;
+	type: 'submit' | 'button';
+	buttonText: string;
+	onClick?: () => void;
+};
+
+function Button(props: Props) {
 	return (
 		<button
 			className={`btnDefaultStyle ${props.btnSize || ''} ${
