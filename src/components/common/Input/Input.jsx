@@ -6,6 +6,7 @@ function Input(props) {
 			{props.labelText}
 			<input
 				type='text'
+				minLength='2'
 				name={props.name}
 				className='inputField'
 				placeholder={props.placeholder}

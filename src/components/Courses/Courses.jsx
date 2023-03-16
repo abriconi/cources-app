@@ -29,7 +29,7 @@ function Courses() {
 			))}
 			<CreateCourse
 				authorsList={authorsList}
-				setAuthorsList={setAuthorsList}
+				setAuthorsList={setAuthorsList} // primary list of authors
 			></CreateCourse>
 		</div>
 	);
