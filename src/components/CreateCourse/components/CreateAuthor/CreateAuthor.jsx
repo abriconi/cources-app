@@ -9,7 +9,7 @@ import './createAuthor.css';
 function CreateAuthor(props) {
 	const [newAutorName, setNewAutorName] = useState('');
 	function handleOnChange(event) {
-		setNewAutorName(event.target.value); // TODO додає в newAutorName перший символ після натискання другого симовлу
+		setNewAutorName(event.target.value);
 	}
 
 	function createAuthorObject(inputText) {

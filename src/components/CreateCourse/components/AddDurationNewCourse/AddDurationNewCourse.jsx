@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../../common/Input/Input';
 import './addDurationNewCourse.css';
 import { pipeDuration } from '../../../helpers/pipeDuration';
