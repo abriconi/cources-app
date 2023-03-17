@@ -1,4 +1,6 @@
-export const mockedCoursesList = [
+import { Author, Course } from '../interfaces/index';
+
+export const mockedCoursesList: Course[] = [
 	{
 		id: 'de5aaa59-90f5-4dbc-b8a9-aaf205c551ba',
 		title: 'JavaScript',
@@ -37,7 +39,7 @@ export const mockedCoursesList = [
 	},
 ];
 
-export const mockedAuthorsList = [
+export const mockedAuthorsList: Author[] = [
 	{
 		id: '27cc3006-e93a-4748-8ca8-73d06aa93b6d',
 		name: 'Vasiliy Dobkin',
@@ -55,14 +57,6 @@ export const mockedAuthorsList = [
 		name: 'Valentina Larina',
 	},
 ];
-
-export const mockedAuthorsListObject = mockedAuthorsList.reduce(
-	(accumulator, author) => {
-		accumulator[author.id] = author.name;
-		return accumulator;
-	},
-	{}
-);
 
 export const BUTTON_TEXT = {
 	logout: 'Logout',

@@ -5,7 +5,7 @@ type Props = {
 	labelText?: string;
 	name: string;
 	placeholder: string;
-	onChange: any;
+	onChange?: any;
 	id?: string;
 	minLength?: any;
 };

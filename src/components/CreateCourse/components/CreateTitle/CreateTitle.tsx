@@ -1,3 +1,4 @@
+import React from 'react';
 import Input from '../../../common/Input/Input';
 import Textarea from '../../../common/Textarea/Textrarea';
 import { PLACEHOLDER_TEXT } from '../../../constans';
@@ -12,7 +13,7 @@ function CreateTitle() {
 				placeholder={PLACEHOLDER_TEXT.enterTitle}
 			/>
 			<Textarea
-				minlength='2'
+				minLength={2} //TODO doesn't work
 				labelText={PLACEHOLDER_TEXT.description}
 				name='courseDescription'
 			/>

@@ -4,6 +4,7 @@ import './textarea.css';
 type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	labelText: string;
 	name: string;
+	minLength: number;
 };
 
 function Textarea(props: Props) {
@@ -16,6 +17,7 @@ function Textarea(props: Props) {
 				name={props.name}
 				placeholder={props.labelText}
 				className='teaxtAreaInputField'
+				minLength={props.minLength}
 			></textarea>
 		</label>
 	);

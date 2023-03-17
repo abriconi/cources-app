@@ -7,7 +7,11 @@ export type Course = {
 	id: string;
 	title: string;
 	description: string;
-	creationDate: string;
+	creationDate: string | undefined;
 	duration: number;
 	authors: string[];
+};
+
+export type AuthorsListObject = {
+	[key: string]: string;
 };

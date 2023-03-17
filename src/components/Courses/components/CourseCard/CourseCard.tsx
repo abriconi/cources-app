@@ -1,11 +1,17 @@
 import React from 'react';
 import Button from '../../../common/Button/Button';
 import './courseCard.css';
-import { mockedAuthorsListObject, BUTTON_TEXT } from '../../../constans';
+import { BUTTON_TEXT, mockedAuthorsList } from '../../../constans';
 import { pipeDuration } from '../../../helpers/pipeDuration';
 import { dateGenerator } from '../../../helpers/dateGeneratop';
+import { getAuthorNamesById } from '../../../helpers/getAuthorNamesById';
+import { Course } from '../../../../interfaces';
 
-function CourseCard(props) {
+type Props = {
+	courseData: Course;
+};
+
+function CourseCard(props: Props) {
 	return (
 		<div className='courseCard'>
 			<div className='courseMainInfo'>
@@ -16,23 +22,26 @@ function CourseCard(props) {
 				<div className='courseAdditionalInfoSection'>
 					<p className='infoTitle'>Authors:</p>
 					<p className='infoData authorsStyle'>
-						{props.courseData.authors
-							.map((authorId) => mockedAuthorsListObject[authorId])
-							.filter(Boolean)
-							.join(', ')}
+						{getAuthorNamesById(mockedAuthorsList, props.courseData.authors)}
 					</p>
 				</div>
 				<div className='courseAdditionalInfoSection'>
 					<p className='infoTitle'>Duration:</p>
 					<p className='infoData'>{pipeDuration(props.courseData.duration)}</p>
 				</div>
-				<div className='courseAdditionalInfoSection'>
-					<p className='infoTitle'>Created:</p>
-					<p className='infoData'>
-						{dateGenerator(props.courseData.creationDate)}
-					</p>
-				</div>
-				<Button buttonText={BUTTON_TEXT.showCourse} aligning='center' />
+				{props.courseData.creationDate && (
+					<div className='courseAdditionalInfoSection'>
+						<p className='infoTitle'>Created:</p>
+						<p className='infoData'>
+							{dateGenerator(props.courseData.creationDate)}
+						</p>
+					</div>
+				)}
+				<Button
+					buttonText={BUTTON_TEXT.showCourse}
+					aligning=''
+					type={'button'}
+				/>
 			</div>
 		</div>
 	);
