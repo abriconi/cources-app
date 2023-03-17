@@ -1,7 +1,13 @@
+import React from 'react';
 import Button from '../../../common/Button/Button';
 import './addAuthor.css';
 
-function AddAuthor(props) {
+type Props = {
+	authorsName: string;
+	buttonText: string;
+	onClick: () => void;
+};
+function AddAuthor(props: Props) {
 	return (
 		<div className='authorForm'>
 			<p>{props.authorsName}</p>
