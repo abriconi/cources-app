@@ -1,4 +1,4 @@
-import { Author } from '../../interfaces/index';
+import { Author } from '../interfaces/index';
 
 export function filterAuthor(
 	mockedAuthorsList: Author[],

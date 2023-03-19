@@ -1,11 +1,13 @@
 import React from 'react';
-import Button from '../../../common/Button/Button';
-import './courseCard.css';
-import { BUTTON_TEXT, mockedAuthorsList } from '../../../constans';
-import { pipeDuration } from '../../../helpers/pipeDuration';
-import { dateGenerator } from '../../../helpers/dateGeneratop';
-import { getAuthorNamesById } from '../../../helpers/getAuthorNamesById';
+import Button from '../../../../common/Button/Button';
+
+import { BUTTON_TEXT, mockedAuthorsList } from '../../../../constans';
+import { pipeDuration } from '../../../../helpers/pipeDuration';
+import { dateGenerator } from '../../../../helpers/dateGeneratop';
+import { getAuthorNamesById } from '../../../../helpers/getAuthorNamesById';
 import { Course } from '../../../../interfaces';
+
+import './courseCard.css';
 
 type Props = {
 	courseData: Course;

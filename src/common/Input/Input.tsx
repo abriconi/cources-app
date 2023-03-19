@@ -5,9 +5,9 @@ type Props = {
 	labelText?: string;
 	name: string;
 	placeholder: string;
-	onChange?: any;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	id?: string;
-	minLength?: any;
+	minLength?: number;
 };
 
 function Input(props: Props) {

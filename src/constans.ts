@@ -1,4 +1,4 @@
-import { Author, Course } from '../interfaces/index';
+import { Author, Course } from './interfaces/index';
 
 export const mockedCoursesList: Course[] = [
 	{

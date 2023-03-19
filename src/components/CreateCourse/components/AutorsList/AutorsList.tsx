@@ -1,6 +1,8 @@
 import React from 'react';
-import { Author } from '../../../../interfaces';
 import AddAuthor from '../AddAuthor/AddAuthor';
+
+import { Author } from '../../../../interfaces';
+
 import './authorList.css';
 
 type Props = {
