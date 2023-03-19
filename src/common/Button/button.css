@@ -2,7 +2,8 @@
     background-color: white;
     border: 1px solid #957ba8;
     font-size: 15px;
-    padding: 5px 25px;
+    padding: 4px 25px;
+    white-space: nowrap;
     height: fit-content;
 }
 .btnDefaultStyle:hover{
@@ -15,9 +16,4 @@
 }
 .center{
     align-self: center;
-}
-.positionAbsolute {
-    position: absolute;
-    top: 28px;
-    right: 0px;
 }

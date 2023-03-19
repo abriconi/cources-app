@@ -1,13 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
-import Input from '../../../common/Input/Input';
-import Button from '../../../common/Button/Button';
-import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../constans';
+import React, { useState } from 'react';
+import Input from '../../../../common/Input/Input';
+import Button from '../../../../common/Button/Button';
 
-import { generateUUID } from '../../../helpers/generateUUID';
+import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
+import { generateUUID } from '../../../../helpers/generateUUID';
+import { Author } from '../../../../interfaces';
 
 import './createAuthor.css';
-import { Author } from '../../../../interfaces';
 
 type Props = {
 	authorsList: Author[];
@@ -54,9 +53,9 @@ function CreateAuthor(props: Props) {
 					id='authorName'
 				></Input>
 				<Button
+					className='btnAligningCenter'
 					type='button'
 					buttonText={BUTTON_TEXT.createAuthor}
-					aligning='center'
 					onClick={handleClick}
 				></Button>
 			</div>

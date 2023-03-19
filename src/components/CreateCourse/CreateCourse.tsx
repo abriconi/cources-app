@@ -1,40 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CreateTitle from './components/CreateTitle/CreateTitle';
 import CreateCourseBody from './components/CreateCourseBody/CreateCourseBody';
-import Button from '../common/Button/Button';
-import { generateUUID } from '../helpers/generateUUID';
-import { useState } from 'react';
-import { BUTTON_TEXT } from '../constans';
-
-import './createCourse.css';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationNewCourse';
-import AutorsList from './components/AutorsList/AutorsList';
 import AddedAuthorsToCourse from './components/AddedAuthorsToCourse/AddedAuthorsToCourse';
+import AutorsList from './components/AutorsList/AutorsList';
+
+import { generateUUID } from '../../helpers/generateUUID';
+import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
 import { Course, Author } from '../../interfaces/index';
+
+import './createCourse.css';
 
 type Props = {
 	courses: Course[];
 	setCourses: (courses: Course[]) => void;
 	authorsList: Author[];
 	setAuthorsList: (authors: Author[]) => void;
+	setRenderedComponent: (component: string) => void;
+	renderedComponent: string;
 };
 
 function CreateCourse(props: Props) {
 	const [authors, setAuthors] = useState<string[]>([]);
 
-	function submitHandler(e: any) {
+	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
+
+		const target = e.target as typeof e.target & {
+			courseTitle: { value: string };
+			courseDescription: { value: string };
+			duration: { value: string };
+		};
+
 		const newCourse: Course = {
 			id: generateUUID(),
-			title: e.target.courseTitle.value,
-			description: e.target.courseDescription.value,
+			title: target.courseTitle.value,
+			description: target.courseDescription.value,
 			creationDate: new Date().toLocaleDateString('en-GB'),
-			duration: Number(e.target.duration.value),
+			duration: Number(target.duration.value),
 			authors: authors,
 		};
-		e.target.reset();
+
+		isAllFieldesFilled(newCourse);
 		props.setCourses([...props.courses, newCourse]);
+		props.setRenderedComponent('courseCardComponent');
 	}
 
 	function addAuthorToCourse(authorId: string): void {
@@ -51,11 +61,6 @@ function CreateCourse(props: Props) {
 	return (
 		<form className='createCourseForm' onSubmit={submitHandler}>
 			<CreateTitle />
-			<Button
-				buttonText={BUTTON_TEXT.createCourse}
-				type='submit'
-				position='positionAbsolute'
-			/>
 			<CreateCourseBody
 				top={
 					<>

@@ -1,8 +1,10 @@
-import Logo from './components/Logo/Logo';
-import Button from '../common/Button/Button';
-import { BUTTON_TEXT } from '../constans';
-import './header.css';
 import React from 'react';
+import Logo from './components/Logo/Logo';
+import Button from '../../common/Button/Button';
+
+import { BUTTON_TEXT } from '../../constans';
+
+import './header.css';
 
 function Header() {
 	return (
