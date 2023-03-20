@@ -51,6 +51,7 @@ function CreateAuthor(props: Props) {
 					placeholder={PLACEHOLDER_TEXT.enterAuthorName}
 					onChange={handleOnChange}
 					id='authorName'
+					type='text'
 				></Input>
 				<Button
 					className='btnAligningCenter'

@@ -10,7 +10,6 @@ type Props = {
 	onClick?: () => void;
 };
 
-// TODO: remove aligning property because we dont need this here, додати новий клас пропсами
 function Button(props: Props) {
 	return (
 		<button

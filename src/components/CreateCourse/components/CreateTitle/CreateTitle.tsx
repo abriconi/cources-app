@@ -16,6 +16,7 @@ function CreateTitle() {
 					labelText='Title'
 					name='courseTitle'
 					placeholder={PLACEHOLDER_TEXT.enterTitle}
+					type='text'
 				/>
 				<Button
 					buttonText={BUTTON_TEXT.createCourse}

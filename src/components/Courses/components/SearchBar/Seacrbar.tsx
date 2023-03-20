@@ -30,6 +30,7 @@ function SearchBar(props: Props) {
 				name='searchText'
 				minLength={2}
 				onChange={handleClearInputField}
+				type='text'
 			/>
 			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>

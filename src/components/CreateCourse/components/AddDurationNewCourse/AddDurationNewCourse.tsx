@@ -25,6 +25,7 @@ function AddDurationNewCourse() {
 				name='duration'
 				minLength={1}
 				onChange={getDurationFormatted}
+				type='text'
 			/>
 			<p className='durationDescription'>
 				Duration: <span className='durationTime'>{formattedDuration}</span>{' '}

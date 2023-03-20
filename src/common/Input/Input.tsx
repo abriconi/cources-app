@@ -8,6 +8,7 @@ type Props = {
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	id?: string;
 	minLength?: number;
+	type?: 'text' | 'email' | 'password';
 };
 
 function Input(props: Props) {
@@ -15,7 +16,7 @@ function Input(props: Props) {
 		<label className='labelWrapper'>
 			{props.labelText}
 			<input
-				type='text'
+				type={props.type}
 				minLength={props.minLength}
 				name={props.name}
 				className='inputField'
