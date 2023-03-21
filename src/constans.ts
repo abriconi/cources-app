@@ -75,7 +75,6 @@ export const BUTTON_TEXT = {
 	createAuthor: 'Create author',
 	addAuthor: 'Add author',
 	search: 'Search',
-	backToCourses: '< Back to courses',
 };
 
 export const PLACEHOLDER_TEXT = {

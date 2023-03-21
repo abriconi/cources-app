@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from './components/SearchBar/Seacrbar';
 import Button from '../../common/Button/Button';
 import CourseCard from './components/CourseCard/CourseCard';
@@ -15,6 +16,11 @@ import { Course, Author } from '../../interfaces/index';
 import './courses.css';
 
 function Courses() {
+	const token = localStorage.getItem('token');
+	const navigate = useNavigate();
+	if (!token) {
+		navigate('/login');
+	}
 	const [renderedComponent, setRenderedComponent] = useState(
 		'courseCardComponent'
 	);

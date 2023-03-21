@@ -5,15 +5,10 @@
     padding: 20px;
     gap: 20px;
 }
-.btnBackToCourses {
-    border: none;
-    background-color: transparent;
+.linkBackToCourses {
+    text-decoration: none;
     color: blue;
     align-self: flex-start;
-}
-.btnBackToCourses:hover{
-    background-color: transparent;
-    color: blue;
 }
 .courseInfoCard {
     display: flex;
