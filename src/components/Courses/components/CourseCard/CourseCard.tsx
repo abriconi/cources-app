@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../../../common/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 import { BUTTON_TEXT, mockedAuthorsList } from '../../../../constans';
 import { pipeDuration } from '../../../../helpers/pipeDuration';
@@ -14,6 +15,10 @@ type Props = {
 };
 
 function CourseCard(props: Props) {
+	const navigate = useNavigate();
+	function onClickHandler() {
+		navigate(`/courses/${props.courseData.id}`);
+	}
 	return (
 		<div className='courseCard'>
 			<div className='courseMainInfo'>
@@ -43,6 +48,7 @@ function CourseCard(props: Props) {
 					buttonText={BUTTON_TEXT.showCourse}
 					aligning=''
 					type={'button'}
+					onClick={onClickHandler}
 				/>
 			</div>
 		</div>

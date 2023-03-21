@@ -2,8 +2,11 @@ import { Author } from '../interfaces/index';
 
 export function getAuthorNamesById(
 	authorsList: Author[],
-	authorIds: string[]
+	authorIds: string[] | undefined
 ): string {
+	if (!authorIds) {
+		return '';
+	}
 	const filteredAuthors = authorsList.filter((author) =>
 		authorIds.includes(author.id)
 	);

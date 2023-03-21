@@ -12,5 +12,4 @@ export async function userLogin(user: User): Promise<void> {
 	});
 	const result = await response.json();
 	localStorage.setItem('token', result.result);
-	console.log('token', result);
 }

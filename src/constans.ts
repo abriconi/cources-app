@@ -37,6 +37,14 @@ export const mockedCoursesList: Course[] = [
 			'095a1817-d45b-4ed7-9cf7-b2417bcbf748',
 		],
 	},
+	{
+		title: 'title',
+		description: 'description',
+		creationDate: '9/3/2021',
+		duration: 30,
+		authors: ['9b87e8b8-6ba5-40fc-a439-c4e30a373d36'],
+		id: '66cc289e-6de9-49b2-9ca7-8b4f409d6467',
+	},
 ];
 
 export const mockedAuthorsList: Author[] = [
@@ -56,6 +64,7 @@ export const mockedAuthorsList: Author[] = [
 		id: '095a1817-d45b-4ed7-9cf7-b2417bcbf748',
 		name: 'Valentina Larina',
 	},
+	{ id: '9b87e8b8-6ba5-40fc-a439-c4e30a373d36', name: 'Elizabeth Tailor' },
 ];
 
 export const BUTTON_TEXT = {
@@ -66,6 +75,7 @@ export const BUTTON_TEXT = {
 	createAuthor: 'Create author',
 	addAuthor: 'Add author',
 	search: 'Search',
+	backToCourses: '< Back to courses',
 };
 
 export const PLACEHOLDER_TEXT = {
