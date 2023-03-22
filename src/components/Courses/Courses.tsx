@@ -5,13 +5,9 @@ import Button from '../../common/Button/Button';
 import CourseCard from './components/CourseCard/CourseCard';
 import CreateCourse from '../CreateCourse/CreateCourse';
 
-import {
-	mockedCoursesList,
-	BUTTON_TEXT,
-	mockedAuthorsList,
-} from '../../constans';
+import { mockedCoursesList, BUTTON_TEXT } from '../../constans';
 import filterCourses from '../../helpers/filterCourses';
-import { Course, Author } from '../../interfaces/index';
+import { Course } from '../../interfaces/index';
 
 import './courses.css';
 
@@ -25,8 +21,8 @@ function Courses() {
 		'courseCardComponent'
 	);
 	const [courses, setCourses] = React.useState<Course[]>(mockedCoursesList);
-	const [authorsList, setAuthorsList] =
-		React.useState<Author[]>(mockedAuthorsList);
+	// const [authorsList, setAuthorsList] =
+	// 	React.useState<Author[]>(mockedAuthorsList);
 
 	function searchCoursesHandle(searchText: string): void {
 		if (searchText === '') {
@@ -56,12 +52,12 @@ function Courses() {
 				))}
 			{renderedComponent === 'createCourseComponent' && (
 				<CreateCourse
-					authorsList={authorsList}
-					setAuthorsList={setAuthorsList}
-					courses={courses}
-					setCourses={setCourses}
-					setRenderedComponent={setRenderedComponent}
-					renderedComponent={renderedComponent}
+				// authorsList={authorsList}
+				// setAuthorsList={setAuthorsList}
+				// courses={courses}
+				// setCourses={setCourses}
+				// setRenderedComponent={setRenderedComponent}
+				// renderedComponent={renderedComponent}
 				></CreateCourse>
 			)}
 		</div>

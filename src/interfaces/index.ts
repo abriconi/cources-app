@@ -2,6 +2,9 @@ export type Author = {
 	id: string;
 	name: string;
 };
+export type AuthorSever = {
+	name: string;
+};
 
 export type Course = {
 	id: string;

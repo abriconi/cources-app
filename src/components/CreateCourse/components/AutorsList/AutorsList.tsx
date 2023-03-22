@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddAuthor from '../AddAuthor/AddAuthor';
 
 import { Author } from '../../../../interfaces';
+import { getAllAuthors } from '../../../../api/getAllAuthors';
 
 import './authorList.css';
 
 type Props = {
-	authors: Author[]; // list of all authors (mocked + created)
+	// authors: Author[]; // list of all authors (mocked + created)
 	authorsToExclude: string[]; // authors that shouldn't be displayed in the list
 	onAddAuthor: (authorId: string) => void; // triggered function when add author to new cource
 };
 
 function AutorsList(props: Props) {
-	const authorsToRender = props.authors.filter(
+	const [authors, setAuthors] = useState<Author[]>([]);
+	async function getAuthorsFromServer() {
+		const authors = await getAllAuthors();
+		setAuthors(authors);
+	}
+	getAuthorsFromServer();
+	const authorsToRender = authors.filter(
 		(author) => !props.authorsToExclude.includes(author.id)
 	);
 

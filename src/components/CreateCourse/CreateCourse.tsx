@@ -8,20 +8,20 @@ import AutorsList from './components/AutorsList/AutorsList';
 
 import { generateUUID } from '../../helpers/generateUUID';
 import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
-import { Course, Author } from '../../interfaces/index';
+import { Course } from '../../interfaces/index';
 
 import './createCourse.css';
 
-type Props = {
-	courses: Course[];
-	setCourses: (courses: Course[]) => void;
-	authorsList: Author[];
-	setAuthorsList: (authors: Author[]) => void;
-	setRenderedComponent: (component: string) => void;
-	renderedComponent: string;
-};
+// type Props = {
+// 	courses: Course[];
+// 	setCourses: (courses: Course[]) => void;
+// 	authorsList: Author[];
+// 	setAuthorsList: (authors: Author[]) => void;
+// 	setRenderedComponent: (component: string) => void;
+// 	renderedComponent: string;
+// };
 
-function CreateCourse(props: Props) {
+function CreateCourse() {
 	const [authors, setAuthors] = useState<string[]>([]);
 
 	function submitHandler(e: React.SyntheticEvent) {
@@ -43,8 +43,9 @@ function CreateCourse(props: Props) {
 		};
 
 		isAllFieldesFilled(newCourse);
-		props.setCourses([...props.courses, newCourse]);
-		props.setRenderedComponent('courseCardComponent');
+		console.log('course created'); // TODO add function to create course and send to server
+		// props.setCourses([...props.courses, newCourse]);
+		// props.setRenderedComponent('courseCardComponent');
 	}
 
 	function addAuthorToCourse(authorId: string): void {
@@ -64,22 +65,19 @@ function CreateCourse(props: Props) {
 			<CreateCourseBody
 				top={
 					<>
-						<CreateAuthor
-							authorsList={props.authorsList} // primary list of authors
-							setAuthorsList={props.setAuthorsList}
-						/>
+						<CreateAuthor />
 						<AddDurationNewCourse />
 					</>
 				}
 				bottom={
 					<>
 						<AutorsList
-							authors={props.authorsList}
+							// authors={props.authorsList}
 							onAddAuthor={addAuthorToCourse}
 							authorsToExclude={authors}
 						/>
 						<AddedAuthorsToCourse
-							authors={props.authorsList} //масив всіх авторів
+							// authors={props.authorsList} //масив всіх авторів
 							authorsInCourse={authors} // масив ІД авторів, які додані до курсу
 							onDeleteAuthor={deleteAuthorFromCourse}
 						/>

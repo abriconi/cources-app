@@ -3,28 +3,31 @@ import Input from '../../../../common/Input/Input';
 import Button from '../../../../common/Button/Button';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
-import { generateUUID } from '../../../../helpers/generateUUID';
-import { Author } from '../../../../interfaces';
+import { AuthorSever } from '../../../../interfaces';
+// import { postAuthor } from '../../../../api/postAuthor'; // use for posting new Author to author's list
 
 import './createAuthor.css';
 
-type Props = {
-	authorsList: Author[];
-	setAuthorsList: (authors: Author[]) => void;
-};
+// const author = {
+// 	name: 'Alona Author',
+// };
+// const token =
+// 	'OwYL6Oe0GoUXhMb8NxcCcAcY9EkFZkL7XvTqCj4u2iJrAJjDhuPtOuch8wZAVw2FbPw8y4jpCRRJerO2r3Ow4jmLHmMx+ltLaq2bEbEv4pKbJrPo8bwt3dSDnLjaY2aSfioTqFxCfDyXf+8uTjaZQRa9eYxRCwszxTIw+mpy0iZgWJtpPZa2N2vtgxtNYpgP9nuXs0b7KZ7H1xt3JVc+AR1+NImtp7FnDgr+VgM2YSF9wDkXj3zCvJZ5B0UvbwrIiEW2McbPg8puu7QTpo/rcQ8WZjMeQc5CMf6Bsye2ALydeAlxjn58AtPiCWZKsfsColoS5gUxT0v1HjUozjC+lw==';
 
-function CreateAuthor(props: Props) {
+// postAuthor(author, token);
+
+function CreateAuthor() {
 	const [newAutorName, setNewAutorName] = useState('');
 	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
 		setNewAutorName(event.target.value);
 	}
 
 	function createAuthorObject(inputText: string) {
-		const newAuthor = {
-			id: generateUUID(),
+		const newAuthor: AuthorSever = {
 			name: inputText,
 		};
-		props.setAuthorsList([...props.authorsList, newAuthor]); // primary list of authors
+		console.log('new Author', newAuthor);
+		// TODO add author to author's list on sever, use function authorPost(name, token - from LocalStorage)
 	}
 
 	function clearInput(): void {

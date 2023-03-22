@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddAuthor from '../AddAuthor/AddAuthor';
 
 import { Author } from '../../../../interfaces';
+import { getAllAuthors } from '../../../../api/getAllAuthors';
 
 import './addedAuthorsToCourse.css';
 
 type Props = {
-	authors: Author[]; //масив всіх авторів
+	// authors: Author[]; //масив всіх авторів
 	authorsInCourse: string[]; // масив ІД авторів, які додані до курсу
 	onDeleteAuthor: (authorID: string) => void;
 };
@@ -15,7 +16,13 @@ function AddingAuthorsToCourse(props: Props) {
 	const isExistAuthorsList =
 		props.authorsInCourse && props.authorsInCourse.length > 0;
 
-	const authorsToRender = props.authors.filter((author) =>
+	const [authors, setAuthors] = useState<Author[]>([]);
+	async function getAuthorsFromServer() {
+		const authors = await getAllAuthors();
+		setAuthors(authors);
+	}
+	getAuthorsFromServer();
+	const authorsToRender = authors.filter((author) =>
 		props.authorsInCourse.includes(author.id)
 	);
 	return (
