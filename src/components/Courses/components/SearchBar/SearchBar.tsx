@@ -9,7 +9,7 @@ type Props = {
 	onSearch: (value: string) => void;
 };
 
-function SearchBar(props: Props) {
+const SearchBar = (props: Props) => {
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		const searchText = (
@@ -34,6 +34,6 @@ function SearchBar(props: Props) {
 			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>
 	);
-}
+};
 
 export default SearchBar;

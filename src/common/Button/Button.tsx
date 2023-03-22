@@ -10,8 +10,7 @@ type Props = {
 	onClick?: () => void;
 };
 
-// TODO: remove aligning property because we dont need this here, додати новий клас пропсами
-function Button(props: Props) {
+const Button = (props: Props) => {
 	return (
 		<button
 			className={`btnDefaultStyle ${props.btnSize || ''}
@@ -22,6 +21,6 @@ function Button(props: Props) {
 			{props.buttonText}
 		</button>
 	);
-}
+};
 
 export default Button;

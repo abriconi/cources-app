@@ -6,12 +6,12 @@ type Props = {
 	bottom: ReactElement;
 };
 
-function CreateCourseBody(props: Props) {
+const CreateCourseBody = (props: Props) => {
 	return (
 		<div className='createCourseBody'>
 			<div className='columnLayout'>{props.top}</div>
 			<div className='columnLayout'>{props.bottom}</div>
 		</div>
 	);
-}
+};
 export default CreateCourseBody;

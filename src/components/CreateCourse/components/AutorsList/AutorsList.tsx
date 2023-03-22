@@ -11,7 +11,7 @@ type Props = {
 	onAddAuthor: (authorId: string) => void; // triggered function when add author to new cource
 };
 
-function AutorsList(props: Props) {
+const AutorsList = (props: Props) => {
 	const authorsToRender = props.authors.filter(
 		(author) => !props.authorsToExclude.includes(author.id)
 	);
@@ -31,6 +31,6 @@ function AutorsList(props: Props) {
 			</ul>
 		</div>
 	);
-}
+};
 
 export default AutorsList;

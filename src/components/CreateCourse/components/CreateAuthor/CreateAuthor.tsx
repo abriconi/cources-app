@@ -13,7 +13,7 @@ type Props = {
 	setAuthorsList: (authors: Author[]) => void;
 };
 
-function CreateAuthor(props: Props) {
+const CreateAuthor = (props: Props) => {
 	const [newAutorName, setNewAutorName] = useState('');
 	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
 		setNewAutorName(event.target.value);
@@ -61,5 +61,5 @@ function CreateAuthor(props: Props) {
 			</div>
 		</div>
 	);
-}
+};
 export default CreateAuthor;

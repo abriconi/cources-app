@@ -13,7 +13,7 @@ type Props = {
 	courseData: Course;
 };
 
-function CourseCard(props: Props) {
+const CourseCard = (props: Props) => {
 	return (
 		<div className='courseCard'>
 			<div className='courseMainInfo'>
@@ -47,5 +47,5 @@ function CourseCard(props: Props) {
 			</div>
 		</div>
 	);
-}
+};
 export default CourseCard;

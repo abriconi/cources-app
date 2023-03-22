@@ -11,7 +11,7 @@ type Props = {
 	onDeleteAuthor: (authorID: string) => void;
 };
 
-function AddingAuthorsToCourse(props: Props) {
+const AddingAuthorsToCourse = (props: Props) => {
 	const isExistAuthorsList =
 		props.authorsInCourse && props.authorsInCourse.length > 0;
 
@@ -38,5 +38,5 @@ function AddingAuthorsToCourse(props: Props) {
 			)}
 		</div>
 	);
-}
+};
 export default AddingAuthorsToCourse;

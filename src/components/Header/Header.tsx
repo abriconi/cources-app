@@ -6,7 +6,7 @@ import { BUTTON_TEXT } from '../../constans';
 
 import './header.css';
 
-function Header() {
+const Header = () => {
 	return (
 		<div className='header'>
 			<Logo />
@@ -20,6 +20,6 @@ function Header() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Header;

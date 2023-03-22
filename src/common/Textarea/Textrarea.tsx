@@ -7,7 +7,7 @@ type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 	minLength: number;
 };
 
-function Textarea(props: Props) {
+const Textarea = (props: Props) => {
 	return (
 		<label className='labelWrapper'>
 			{props.labelText}
@@ -21,5 +21,5 @@ function Textarea(props: Props) {
 			></textarea>
 		</label>
 	);
-}
+};
 export default Textarea;

@@ -8,7 +8,7 @@ type Props = {
 	buttonText: string;
 	onClick: () => void;
 };
-function AddAuthor(props: Props) {
+const AddAuthor = (props: Props) => {
 	return (
 		<div className='authorForm'>
 			<p>{props.authorsName}</p>
@@ -19,6 +19,6 @@ function AddAuthor(props: Props) {
 			/>
 		</div>
 	);
-}
+};
 
 export default AddAuthor;

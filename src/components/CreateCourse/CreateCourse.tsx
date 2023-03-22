@@ -21,7 +21,7 @@ type Props = {
 	renderedComponent: string;
 };
 
-function CreateCourse(props: Props) {
+const CreateCourse = (props: Props) => {
 	const [authors, setAuthors] = useState<string[]>([]);
 
 	function submitHandler(e: React.SyntheticEvent) {
@@ -88,6 +88,6 @@ function CreateCourse(props: Props) {
 			/>
 		</form>
 	);
-}
+};
 
 export default CreateCourse;

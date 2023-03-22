@@ -8,7 +8,7 @@ import { PLACEHOLDER_TEXT } from '../../../../constans';
 
 import './createTitle.css';
 
-function CreateTitle() {
+const CreateTitle = () => {
 	return (
 		<div className='createTitleWrapper'>
 			<div className='titleWrapper'>
@@ -31,6 +31,6 @@ function CreateTitle() {
 			/>
 		</div>
 	);
-}
+};
 
 export default CreateTitle;

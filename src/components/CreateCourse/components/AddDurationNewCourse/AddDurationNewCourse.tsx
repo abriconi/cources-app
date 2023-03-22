@@ -6,7 +6,7 @@ import { PLACEHOLDER_TEXT } from '../../../../constans';
 
 import './addDurationNewCourse.css';
 
-function AddDurationNewCourse() {
+const AddDurationNewCourse = () => {
 	const [formattedDuration, setFormattedDuration] = useState(pipeDuration(0));
 	function getDurationFormatted(event: ChangeEvent<HTMLInputElement>) {
 		const duration: number = parseInt(event.target.value);
@@ -31,6 +31,6 @@ function AddDurationNewCourse() {
 			</p>
 		</div>
 	);
-}
+};
 
 export default AddDurationNewCourse;

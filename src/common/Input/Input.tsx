@@ -10,7 +10,7 @@ type Props = {
 	minLength?: number;
 };
 
-function Input(props: Props) {
+const Input = (props: Props) => {
 	return (
 		<label className='labelWrapper'>
 			{props.labelText}
@@ -25,6 +25,6 @@ function Input(props: Props) {
 			></input>
 		</label>
 	);
-}
+};
 
 export default Input;

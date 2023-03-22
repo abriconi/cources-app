@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchBar from './components/SearchBar/Seacrbar';
+import SearchBar from './components/SearchBar/SearchBar';
 import Button from '../../common/Button/Button';
 import CourseCard from './components/CourseCard/CourseCard';
 import CreateCourse from '../CreateCourse/CreateCourse';
@@ -14,7 +14,7 @@ import { Course, Author } from '../../interfaces/index';
 
 import './courses.css';
 
-function Courses() {
+const Courses = () => {
 	const [renderedComponent, setRenderedComponent] = useState(
 		'courseCardComponent'
 	);
@@ -66,5 +66,5 @@ function Courses() {
 			)}
 		</div>
 	);
-}
+};
 export default Courses;
