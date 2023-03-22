@@ -19,15 +19,17 @@ function Courses() {
 		'courseCardComponent'
 	);
 	const [courses, setCourses] = React.useState<Course[]>(mockedCoursesList);
+	const [filteredCourses, setFilteredCourses] =
+		React.useState<Course[]>(courses);
 	const [authorsList, setAuthorsList] =
 		React.useState<Author[]>(mockedAuthorsList);
 
 	function searchCoursesHandle(searchText: string): void {
 		if (searchText === '') {
-			setCourses(mockedCoursesList);
+			setFilteredCourses(courses);
 		} else {
-			const filteredCourses: Course[] = filterCourses(courses, searchText);
-			setCourses(filteredCourses);
+			const filteredCoursesArr: Course[] = filterCourses(courses, searchText);
+			setFilteredCourses(filteredCoursesArr);
 		}
 	}
 	function onClickHandler() {
@@ -46,7 +48,7 @@ function Courses() {
 							onClick={onClickHandler}
 						></Button>
 					</div>
-					{courses.map((course) => (
+					{filteredCourses.map((course) => (
 						<CourseCard key={course.title} courseData={course}></CourseCard>
 					))}
 				</>
