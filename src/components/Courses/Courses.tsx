@@ -61,7 +61,7 @@ const Courses = () => {
 					courses={courses}
 					setCourses={setCourses}
 					setRenderedComponent={setRenderedComponent}
-					renderedComponent={renderedComponent}
+					// renderedComponent={renderedComponent}
 				></CreateCourse>
 			)}
 		</div>

@@ -10,15 +10,15 @@ interface Props {
 	onClick?: () => void;
 }
 
-const Button = (props: Props) => {
+const Button = ({ className, btnSize, type, buttonText, onClick }: Props) => {
 	return (
 		<button
-			className={`btnDefaultStyle ${props.btnSize || ''}
-			 ${props.className || ''}`}
-			type={props.type}
-			onClick={props.onClick}
+			className={`btnDefaultStyle ${btnSize || ''}
+			 ${className || ''}`}
+			type={type}
+			onClick={onClick}
 		>
-			{props.buttonText}
+			{buttonText}
 		</button>
 	);
 };

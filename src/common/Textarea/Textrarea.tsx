@@ -7,17 +7,17 @@ interface Props {
 	minLength: number;
 }
 
-const Textarea = (props: Props) => {
+const Textarea = ({ labelText, name, minLength }: Props) => {
 	return (
 		<label className='labelWrapper'>
-			{props.labelText}
+			{labelText}
 			<textarea
 				rows={4}
 				cols={50}
-				name={props.name}
-				placeholder={props.labelText}
+				name={name}
+				placeholder={labelText}
 				className='teaxtAreaInputField'
-				minLength={props.minLength}
+				minLength={minLength}
 			></textarea>
 		</label>
 	);

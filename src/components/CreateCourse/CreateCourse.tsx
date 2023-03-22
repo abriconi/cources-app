@@ -18,10 +18,17 @@ interface Props {
 	authorsList: Author[];
 	setAuthorsList: (authors: Author[]) => void;
 	setRenderedComponent: (component: string) => void;
-	renderedComponent: string;
+	// renderedComponent: string;
 }
 
-const CreateCourse = (props: Props) => {
+const CreateCourse = ({
+	courses,
+	setCourses,
+	authorsList,
+	setAuthorsList,
+	setRenderedComponent,
+}: // renderedComponent,
+Props) => {
 	const [authors, setAuthors] = useState<string[]>([]);
 
 	function submitHandler(e: React.SyntheticEvent) {
@@ -43,8 +50,8 @@ const CreateCourse = (props: Props) => {
 		};
 
 		isAllFieldesFilled(newCourse);
-		props.setCourses([...props.courses, newCourse]);
-		props.setRenderedComponent('courseCardComponent');
+		setCourses([...courses, newCourse]);
+		setRenderedComponent('courseCardComponent');
 	}
 
 	function addAuthorToCourse(authorId: string): void {
@@ -65,8 +72,8 @@ const CreateCourse = (props: Props) => {
 				top={
 					<>
 						<CreateAuthor
-							authorsList={props.authorsList} // primary list of authors
-							setAuthorsList={props.setAuthorsList}
+							authorsList={authorsList} // primary list of authors
+							setAuthorsList={setAuthorsList}
 						/>
 						<AddDurationNewCourse />
 					</>
@@ -74,12 +81,12 @@ const CreateCourse = (props: Props) => {
 				bottom={
 					<>
 						<AutorsList
-							authors={props.authorsList}
+							authors={authorsList}
 							onAddAuthor={addAuthorToCourse}
 							authorsToExclude={authors}
 						/>
 						<AddedAuthorsToCourse
-							authors={props.authorsList} //масив всіх авторів
+							authors={authorsList} //масив всіх авторів
 							authorsInCourse={authors} // масив ІД авторів, які додані до курсу
 							onDeleteAuthor={deleteAuthorFromCourse}
 						/>

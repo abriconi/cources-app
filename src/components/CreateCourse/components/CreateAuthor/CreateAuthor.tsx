@@ -13,7 +13,7 @@ interface Props {
 	setAuthorsList: (authors: Author[]) => void;
 }
 
-const CreateAuthor = (props: Props) => {
+const CreateAuthor = ({ authorsList, setAuthorsList }: Props) => {
 	const [newAutorName, setNewAutorName] = useState('');
 	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
 		setNewAutorName(event.target.value);
@@ -24,7 +24,7 @@ const CreateAuthor = (props: Props) => {
 			id: generateUUID(),
 			name: inputText,
 		};
-		props.setAuthorsList([...props.authorsList, newAuthor]); // primary list of authors
+		setAuthorsList([...authorsList, newAuthor]); // primary list of authors
 	}
 
 	function clearInput(): void {

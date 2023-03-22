@@ -11,9 +11,9 @@ interface Props {
 	onAddAuthor: (authorId: string) => void; // triggered function when add author to new cource
 }
 
-const AutorsList = (props: Props) => {
-	const authorsToRender = props.authors.filter(
-		(author) => !props.authorsToExclude.includes(author.id)
+const AutorsList = ({ authors, authorsToExclude, onAddAuthor }: Props) => {
+	const authorsToRender = authors.filter(
+		(author) => !authorsToExclude.includes(author.id)
 	);
 
 	return (
@@ -25,7 +25,7 @@ const AutorsList = (props: Props) => {
 						key={author.name}
 						authorsName={author.name}
 						buttonText='Add author'
-						onClick={() => props.onAddAuthor(author.id)}
+						onClick={() => onAddAuthor(author.id)}
 					/>
 				))}
 			</ul>

@@ -11,12 +11,15 @@ interface Props {
 	onDeleteAuthor: (authorID: string) => void;
 }
 
-const AddingAuthorsToCourse = (props: Props) => {
-	const isExistAuthorsList =
-		props.authorsInCourse && props.authorsInCourse.length > 0;
+const AddingAuthorsToCourse = ({
+	authors,
+	authorsInCourse,
+	onDeleteAuthor,
+}: Props) => {
+	const isExistAuthorsList = authorsInCourse && authorsInCourse.length > 0;
 
-	const authorsToRender = props.authors.filter((author) =>
-		props.authorsInCourse.includes(author.id)
+	const authorsToRender = authors.filter((author) =>
+		authorsInCourse.includes(author.id)
 	);
 	return (
 		<div className='addedAuthorsListWrapper'>
@@ -30,7 +33,7 @@ const AddingAuthorsToCourse = (props: Props) => {
 							<AddAuthor
 								authorsName={author.name}
 								buttonText='Delete'
-								onClick={() => props.onDeleteAuthor(author.id)}
+								onClick={() => onDeleteAuthor(author.id)}
 							/>
 						</li>
 					))}

@@ -10,18 +10,25 @@ interface Props {
 	minLength?: number;
 }
 
-const Input = (props: Props) => {
+const Input = ({
+	labelText,
+	name,
+	placeholder,
+	onChange,
+	id,
+	minLength,
+}: Props) => {
 	return (
 		<label className='labelWrapper'>
-			{props.labelText}
+			{labelText}
 			<input
 				type='text'
-				minLength={props.minLength}
-				name={props.name}
+				minLength={minLength}
+				name={name}
 				className='inputField'
-				placeholder={props.placeholder}
-				onChange={props.onChange}
-				id={props.id}
+				placeholder={placeholder}
+				onChange={onChange}
+				id={id}
 			></input>
 		</label>
 	);

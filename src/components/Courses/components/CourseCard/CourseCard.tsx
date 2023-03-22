@@ -13,30 +13,28 @@ interface Props {
 	courseData: Course;
 }
 
-const CourseCard = (props: Props) => {
+const CourseCard = ({ courseData }: Props) => {
 	return (
 		<div className='courseCard'>
 			<div className='courseMainInfo'>
-				<h1 className='courseName'>{props.courseData.title}</h1>
-				<p className='courseDescription'>{props.courseData.description}</p>
+				<h1 className='courseName'>{courseData.title}</h1>
+				<p className='courseDescription'>{courseData.description}</p>
 			</div>
 			<div className='courseAdditionalInfoWrapper'>
 				<div className='courseAdditionalInfoSection'>
 					<p className='infoTitle'>Authors:</p>
 					<p className='infoData authorsStyle'>
-						{getAuthorNamesById(mockedAuthorsList, props.courseData.authors)}
+						{getAuthorNamesById(mockedAuthorsList, courseData.authors)}
 					</p>
 				</div>
 				<div className='courseAdditionalInfoSection'>
 					<p className='infoTitle'>Duration:</p>
-					<p className='infoData'>{pipeDuration(props.courseData.duration)}</p>
+					<p className='infoData'>{pipeDuration(courseData.duration)}</p>
 				</div>
-				{props.courseData.creationDate && (
+				{courseData.creationDate && (
 					<div className='courseAdditionalInfoSection'>
 						<p className='infoTitle'>Created:</p>
-						<p className='infoData'>
-							{dateGenerator(props.courseData.creationDate)}
-						</p>
+						<p className='infoData'>{dateGenerator(courseData.creationDate)}</p>
 					</div>
 				)}
 				<Button

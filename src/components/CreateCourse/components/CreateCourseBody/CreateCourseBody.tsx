@@ -6,11 +6,11 @@ interface Props {
 	bottom: ReactElement;
 }
 
-const CreateCourseBody = (props: Props) => {
+const CreateCourseBody = ({ top, bottom }: Props) => {
 	return (
 		<div className='createCourseBody'>
-			<div className='columnLayout'>{props.top}</div>
-			<div className='columnLayout'>{props.bottom}</div>
+			<div className='columnLayout'>{top}</div>
+			<div className='columnLayout'>{bottom}</div>
 		</div>
 	);
 };

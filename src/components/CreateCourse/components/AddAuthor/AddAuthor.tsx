@@ -8,15 +8,11 @@ interface Props {
 	buttonText: string;
 	onClick: () => void;
 }
-const AddAuthor = (props: Props) => {
+const AddAuthor = ({ authorsName, buttonText, onClick }: Props) => {
 	return (
 		<div className='authorForm'>
-			<p>{props.authorsName}</p>
-			<Button
-				type='button'
-				buttonText={props.buttonText}
-				onClick={props.onClick}
-			/>
+			<p>{authorsName}</p>
+			<Button type='button' buttonText={buttonText} onClick={onClick} />
 		</div>
 	);
 };

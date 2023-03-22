@@ -9,17 +9,17 @@ interface Props {
 	onSearch: (value: string) => void;
 }
 
-const SearchBar = (props: Props) => {
+const SearchBar = ({ onSearch }: Props) => {
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		const searchText = (
 			event.currentTarget.elements.namedItem('searchText') as HTMLInputElement
 		)?.value;
-		props.onSearch(searchText);
+		onSearch(searchText);
 	}
 	function handleClearInputField(event: React.ChangeEvent<HTMLInputElement>) {
 		if (event.target.value === '') {
-			props.onSearch(event.target.value);
+			onSearch(event.target.value);
 		}
 	}
 
