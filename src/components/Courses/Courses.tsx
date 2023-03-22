@@ -36,18 +36,22 @@ function Courses() {
 
 	return (
 		<div className='coursesWrapper'>
-			<div className='searchBarWrapper'>
-				<SearchBar onSearch={searchCoursesHandle}></SearchBar>
-				<Button
-					buttonText={BUTTON_TEXT.addNewCourse}
-					type={'button'}
-					onClick={onClickHandler}
-				></Button>
-			</div>
-			{renderedComponent === 'courseCardComponent' &&
-				courses.map((course) => (
-					<CourseCard key={course.title} courseData={course}></CourseCard>
-				))}
+			{renderedComponent === 'courseCardComponent' && (
+				<>
+					<div className='searchBarWrapper'>
+						<SearchBar onSearch={searchCoursesHandle}></SearchBar>
+						<Button
+							buttonText={BUTTON_TEXT.addNewCourse}
+							type={'button'}
+							onClick={onClickHandler}
+						></Button>
+					</div>
+					{courses.map((course) => (
+						<CourseCard key={course.title} courseData={course}></CourseCard>
+					))}
+				</>
+			)}
+
 			{renderedComponent === 'createCourseComponent' && (
 				<CreateCourse
 					authorsList={authorsList}
