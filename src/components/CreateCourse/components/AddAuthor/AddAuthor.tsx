@@ -3,11 +3,11 @@ import Button from '../../../../common/Button/Button';
 
 import './addAuthor.css';
 
-type Props = {
+interface Props {
 	authorsName: string;
 	buttonText: string;
 	onClick: () => void;
-};
+}
 const AddAuthor = (props: Props) => {
 	return (
 		<div className='authorForm'>

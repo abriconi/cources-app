@@ -5,11 +5,11 @@ import { Author } from '../../../../interfaces';
 
 import './addedAuthorsToCourse.css';
 
-type Props = {
+interface Props {
 	authors: Author[]; //масив всіх авторів
 	authorsInCourse: string[]; // масив ІД авторів, які додані до курсу
 	onDeleteAuthor: (authorID: string) => void;
-};
+}
 
 const AddingAuthorsToCourse = (props: Props) => {
 	const isExistAuthorsList =

@@ -9,9 +9,9 @@ import { Course } from '../../../../interfaces';
 
 import './courseCard.css';
 
-type Props = {
+interface Props {
 	courseData: Course;
-};
+}
 
 const CourseCard = (props: Props) => {
 	return (

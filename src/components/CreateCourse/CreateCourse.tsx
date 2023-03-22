@@ -12,14 +12,14 @@ import { Course, Author } from '../../interfaces/index';
 
 import './createCourse.css';
 
-type Props = {
+interface Props {
 	courses: Course[];
 	setCourses: (courses: Course[]) => void;
 	authorsList: Author[];
 	setAuthorsList: (authors: Author[]) => void;
 	setRenderedComponent: (component: string) => void;
 	renderedComponent: string;
-};
+}
 
 const CreateCourse = (props: Props) => {
 	const [authors, setAuthors] = useState<string[]>([]);

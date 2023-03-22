@@ -1,14 +1,14 @@
 import React from 'react';
 import './input.css';
 
-type Props = {
+interface Props {
 	labelText?: string;
 	name: string;
 	placeholder: string;
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	id?: string;
 	minLength?: number;
-};
+}
 
 const Input = (props: Props) => {
 	return (

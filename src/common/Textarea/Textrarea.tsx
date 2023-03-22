@@ -1,11 +1,11 @@
-import React, { TextareaHTMLAttributes } from 'react';
+import React from 'react';
 import './textarea.css';
 
-type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+interface Props {
 	labelText: string;
 	name: string;
 	minLength: number;
-};
+}
 
 const Textarea = (props: Props) => {
 	return (

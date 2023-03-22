@@ -5,9 +5,9 @@ import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
 
 import './searchBar.css';
 
-type Props = {
+interface Props {
 	onSearch: (value: string) => void;
-};
+}
 
 const SearchBar = (props: Props) => {
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {

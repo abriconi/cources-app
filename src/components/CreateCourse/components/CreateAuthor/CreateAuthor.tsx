@@ -8,10 +8,10 @@ import { Author } from '../../../../interfaces';
 
 import './createAuthor.css';
 
-type Props = {
+interface Props {
 	authorsList: Author[];
 	setAuthorsList: (authors: Author[]) => void;
-};
+}
 
 const CreateAuthor = (props: Props) => {
 	const [newAutorName, setNewAutorName] = useState('');

@@ -1,14 +1,14 @@
 import React from 'react';
 import './button.css';
 
-type Props = {
+interface Props {
 	className?: string;
 	aligning?: string;
 	btnSize?: string;
 	type: 'submit' | 'button';
 	buttonText: string;
 	onClick?: () => void;
-};
+}
 
 const Button = (props: Props) => {
 	return (

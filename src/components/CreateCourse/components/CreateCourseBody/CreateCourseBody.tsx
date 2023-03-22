@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import './createCourseBody.css';
 
-type Props = {
+interface Props {
 	top: ReactElement;
 	bottom: ReactElement;
-};
+}
 
 const CreateCourseBody = (props: Props) => {
 	return (
