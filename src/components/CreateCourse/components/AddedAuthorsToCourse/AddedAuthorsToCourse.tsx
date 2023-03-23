@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import AddAuthor from '../AddAuthor/AddAuthor';
 
 import { Author } from '../../../../interfaces';
@@ -16,11 +16,14 @@ const AddingAuthorsToCourse = ({
 	authorsInCourse,
 	onDeleteAuthor,
 }: Props) => {
-	const isExistAuthorsList = authorsInCourse && authorsInCourse.length > 0;
+	const isExistAuthorsList = useMemo(() => {
+		return authorsInCourse && authorsInCourse.length > 0;
+	}, [authorsInCourse]);
 
-	const authorsToRender = authors.filter((author) =>
-		authorsInCourse.includes(author.id)
-	);
+	const authorsToRender = useMemo(() => {
+		return authors.filter((author) => authorsInCourse.includes(author.id));
+	}, [authors, authorsInCourse]);
+
 	return (
 		<div className='addedAuthorsListWrapper'>
 			<h3 className='addedAuthorsListTitle'>Course authors</h3>

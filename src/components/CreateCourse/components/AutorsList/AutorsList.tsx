@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import AddAuthor from '../AddAuthor/AddAuthor';
 
 import { Author } from '../../../../interfaces';
@@ -12,9 +12,9 @@ interface Props {
 }
 
 const AutorsList = ({ authors, authorsToExclude, onAddAuthor }: Props) => {
-	const authorsToRender = authors.filter(
-		(author) => !authorsToExclude.includes(author.id)
-	);
+	const authorsToRender = useMemo(() => {
+		return authors.filter((author) => !authorsToExclude.includes(author.id));
+	}, [authors, authorsToExclude]);
 
 	return (
 		<div className='authorListWrapper'>
