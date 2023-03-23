@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import Button from '../../common/Button/Button';
 import CourseCard from './components/CourseCard/CourseCard';
@@ -15,14 +15,14 @@ import { Course, Author } from '../../interfaces/index';
 import './courses.css';
 
 const Courses = () => {
-	const [renderedComponent, setRenderedComponent] = useState(
-		'courseCardComponent'
-	);
+	const [showCreateCourse, setShowCreateCourse] = useState<boolean>(false);
 	const [courses, setCourses] = React.useState<Course[]>(mockedCoursesList);
 	const [filteredCourses, setFilteredCourses] =
 		React.useState<Course[]>(courses);
 	const [authorsList, setAuthorsList] =
 		React.useState<Author[]>(mockedAuthorsList);
+
+	useEffect(() => setFilteredCourses(courses), [courses]);
 
 	function searchCoursesHandle(searchText: string): void {
 		if (searchText === '') {
@@ -33,12 +33,12 @@ const Courses = () => {
 		}
 	}
 	function onClickHandler() {
-		setRenderedComponent('createCourseComponent');
+		setShowCreateCourse(true);
 	}
 
 	return (
 		<div className='coursesWrapper'>
-			{renderedComponent === 'courseCardComponent' && (
+			{!showCreateCourse ? (
 				<>
 					<div className='searchBarWrapper'>
 						<SearchBar onSearch={searchCoursesHandle}></SearchBar>
@@ -52,16 +52,13 @@ const Courses = () => {
 						<CourseCard key={course.title} courseData={course}></CourseCard>
 					))}
 				</>
-			)}
-
-			{renderedComponent === 'createCourseComponent' && (
+			) : (
 				<CreateCourse
 					authorsList={authorsList}
 					setAuthorsList={setAuthorsList}
 					courses={courses}
 					setCourses={setCourses}
-					setRenderedComponent={setRenderedComponent}
-					// renderedComponent={renderedComponent}
+					setShowCreateCourse={setShowCreateCourse}
 				></CreateCourse>
 			)}
 		</div>

@@ -17,8 +17,7 @@ interface Props {
 	setCourses: (courses: Course[]) => void;
 	authorsList: Author[];
 	setAuthorsList: (authors: Author[]) => void;
-	setRenderedComponent: (component: string) => void;
-	// renderedComponent: string;
+	setShowCreateCourse: (arg: boolean) => void;
 }
 
 const CreateCourse = ({
@@ -26,9 +25,8 @@ const CreateCourse = ({
 	setCourses,
 	authorsList,
 	setAuthorsList,
-	setRenderedComponent,
-}: // renderedComponent,
-Props) => {
+	setShowCreateCourse,
+}: Props) => {
 	const [authors, setAuthors] = useState<string[]>([]);
 
 	function submitHandler(e: React.SyntheticEvent) {
@@ -51,7 +49,7 @@ Props) => {
 
 		isAllFieldesFilled(newCourse);
 		setCourses([...courses, newCourse]);
-		setRenderedComponent('courseCardComponent');
+		setShowCreateCourse(false);
 	}
 
 	function addAuthorToCourse(authorId: string): void {
@@ -86,8 +84,8 @@ Props) => {
 							authorsToExclude={authors}
 						/>
 						<AddedAuthorsToCourse
-							authors={authorsList} //масив всіх авторів
-							authorsInCourse={authors} // масив ІД авторів, які додані до курсу
+							authors={authorsList}
+							authorsInCourse={authors}
 							onDeleteAuthor={deleteAuthorFromCourse}
 						/>
 					</>
