@@ -15,30 +15,22 @@ interface Props {
 
 const CreateAuthor = ({ authorsList, setAuthorsList }: Props) => {
 	const [newAutorName, setNewAutorName] = useState('');
+
 	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
 		setNewAutorName(event.target.value);
 	}
 
-	function createAuthorObject(inputText: string) {
-		const newAuthor = {
+	function createAuthorObject(inputText: string): Author {
+		return {
 			id: generateUUID(),
 			name: inputText,
 		};
-		setAuthorsList([...authorsList, newAuthor]); // primary list of authors
-	}
-
-	function clearInput(): void {
-		const inputFieldAuthorName = document.getElementById(
-			'authorName'
-		) as HTMLInputElement;
-		if (inputFieldAuthorName.value !== '') {
-			inputFieldAuthorName.value = '';
-		}
 	}
 
 	function handleClick() {
-		createAuthorObject(newAutorName);
-		clearInput();
+		const newAuthor = createAuthorObject(newAutorName);
+		setNewAutorName('');
+		setAuthorsList([...authorsList, newAuthor]);
 	}
 
 	return (
@@ -51,6 +43,7 @@ const CreateAuthor = ({ authorsList, setAuthorsList }: Props) => {
 					placeholder={PLACEHOLDER_TEXT.enterAuthorName}
 					onChange={handleOnChange}
 					id='authorName'
+					value={newAutorName}
 				></Input>
 				<Button
 					className='btnAligningCenter'
