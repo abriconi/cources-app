@@ -3,9 +3,10 @@ import './input.css';
 
 interface Props {
 	labelText?: string;
-	name: string;
+	name?: string;
+	value?: string;
 	placeholder: string;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	id?: string;
 	minLength?: number;
 }
@@ -13,6 +14,7 @@ interface Props {
 const Input = ({
 	labelText,
 	name,
+	value,
 	placeholder,
 	onChange,
 	id,
@@ -24,6 +26,7 @@ const Input = ({
 			<input
 				type='text'
 				minLength={minLength}
+				value={value}
 				name={name}
 				className='inputField'
 				placeholder={placeholder}

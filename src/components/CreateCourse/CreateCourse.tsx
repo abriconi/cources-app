@@ -47,9 +47,13 @@ const CreateCourse = ({
 			authors: authors,
 		};
 
-		isAllFieldesFilled(newCourse);
-		setCourses([...courses, newCourse]);
-		setShowCreateCourse(false);
+		if (isAllFieldesFilled(newCourse)) {
+			alert('Fill all the fieldes');
+			return;
+		} else {
+			setCourses([...courses, newCourse]);
+			setShowCreateCourse(false);
+		}
 	}
 
 	function addAuthorToCourse(authorId: string): void {

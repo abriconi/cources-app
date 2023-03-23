@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../../../../common/Button/Button';
 import Input from '../../../../common/Input/Input';
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
@@ -10,28 +10,26 @@ interface Props {
 }
 
 const SearchBar = ({ onSearch }: Props) => {
+	const [searchText, setSearchText] = useState('');
+
+	useEffect(() => {
+		if (searchText === '') {
+			onSearch(searchText);
+		}
+	}, [searchText, onSearch]);
+
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		const searchText = (
-			event.currentTarget.elements.namedItem('searchText') as HTMLInputElement
-		)?.value;
+		console.log(searchText);
 		onSearch(searchText);
-	}
-	function handleClearInputField({
-		target,
-	}: React.ChangeEvent<HTMLInputElement>) {
-		if (target.value === '') {
-			onSearch(target.value);
-		}
 	}
 
 	return (
 		<form className='formWrapper' onSubmit={handleSubmit}>
 			<Input
 				placeholder={PLACEHOLDER_TEXT.enterCourseName}
-				name='searchText'
-				minLength={2}
-				onChange={handleClearInputField}
+				value={searchText}
+				onChange={(e) => setSearchText(e.target.value)}
 			/>
 			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>
