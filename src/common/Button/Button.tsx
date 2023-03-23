@@ -3,24 +3,25 @@ import './button.css';
 
 interface Props {
 	className?: string;
-	aligning?: string;
 	btnSize?: string;
 	type: 'submit' | 'button';
 	buttonText: string;
 	onClick?: () => void;
 }
 
-const Button = ({ className, btnSize, type, buttonText, onClick }: Props) => {
-	return (
-		<button
-			className={`btnDefaultStyle ${btnSize || ''}
-			 ${className || ''}`}
-			type={type}
-			onClick={onClick}
-		>
-			{buttonText}
-		</button>
-	);
-};
+const Button: React.FC<Props> = ({
+	className,
+	btnSize,
+	buttonText,
+	...restProps
+}) => (
+	<button
+		className={`btnDefaultStyle ${btnSize || ''}
+		 ${className || ''}`}
+		{...restProps}
+	>
+		{buttonText}
+	</button>
+);
 
 export default Button;

@@ -20,7 +20,6 @@ const SearchBar = ({ onSearch }: Props) => {
 
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		console.log(searchText);
 		onSearch(searchText);
 	}
 

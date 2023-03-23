@@ -37,11 +37,7 @@ const CourseCard = ({ courseData }: Props) => {
 						<p className='infoData'>{dateGenerator(courseData.creationDate)}</p>
 					</div>
 				)}
-				<Button
-					buttonText={BUTTON_TEXT.showCourse}
-					aligning=''
-					type={'button'}
-				/>
+				<Button buttonText={BUTTON_TEXT.showCourse} type={'button'} />
 			</div>
 		</div>
 	);
