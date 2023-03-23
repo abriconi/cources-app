@@ -17,9 +17,11 @@ const SearchBar = ({ onSearch }: Props) => {
 		)?.value;
 		onSearch(searchText);
 	}
-	function handleClearInputField(event: React.ChangeEvent<HTMLInputElement>) {
-		if (event.target.value === '') {
-			onSearch(event.target.value);
+	function handleClearInputField({
+		target,
+	}: React.ChangeEvent<HTMLInputElement>) {
+		if (target.value === '') {
+			onSearch(target.value);
 		}
 	}
 
