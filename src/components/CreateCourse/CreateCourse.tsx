@@ -46,7 +46,7 @@ const CreateCourse = ({
 			authors: authors,
 		};
 
-		if (isAllFieldesFilled(newCourse)) {
+		if (!isAllFieldesFilled(newCourse)) {
 			alert('Fill all the fieldes');
 			return;
 		} else {
