@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import CreateTitle from './components/CreateTitle/CreateTitle';
-import CreateCourseBody from './components/CreateCourseBody/CreateCourseBody';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationNewCourse';
 import AddedAuthorsToCourse from './components/AddedAuthorsToCourse/AddedAuthorsToCourse';
@@ -70,31 +69,28 @@ const CreateCourse = ({
 	return (
 		<form className='createCourseForm' onSubmit={submitHandler}>
 			<CreateTitle />
-			<CreateCourseBody
-				top={
-					<>
-						<CreateAuthor
-							authorsList={authorsList} // primary list of authors
-							setAuthorsList={setAuthorsList}
-						/>
-						<AddDurationNewCourse />
-					</>
-				}
-				bottom={
-					<>
-						<AutorsList
-							authors={authorsList}
-							onAddAuthor={addAuthorToCourse}
-							authorsToExclude={authors}
-						/>
-						<AddedAuthorsToCourse
-							authors={authorsList}
-							authorsInCourse={authors}
-							onDeleteAuthor={deleteAuthorFromCourse}
-						/>
-					</>
-				}
-			/>
+
+			<div className='createCourseBody'>
+				<div className='columnLayout'>
+					<CreateAuthor
+						authorsList={authorsList}
+						setAuthorsList={setAuthorsList}
+					/>
+					<AddDurationNewCourse />
+				</div>
+				<div className='columnLayout'>
+					<AutorsList
+						authors={authorsList}
+						onAddAuthor={addAuthorToCourse}
+						authorsToExclude={authors}
+					/>
+					<AddedAuthorsToCourse
+						authors={authorsList}
+						authorsInCourse={authors}
+						onDeleteAuthor={deleteAuthorFromCourse}
+					/>
+				</div>
+			</div>
 		</form>
 	);
 };
