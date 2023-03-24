@@ -13,7 +13,7 @@ interface Props {
 	setAuthorsList: (authors: Author[]) => void;
 }
 
-const CreateAuthor = ({ authorsList, setAuthorsList }: Props) => {
+const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 	const [newAutorName, setNewAutorName] = useState('');
 
 	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -28,9 +28,13 @@ const CreateAuthor = ({ authorsList, setAuthorsList }: Props) => {
 	}
 
 	function handleClick() {
-		const newAuthor = createAuthorObject(newAutorName);
-		setNewAutorName('');
-		setAuthorsList([...authorsList, newAuthor]);
+		if (newAutorName) {
+			const newAuthor = createAuthorObject(newAutorName);
+			setNewAutorName('');
+			setAuthorsList([...authorsList, newAuthor]);
+		} else {
+			alert(`Field 'Author name' is empty`);
+		}
 	}
 
 	return (
