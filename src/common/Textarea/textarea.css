@@ -1,0 +1,13 @@
+.teaxtAreaInputField {
+    border: 1px solid #f7f7a3;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 5px;
+}
+
+.teaxtAreaInputField:focus {
+    outline: none;
+ }
+ 
+ .teaxtAreaInputField:focus::placeholder {
+     color: transparent;
+ }

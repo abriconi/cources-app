@@ -1,0 +1,47 @@
+.courseCard {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    border: 1px solid #77a990;
+    padding: 20px;
+}
+
+.courseMainInfo{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 25px;
+}
+.courseName {
+    font-size: 30px;
+    margin: 0;
+}
+.courseDescription{
+    font-size: 14px;
+    margin: 0;
+}
+.courseAdditionalInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 15px;
+}
+.courseAdditionalInfoSection {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.infoTitle{
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.infoData{
+    margin: 0;
+    font-size: 14px;
+}
+.authorsStyle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

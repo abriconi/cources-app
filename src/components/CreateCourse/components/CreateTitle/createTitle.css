@@ -1,0 +1,14 @@
+.createTitleWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.titleWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
+}
+.btnTitle {
+    padding: 4px 32px;
+}

@@ -1,0 +1,19 @@
+.btnDefaultStyle {
+    background-color: white;
+    border: 1px solid #957ba8;
+    font-size: 15px;
+    padding: 4px 25px;
+    white-space: nowrap;
+    height: fit-content;
+}
+.btnDefaultStyle:hover{
+    background-color: #957ba8;
+    color: white;
+}
+.small{
+    min-width: 50px;
+    font-size: 12px;
+}
+.center{
+    align-self: center;
+}

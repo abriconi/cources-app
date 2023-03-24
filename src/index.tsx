@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const el = document.getElementById('root');
+if (el === null) throw new Error('Root container missing in index.html');
+
+const root = ReactDOM.createRoot(el);
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
