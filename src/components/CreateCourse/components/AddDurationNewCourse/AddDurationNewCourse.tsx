@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import Input from '../../../../common/Input/Input';
 
 import { pipeDuration } from '../../../../helpers/pipeDuration';
@@ -8,8 +8,8 @@ import './addDurationNewCourse.css';
 
 const AddDurationNewCourse = () => {
 	const [formattedDuration, setFormattedDuration] = useState(pipeDuration(0));
-	function getDurationFormatted(event: ChangeEvent<HTMLInputElement>) {
-		const duration: number = parseInt(event.target.value);
+	function getDurationFormatted(value: string) {
+		const duration: number = parseInt(value);
 		if (!isNaN(duration) && duration > 0) {
 			setFormattedDuration(pipeDuration(duration));
 		} else {

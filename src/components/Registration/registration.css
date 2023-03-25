@@ -1,0 +1,25 @@
+.registrationWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #b6daef;
+    padding: 70px 0;
+    gap: 20px;
+}    
+
+.registrationHeader {
+    margin: 0;
+}
+.registrationForm {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.registrationBtn {
+    align-self: center;
+}
+.loginLink {
+    text-decoration: none;
+    color: blue;
+}

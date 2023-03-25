@@ -66,6 +66,8 @@ export const BUTTON_TEXT = {
 	createAuthor: 'Create author',
 	addAuthor: 'Add author',
 	search: 'Search',
+	registration: 'Registration',
+	login: 'Login',
 };
 
 export const PLACEHOLDER_TEXT = {
@@ -74,4 +76,7 @@ export const PLACEHOLDER_TEXT = {
 	enterDuration: 'Enter duration in minutes',
 	enterAuthorName: 'Enter author name...',
 	enterTitle: 'Enter title',
+	enterName: 'Enter name',
+	enterEmail: 'Enter email',
+	enterPassword: 'Enter password',
 };

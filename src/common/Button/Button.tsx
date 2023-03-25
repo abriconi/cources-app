@@ -6,7 +6,7 @@ interface Props {
 	btnSize?: string;
 	type: 'submit' | 'button';
 	buttonText: string;
-	onClick?: () => void;
+	onClick?: (e?: any) => void;
 }
 
 const Button: React.FC<Props> = ({

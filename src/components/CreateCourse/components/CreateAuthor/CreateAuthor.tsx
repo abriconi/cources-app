@@ -16,8 +16,8 @@ interface Props {
 const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 	const [newAutorName, setNewAutorName] = useState('');
 
-	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
-		setNewAutorName(event.target.value);
+	function handleOnChange(value: string) {
+		setNewAutorName(value);
 	}
 
 	function createAuthorObject(inputText: string): Author {

@@ -1,0 +1,24 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #b6daef;
+    padding: 70px 0;
+    gap: 20px;
+}
+.loginTitle {
+    margin: 0;
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 35%;
+}
+.loginBtn {
+    align-self: center;
+}
+.registrationLink {
+    text-decoration: none;
+    color: blue;
+}

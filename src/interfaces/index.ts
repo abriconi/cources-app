@@ -15,3 +15,14 @@ export type Course = {
 export type AuthorsListObject = {
 	[key: string]: string;
 };
+
+export type newUser = {
+	name: string;
+	password: string;
+	email: string;
+};
+
+export type User = {
+	password: string;
+	email: string;
+};
