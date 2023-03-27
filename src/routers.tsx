@@ -4,6 +4,7 @@ import Courses from './components/Courses/Courses';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
+import CreateCourse from './components/CreateCourse/CreateCourse';
 import Root from './components/Root';
 
 const isLogedIn = () => {
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
 			{ path: '/courses/:courseId', element: <CourseInfo />, loader: withAuth },
 			{ path: '/registration', element: <Registration />, loader: withoutAuth },
 			{ path: '/login', element: <Login />, loader: withoutAuth },
+			{ path: '/add', element: <CreateCourse />, loader: withAuth },
 		],
 	},
 

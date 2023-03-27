@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CreateTitle from './components/CreateTitle/CreateTitle';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationNewCourse';
@@ -10,23 +11,13 @@ import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
 import { Course, Author } from '../../interfaces/index';
 
 import './createCourse.css';
+import { mockedCoursesList } from '../../constans';
+import { mockedAuthorsList } from '../../constans';
 
-interface Props {
-	courses: Course[];
-	setCourses: (courses: Course[]) => void;
-	authorsList: Author[];
-	setAuthorsList: (authors: Author[]) => void;
-	setShowCreateCourse: (arg: boolean) => void;
-}
-
-const CreateCourse = ({
-	courses,
-	setCourses,
-	authorsList,
-	setAuthorsList,
-	setShowCreateCourse,
-}: Props) => {
+const CreateCourse = () => {
+	const navigate = useNavigate();
 	const [authors, setAuthors] = useState<string[]>([]);
+	const [authorsList, setAuthorsList] = useState<Author[]>(mockedAuthorsList);
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
@@ -50,8 +41,8 @@ const CreateCourse = ({
 			alert('Fill all the fieldes');
 			return;
 		} else {
-			setCourses([...courses, newCourse]);
-			setShowCreateCourse(false);
+			mockedCoursesList.push(newCourse);
+			navigate('/courses');
 		}
 	}
 

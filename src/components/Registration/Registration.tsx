@@ -35,7 +35,6 @@ const Registration: React.FC = () => {
 			password: userPassword,
 			email: userEmail,
 		};
-		console.log('newUser', newUser);
 		navigate('/login');
 		await userRegistration(newUser);
 	}
