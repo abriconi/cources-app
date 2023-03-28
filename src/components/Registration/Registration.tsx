@@ -45,7 +45,6 @@ const Registration: React.FC = () => {
 				<Input
 					labelText='Name'
 					type='text'
-					name='name'
 					value={userName}
 					placeholder={PLACEHOLDER_TEXT.enterName}
 					onChange={handleOnChangeNameField}
@@ -53,7 +52,6 @@ const Registration: React.FC = () => {
 				<Input
 					labelText='Email'
 					type='email'
-					name='email'
 					value={userEmail}
 					placeholder={PLACEHOLDER_TEXT.enterEmail}
 					onChange={handleOnChangeEmailField}
@@ -61,7 +59,6 @@ const Registration: React.FC = () => {
 				<Input
 					labelText='Password'
 					type='password'
-					name='password'
 					value={userPassword}
 					placeholder={PLACEHOLDER_TEXT.enterPassword}
 					onChange={handleOnChangePasswordField}

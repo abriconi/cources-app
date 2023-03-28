@@ -7,6 +7,7 @@ interface Props {
 	name?: string;
 	value?: string;
 	placeholder: string;
+	// onChange?: (value: string) => void;
 	onChange?: (value: string) => void;
 	id?: string;
 	minLength?: number;
@@ -15,7 +16,6 @@ interface Props {
 const Input = ({
 	labelText,
 	type,
-	name,
 	value,
 	placeholder,
 	onChange,
@@ -29,7 +29,6 @@ const Input = ({
 				type={type ? type : 'text'}
 				minLength={minLength}
 				value={value}
-				name={name}
 				className='inputField'
 				placeholder={placeholder}
 				onChange={onChange && ((event) => onChange(event.target.value))}

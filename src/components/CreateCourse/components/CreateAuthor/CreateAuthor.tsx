@@ -42,7 +42,6 @@ const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 			<h3>Add author</h3>
 			<div className='addAuthorForm'>
 				<Input
-					name='createAuthor'
 					labelText='Author name'
 					placeholder={PLACEHOLDER_TEXT.enterAuthorName}
 					onChange={handleOnChange}

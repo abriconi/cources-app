@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '../../common/Button/Button';
@@ -12,15 +12,31 @@ import './login.css';
 
 const Login = () => {
 	const navigate = useNavigate();
-	async function handleClick(event: any): Promise<void> {
+	const [userEmail, setUserEmail] = useState('');
+	const [userPassword, setUserPassword] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
+
+	function handleOnChangeEmailField(value: string) {
+		setUserEmail(value);
+	}
+	function handleOnChangePasswordField(value: string) {
+		setUserPassword(value);
+	}
+
+	async function handleClick(
+		event: React.FormEvent<HTMLFormElement>
+	): Promise<void> {
 		event.preventDefault();
-		const user: User = {
-			//TODO
-			email: event.target.email.value,
-			password: event.target.password.value,
-		};
-		await userLogin(user);
-		navigate('/courses');
+		try {
+			const user: User = {
+				password: userPassword,
+				email: userEmail,
+			};
+			await userLogin(user);
+			navigate('/courses');
+		} catch (error) {
+			setErrorMessage('Incorrect email or password');
+		}
 	}
 	return (
 		<div className='loginContainer'>
@@ -29,15 +45,17 @@ const Login = () => {
 				<Input
 					labelText='Email'
 					type='email'
-					name='email'
+					value={userEmail}
 					placeholder={PLACEHOLDER_TEXT.enterEmail}
+					onChange={handleOnChangeEmailField}
 				/>
 				<Input
 					labelText='Password'
 					type='password'
-					name='password'
 					placeholder={PLACEHOLDER_TEXT.enterPassword}
 					minLength={6}
+					value={userPassword}
+					onChange={handleOnChangePasswordField}
 				/>
 				<Button
 					type='submit'
@@ -51,6 +69,7 @@ const Login = () => {
 					Registration
 				</Link>
 			</p>
+			{errorMessage && <p className='loginError'>{errorMessage}</p>}
 		</div>
 	);
 };

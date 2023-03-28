@@ -22,12 +22,14 @@ const Header = () => {
 			<Logo />
 			<div className='loginWrapper'>
 				<p>{userName}</p>
-				<Button
-					buttonText={BUTTON_TEXT.logout}
-					btnSize=''
-					type={'button'}
-					onClick={onClick}
-				></Button>
+				{localStorage.getItem('name') && (
+					<Button
+						buttonText={BUTTON_TEXT.logout}
+						btnSize=''
+						type={'button'}
+						onClick={onClick}
+					></Button>
+				)}
 			</div>
 		</div>
 	);

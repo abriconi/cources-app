@@ -22,3 +22,7 @@
     text-decoration: none;
     color: blue;
 }
+.loginError {
+    margin: 0;
+    color: red;
+}
