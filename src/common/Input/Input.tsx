@@ -7,13 +7,12 @@ interface Props {
 	name?: string;
 	value?: string;
 	placeholder: string;
-	// onChange?: (value: string) => void;
 	onChange?: (value: string) => void;
 	id?: string;
 	minLength?: number;
 }
 
-const Input = ({
+const Input: React.FC<Props> = ({
 	labelText,
 	type,
 	value,
@@ -21,7 +20,7 @@ const Input = ({
 	onChange,
 	id,
 	minLength,
-}: Props) => {
+}) => {
 	return (
 		<label className='labelWrapper'>
 			{labelText}

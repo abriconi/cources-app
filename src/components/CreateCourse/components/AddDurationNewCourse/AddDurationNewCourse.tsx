@@ -6,13 +6,21 @@ import { PLACEHOLDER_TEXT } from '../../../../constans';
 
 import './addDurationNewCourse.css';
 
-const AddDurationNewCourse = () => {
+interface Props {
+	duration: string;
+	setDuration: (value: string) => void;
+}
+
+const AddDurationNewCourse = ({ duration, setDuration }: Props) => {
 	const [formattedDuration, setFormattedDuration] = useState(pipeDuration(0));
+
 	function getDurationFormatted(value: string) {
 		const duration: number = parseInt(value);
 		if (!isNaN(duration) && duration > 0) {
+			setDuration(value);
 			setFormattedDuration(pipeDuration(duration));
 		} else {
+			setDuration('');
 			setFormattedDuration(pipeDuration(0));
 		}
 	}
@@ -22,8 +30,8 @@ const AddDurationNewCourse = () => {
 			<Input
 				placeholder={PLACEHOLDER_TEXT.enterDuration}
 				labelText='Duration'
-				name='duration'
 				minLength={1}
+				value={duration}
 				onChange={getDurationFormatted}
 			/>
 			<p className='durationDescription'>

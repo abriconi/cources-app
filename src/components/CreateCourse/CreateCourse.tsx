@@ -19,23 +19,19 @@ const CreateCourse = () => {
 	const [authors, setAuthors] = useState<string[]>([]);
 	const [titleValue, setTitleValue] = useState('');
 	const [descriptionValue, setDescriptionValue] = useState('');
+	const [duration, setDuration] = useState('');
 	const [authorsList, setAuthorsList] = useState<Author[]>(mockedAuthorsList);
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
-
-		const target = e.target as typeof e.target & {
-			courseTitle: { value: string };
-			courseDescription: { value: string };
-			duration: { value: string };
-		};
+		console.log(typeof duration);
 
 		const newCourse: Course = {
 			id: generateUUID(),
 			title: titleValue,
 			description: descriptionValue,
 			creationDate: new Date().toLocaleDateString('en-GB'),
-			duration: Number(target.duration.value), // TODO duration without target.value
+			duration: Number(duration),
 			authors: authors,
 		};
 
@@ -75,7 +71,7 @@ const CreateCourse = () => {
 						authorsList={authorsList}
 						setAuthorsList={setAuthorsList}
 					/>
-					<AddDurationNewCourse />
+					<AddDurationNewCourse duration={duration} setDuration={setDuration} />
 				</div>
 				<div className='columnLayout'>
 					<AutorsList
