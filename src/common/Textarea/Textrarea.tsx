@@ -8,7 +8,12 @@ interface Props {
 	onChange: (value: string) => void;
 }
 
-const Textarea = ({ labelText, minLength, value, onChange }: Props) => {
+const Textarea: React.FC<Props> = ({
+	labelText,
+	minLength,
+	value,
+	onChange,
+}) => {
 	return (
 		<label className='labelWrapper'>
 			{labelText}

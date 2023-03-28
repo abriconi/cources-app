@@ -15,12 +15,12 @@ interface Props {
 	setDescriptionValue: (value: string) => void;
 }
 
-const CreateTitle = ({
+const CreateTitle: React.FC<Props> = ({
 	titleValue,
 	setTitleValue,
 	descriptionValue,
 	setDescriptionValue,
-}: Props) => {
+}) => {
 	const onChangeTitle = (value: string) => {
 		setTitleValue(value);
 	};

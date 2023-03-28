@@ -9,7 +9,7 @@ interface Props {
 	onSearch: (value: string) => void;
 }
 
-const SearchBar = ({ onSearch }: Props) => {
+const SearchBar: React.FC<Props> = ({ onSearch }) => {
 	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {

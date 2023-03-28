@@ -11,7 +11,7 @@ interface Props {
 	setDuration: (value: string) => void;
 }
 
-const AddDurationNewCourse = ({ duration, setDuration }: Props) => {
+const AddDurationNewCourse: React.FC<Props> = ({ duration, setDuration }) => {
 	const [formattedDuration, setFormattedDuration] = useState(pipeDuration(0));
 
 	function getDurationFormatted(value: string) {
