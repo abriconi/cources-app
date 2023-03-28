@@ -8,13 +8,32 @@ import { PLACEHOLDER_TEXT } from '../../../../constans';
 
 import './createTitle.css';
 
-const CreateTitle = () => {
+interface Props {
+	titleValue: string;
+	setTitleValue: (value: string) => void;
+	descriptionValue: string;
+	setDescriptionValue: (value: string) => void;
+}
+
+const CreateTitle = ({
+	titleValue,
+	setTitleValue,
+	descriptionValue,
+	setDescriptionValue,
+}: Props) => {
+	const onChangeTitle = (value: string) => {
+		setTitleValue(value);
+	};
+	const onChangeDescription = (value: string) => {
+		setDescriptionValue(value);
+	};
 	return (
 		<div className='createTitleWrapper'>
 			<div className='titleWrapper'>
 				<Input
 					labelText='Title'
-					name='courseTitle'
+					value={titleValue}
+					onChange={onChangeTitle}
 					placeholder={PLACEHOLDER_TEXT.enterTitle}
 				/>
 				<Button
@@ -27,7 +46,8 @@ const CreateTitle = () => {
 			<Textarea
 				minLength={2}
 				labelText={PLACEHOLDER_TEXT.description}
-				name='courseDescription'
+				value={descriptionValue}
+				onChange={onChangeDescription}
 			/>
 		</div>
 	);

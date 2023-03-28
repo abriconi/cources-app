@@ -15,12 +15,12 @@ const Login = () => {
 	async function handleClick(event: any): Promise<void> {
 		event.preventDefault();
 		const user: User = {
+			//TODO
 			email: event.target.email.value,
 			password: event.target.password.value,
 		};
 		await userLogin(user);
 		navigate('/courses');
-		console.log('user', user);
 	}
 	return (
 		<div className='loginContainer'>

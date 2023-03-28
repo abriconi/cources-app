@@ -7,7 +7,7 @@ import './index.css';
 const Root = () => {
 	return (
 		<div className='root'>
-			<Header></Header>
+			<Header />
 			<Outlet />
 		</div>
 	);

@@ -28,6 +28,7 @@ export const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root />,
+		// loader:
 		children: [
 			{ path: '/courses', element: <Courses />, loader: withAuth },
 			{ path: '/courses/:courseId', element: <CourseInfo />, loader: withAuth },

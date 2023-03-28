@@ -17,6 +17,8 @@ import { mockedAuthorsList } from '../../constans';
 const CreateCourse = () => {
 	const navigate = useNavigate();
 	const [authors, setAuthors] = useState<string[]>([]);
+	const [titleValue, setTitleValue] = useState('');
+	const [descriptionValue, setDescriptionValue] = useState('');
 	const [authorsList, setAuthorsList] = useState<Author[]>(mockedAuthorsList);
 
 	function submitHandler(e: React.SyntheticEvent) {
@@ -30,10 +32,10 @@ const CreateCourse = () => {
 
 		const newCourse: Course = {
 			id: generateUUID(),
-			title: target.courseTitle.value,
-			description: target.courseDescription.value,
+			title: titleValue,
+			description: descriptionValue,
 			creationDate: new Date().toLocaleDateString('en-GB'),
-			duration: Number(target.duration.value),
+			duration: Number(target.duration.value), // TODO duration without target.value
 			authors: authors,
 		};
 
@@ -42,6 +44,7 @@ const CreateCourse = () => {
 			return;
 		} else {
 			mockedCoursesList.push(newCourse);
+			console.log('newCourse', newCourse);
 			navigate('/courses');
 		}
 	}
@@ -59,7 +62,12 @@ const CreateCourse = () => {
 
 	return (
 		<form className='createCourseForm' onSubmit={submitHandler}>
-			<CreateTitle />
+			<CreateTitle
+				titleValue={titleValue}
+				setTitleValue={setTitleValue}
+				descriptionValue={descriptionValue}
+				setDescriptionValue={setDescriptionValue}
+			/>
 
 			<div className='createCourseBody'>
 				<div className='columnLayout'>

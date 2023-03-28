@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { getAuthorNamesById } from '../../helpers/getAuthorNamesById';
 import { pipeDuration } from '../../helpers/pipeDuration';
+import { dateGenerator } from '../../helpers/dateGeneratop';
 import { mockedAuthorsList } from '../../constans';
 import { Course } from '../../interfaces/index';
 import { getCourseByID } from '../../api/getCourseByID';
@@ -66,7 +67,9 @@ const CourseInfo = () => {
 								</div>
 								<div className='courseAdditionalInfoSection'>
 									<p className='infoTitle'>Created:</p>
-									<p className='infoData'>{course?.creationDate}</p>
+									<p className='infoData'>
+										{dateGenerator(course?.creationDate)}
+									</p>
 								</div>
 								<div className='courseAuthors'>
 									<p className='infoTitle'>Autors:</p>
