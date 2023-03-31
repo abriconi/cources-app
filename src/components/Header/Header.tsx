@@ -1,19 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Logo from './components/Logo/Logo';
 import Button from '../../common/Button/Button';
 
 import { BUTTON_TEXT } from '../../constans';
+import { RootState } from '../../store';
 
 import './header.css';
 
 const Header = () => {
 	const navigate = useNavigate();
-	const userName = localStorage.getItem('name');
+	const { isAuth, name } = useSelector((state: RootState) => state.user);
 
 	function onClick() {
 		localStorage.removeItem('token');
-		localStorage.removeItem('name');
+		localStorage.removeItem('user');
 		navigate('/login');
 	}
 
@@ -21,11 +23,11 @@ const Header = () => {
 		<div className='header'>
 			<Logo />
 			<div className='loginWrapper'>
-				<p>{userName}</p>
-				{localStorage.getItem('name') && (
+				<p>{name}</p>
+
+				{isAuth && (
 					<Button
 						buttonText={BUTTON_TEXT.logout}
-						btnSize=''
 						type={'button'}
 						onClick={onClick}
 					></Button>

@@ -8,6 +8,7 @@ export async function userLogin(user: User): Promise<void> {
 		},
 	});
 	const result = await response.json();
+
 	localStorage.setItem('token', result.result);
-	localStorage.setItem('name', result.user.name);
+	localStorage.setItem('user', JSON.stringify(result.user));
 }
