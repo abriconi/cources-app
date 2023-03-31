@@ -8,7 +8,7 @@ interface Props {
 	buttonText: string;
 	onClick: () => void;
 }
-const AddAuthor = ({ authorsName, buttonText, onClick }: Props) => {
+const AddAuthor: React.FC<Props> = ({ authorsName, buttonText, onClick }) => {
 	return (
 		<div className='authorForm'>
 			<p>{authorsName}</p>

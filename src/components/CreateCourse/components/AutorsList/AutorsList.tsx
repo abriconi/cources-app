@@ -6,12 +6,16 @@ import { Author } from '../../../../interfaces';
 import './authorList.css';
 
 interface Props {
-	authors: Author[]; // list of all authors (mocked + created)
-	authorsToExclude: string[]; // authors that shouldn't be displayed in the list
-	onAddAuthor: (authorId: string) => void; // triggered function when add author to new cource
+	authors: Author[];
+	authorsToExclude: string[];
+	onAddAuthor: (authorId: string) => void;
 }
 
-const AutorsList = ({ authors, authorsToExclude, onAddAuthor }: Props) => {
+const AutorsList: React.FC<Props> = ({
+	authors,
+	authorsToExclude,
+	onAddAuthor,
+}) => {
 	const authorsToRender = useMemo(() => {
 		return authors.filter((author) => !authorsToExclude.includes(author.id));
 	}, [authors, authorsToExclude]);

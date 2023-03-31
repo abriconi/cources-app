@@ -1,0 +1,58 @@
+.courseInfoCardWrapper {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #b6daef;
+    padding: 20px;
+    gap: 20px;
+}
+.linkBackToCourses {
+    text-decoration: none;
+    color: blue;
+    align-self: flex-start;
+}
+.courseInfoCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.courseName{
+    font-size: 30px;
+    margin: 0;
+}
+.courseInfoMainInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+.courseDescription {
+    width: 70%;
+    font-size: 14px;
+    margin: 0;
+}
+.courseAdditionalInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 15px;
+}
+.courseAdditionalInfoSection {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.infoTitle{
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.infoData{
+    margin: 0;
+    font-size: 14px;
+}
+.courseAuthors {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

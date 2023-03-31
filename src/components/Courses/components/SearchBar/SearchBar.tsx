@@ -9,7 +9,7 @@ interface Props {
 	onSearch: (value: string) => void;
 }
 
-const SearchBar = ({ onSearch }: Props) => {
+const SearchBar: React.FC<Props> = ({ onSearch }) => {
 	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
@@ -28,7 +28,7 @@ const SearchBar = ({ onSearch }: Props) => {
 			<Input
 				placeholder={PLACEHOLDER_TEXT.enterCourseName}
 				value={searchText}
-				onChange={(e) => setSearchText(e.target.value)}
+				onChange={setSearchText}
 			/>
 			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>

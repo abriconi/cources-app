@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../../common/Button/Button';
 
 import { BUTTON_TEXT, mockedAuthorsList } from '../../../../constans';
@@ -13,7 +14,12 @@ interface Props {
 	courseData: Course;
 }
 
-const CourseCard = ({ courseData }: Props) => {
+const CourseCard: React.FC<Props> = ({ courseData }) => {
+	const navigate = useNavigate();
+	function onClick() {
+		navigate(`/courses/${courseData.id}`);
+	}
+
 	return (
 		<div className='courseCard'>
 			<div className='courseMainInfo'>
@@ -37,7 +43,11 @@ const CourseCard = ({ courseData }: Props) => {
 						<p className='infoData'>{dateGenerator(courseData.creationDate)}</p>
 					</div>
 				)}
-				<Button buttonText={BUTTON_TEXT.showCourse} type={'button'} />
+				<Button
+					buttonText={BUTTON_TEXT.showCourse}
+					type={'button'}
+					onClick={onClick}
+				/>
 			</div>
 		</div>
 	);

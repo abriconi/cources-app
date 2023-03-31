@@ -6,16 +6,16 @@ import { Author } from '../../../../interfaces';
 import './addedAuthorsToCourse.css';
 
 interface Props {
-	authors: Author[]; //масив всіх авторів
-	authorsInCourse: string[]; // масив ІД авторів, які додані до курсу
+	authors: Author[];
+	authorsInCourse: string[];
 	onDeleteAuthor: (authorID: string) => void;
 }
 
-const AddingAuthorsToCourse = ({
+const AddingAuthorsToCourse: React.FC<Props> = ({
 	authors,
 	authorsInCourse,
 	onDeleteAuthor,
-}: Props) => {
+}) => {
 	const isExistAuthorsList = useMemo(() => {
 		return authorsInCourse && authorsInCourse.length > 0;
 	}, [authorsInCourse]);

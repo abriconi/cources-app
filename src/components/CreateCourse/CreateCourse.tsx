@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CreateTitle from './components/CreateTitle/CreateTitle';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationNewCourse';
@@ -10,39 +11,27 @@ import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
 import { Course, Author } from '../../interfaces/index';
 
 import './createCourse.css';
+import { mockedCoursesList } from '../../constans';
+import { mockedAuthorsList } from '../../constans';
 
-interface Props {
-	courses: Course[];
-	setCourses: (courses: Course[]) => void;
-	authorsList: Author[];
-	setAuthorsList: (authors: Author[]) => void;
-	setShowCreateCourse: (arg: boolean) => void;
-}
-
-const CreateCourse = ({
-	courses,
-	setCourses,
-	authorsList,
-	setAuthorsList,
-	setShowCreateCourse,
-}: Props) => {
+const CreateCourse = () => {
+	const navigate = useNavigate();
 	const [authors, setAuthors] = useState<string[]>([]);
+	const [titleValue, setTitleValue] = useState('');
+	const [descriptionValue, setDescriptionValue] = useState('');
+	const [duration, setDuration] = useState('');
+	const [authorsList, setAuthorsList] = useState<Author[]>(mockedAuthorsList);
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
-
-		const target = e.target as typeof e.target & {
-			courseTitle: { value: string };
-			courseDescription: { value: string };
-			duration: { value: string };
-		};
+		console.log(typeof duration);
 
 		const newCourse: Course = {
 			id: generateUUID(),
-			title: target.courseTitle.value,
-			description: target.courseDescription.value,
+			title: titleValue,
+			description: descriptionValue,
 			creationDate: new Date().toLocaleDateString('en-GB'),
-			duration: Number(target.duration.value),
+			duration: Number(duration),
 			authors: authors,
 		};
 
@@ -50,8 +39,9 @@ const CreateCourse = ({
 			alert('Fill all the fieldes');
 			return;
 		} else {
-			setCourses([...courses, newCourse]);
-			setShowCreateCourse(false);
+			mockedCoursesList.push(newCourse);
+			console.log('newCourse', newCourse);
+			navigate('/courses');
 		}
 	}
 
@@ -68,7 +58,12 @@ const CreateCourse = ({
 
 	return (
 		<form className='createCourseForm' onSubmit={submitHandler}>
-			<CreateTitle />
+			<CreateTitle
+				titleValue={titleValue}
+				setTitleValue={setTitleValue}
+				descriptionValue={descriptionValue}
+				setDescriptionValue={setDescriptionValue}
+			/>
 
 			<div className='createCourseBody'>
 				<div className='columnLayout'>
@@ -76,7 +71,7 @@ const CreateCourse = ({
 						authorsList={authorsList}
 						setAuthorsList={setAuthorsList}
 					/>
-					<AddDurationNewCourse />
+					<AddDurationNewCourse duration={duration} setDuration={setDuration} />
 				</div>
 				<div className='columnLayout'>
 					<AutorsList

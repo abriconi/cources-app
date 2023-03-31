@@ -16,8 +16,8 @@ interface Props {
 const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 	const [newAutorName, setNewAutorName] = useState('');
 
-	function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
-		setNewAutorName(event.target.value);
+	function handleOnChange(value: string) {
+		setNewAutorName(value);
 	}
 
 	function createAuthorObject(inputText: string): Author {
@@ -42,7 +42,6 @@ const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 			<h3>Add author</h3>
 			<div className='addAuthorForm'>
 				<Input
-					name='createAuthor'
 					labelText='Author name'
 					placeholder={PLACEHOLDER_TEXT.enterAuthorName}
 					onChange={handleOnChange}
