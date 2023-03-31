@@ -24,7 +24,6 @@ const CreateCourse = () => {
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
-		console.log(typeof duration);
 
 		const newCourse: Course = {
 			id: generateUUID(),
@@ -40,7 +39,6 @@ const CreateCourse = () => {
 			return;
 		} else {
 			mockedCoursesList.push(newCourse);
-			console.log('newCourse', newCourse);
 			navigate('/courses');
 		}
 	}
