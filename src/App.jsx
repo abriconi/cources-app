@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './components/Header/Header';
-// import Courses from './components/Courses/Courses';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routers';
 
@@ -9,8 +8,6 @@ const App = () => {
 		<div className='App'>
 			<Header></Header>
 			<RouterProvider router={router} />
-			{console.log(router)}
-			{/* <Courses></Courses> */}
 		</div>
 	);
 };

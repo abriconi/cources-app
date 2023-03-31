@@ -17,7 +17,6 @@ interface Props {
 const CourseCard: React.FC<Props> = ({ courseData }) => {
 	const navigate = useNavigate();
 	function onClick() {
-		console.log(courseData.id);
 		navigate(`/courses/${courseData.id}`);
 	}
 

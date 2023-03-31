@@ -13,7 +13,7 @@ const isLogedIn = () => {
 
 function withAuth() {
 	if (!isLogedIn()) {
-		return redirect('/registration');
+		return redirect('/login');
 	}
 	return null;
 }
@@ -28,12 +28,12 @@ export const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root />,
-		// loader:
 		children: [
 			{ path: '/courses', element: <Courses />, loader: withAuth },
 			{ path: '/courses/:courseId', element: <CourseInfo />, loader: withAuth },
 			{ path: '/registration', element: <Registration />, loader: withoutAuth },
 			{ path: '/login', element: <Login />, loader: withoutAuth },
+			{ path: '/', element: <Login />, loader: withoutAuth },
 			{ path: '/add', element: <CreateCourse />, loader: withAuth },
 		],
 	},
