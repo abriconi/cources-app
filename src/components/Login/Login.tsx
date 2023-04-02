@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
+import { ThunkDispatch } from 'redux-thunk';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
 
-import { userLogin } from '../../api/userLogin';
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../constans';
 import { User } from '../../interfaces';
+import { RootState } from '../../store';
+import { getUser } from '../../store/selectors';
+import { login } from '../../store/user/actionCreators';
 
 import './login.css';
 
 const Login = () => {
 	const navigate = useNavigate();
+	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const [userEmail, setUserEmail] = useState('');
 	const [userPassword, setUserPassword] = useState('');
-	const [errorMessage, setErrorMessage] = useState('');
+	const { error } = useSelector(getUser);
 
 	function handleOnChangeEmailField(value: string) {
 		setUserEmail(value);
@@ -23,25 +28,23 @@ const Login = () => {
 		setUserPassword(value);
 	}
 
-	async function handleClick(
+	async function handleFormSubmit(
 		event: React.FormEvent<HTMLFormElement>
 	): Promise<void> {
 		event.preventDefault();
-		try {
-			const user: User = {
-				password: userPassword,
-				email: userEmail,
-			};
-			await userLogin(user);
-			navigate('/courses');
-		} catch (error) {
-			setErrorMessage('Incorrect email or password');
-		}
+		const user: User = {
+			password: userPassword,
+			email: userEmail,
+		};
+
+		await dispatch(login(user));
+		navigate('/courses');
 	}
+
 	return (
 		<div className='loginContainer'>
 			<h1 className='loginTitle'>Login</h1>
-			<form className='loginForm' onSubmit={handleClick}>
+			<form className='loginForm' onSubmit={handleFormSubmit}>
 				<Input
 					labelText='Email'
 					type='email'
@@ -69,7 +72,7 @@ const Login = () => {
 					Registration
 				</Link>
 			</p>
-			{errorMessage && <p className='loginError'>{errorMessage}</p>}
+			{error && <p className='loginError'>{error}</p>}
 		</div>
 	);
 };

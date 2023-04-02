@@ -26,3 +26,12 @@ export type User = {
 	password: string;
 	email: string;
 };
+
+export type loginResponce = {
+	successful: boolean;
+	result: string;
+	user: {
+		email: string;
+		name: string;
+	};
+};

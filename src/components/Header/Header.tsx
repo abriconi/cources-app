@@ -1,21 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Logo from './components/Logo/Logo';
 import Button from '../../common/Button/Button';
 
 import { BUTTON_TEXT } from '../../constans';
-import { RootState } from '../../store';
 
 import './header.css';
+import { getUser } from '../../store/selectors';
+import { logout } from '../../store/user/actionCreators';
+import { RootState } from '../../store';
 
 const Header = () => {
 	const navigate = useNavigate();
-	const { isAuth, name } = useSelector((state: RootState) => state.user);
+	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
+	const { isAuth, name } = useSelector(getUser);
 
 	function onClick() {
-		localStorage.removeItem('token');
-		localStorage.removeItem('user');
+		dispatch(logout);
 		navigate('/login');
 	}
 
