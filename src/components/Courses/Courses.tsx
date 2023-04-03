@@ -1,31 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from './components/SearchBar/SearchBar';
 import Button from '../../common/Button/Button';
 import CourseCard from './components/CourseCard/CourseCard';
 
-import { mockedCoursesList, BUTTON_TEXT } from '../../constans';
+import { BUTTON_TEXT } from '../../constans';
 import filterCourses from '../../helpers/filterCourses';
 import { Course } from '../../interfaces/index';
 
 import './courses.css';
+import { getCoursesAll } from '../../store/selectors';
 
 const Courses = () => {
+	const coursesList = useSelector(getCoursesAll);
 	const [filteredCourses, setFilteredCourses] =
-		React.useState<Course[]>(mockedCoursesList);
+		React.useState<any>(coursesList);
+	const [searchText, setSearchText] = useState('');
 	const navigate = useNavigate();
 
-	function searchCoursesHandle(searchText: string): void {
+	useEffect(() => {
 		if (searchText === '') {
-			setFilteredCourses(mockedCoursesList);
+			setFilteredCourses(coursesList);
 		} else {
 			const filteredCoursesArr: Course[] = filterCourses(
-				mockedCoursesList,
+				coursesList,
 				searchText
 			);
 			setFilteredCourses(filteredCoursesArr);
 		}
-	}
+	}, [coursesList, searchText]);
+
 	function onClickHandler() {
 		navigate('/add');
 	}
@@ -33,14 +38,14 @@ const Courses = () => {
 	return (
 		<div className='coursesWrapper'>
 			<div className='searchBarWrapper'>
-				<SearchBar onSearch={searchCoursesHandle}></SearchBar>
+				<SearchBar onSearch={setSearchText}></SearchBar>
 				<Button
 					buttonText={BUTTON_TEXT.addNewCourse}
 					type={'button'}
 					onClick={onClickHandler}
 				></Button>
 			</div>
-			{filteredCourses.map((course) => (
+			{filteredCourses.map((course: Course) => (
 				<CourseCard key={course.title} courseData={course}></CourseCard>
 			))}
 		</div>
