@@ -6,7 +6,6 @@ import {
 	GET_COURSES_SUCCESS,
 	GET_COURSES_FAILURE,
 	CoursesActionTypes,
-	// DeleteCoursesActionType,
 	DELETE_COURSE_SUCCSESS,
 	DELETE_COURSE_FAILURE,
 } from './actionTypes';
@@ -22,6 +21,7 @@ export const courses =
 				type: GET_COURSES_SUCCESS,
 				payload: courses,
 			});
+			console.log('courses', courses);
 		} catch (error) {
 			dispatch({ type: GET_COURSES_FAILURE, error: (error as Error).message });
 		}

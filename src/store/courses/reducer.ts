@@ -1,4 +1,3 @@
-// import { Course } from '../../interfaces';
 import { Course } from '../../interfaces';
 import {
 	CoursesActionTypes,
