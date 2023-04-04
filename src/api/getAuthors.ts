@@ -12,6 +12,5 @@ export async function getAuthors(): Promise<Author[]> {
 	if (!result.successful) {
 		throw new Error(result.result);
 	}
-	console.log('result', result);
 	return result.result;
 }

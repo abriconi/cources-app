@@ -7,7 +7,7 @@ interface Props {
 	name?: string;
 	value?: string;
 	placeholder: string;
-	onChange?: (value: string) => void;
+	onChange?: (value: string | any) => void;
 	id?: string;
 	minLength?: number;
 }

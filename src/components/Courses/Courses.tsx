@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getCoursesAll, getAuthorsAll } from '../../store/selectors';
+import { getCoursesAll } from '../../store/selectors';
 
 import SearchBar from './components/SearchBar/SearchBar';
 import Button from '../../common/Button/Button';
@@ -15,8 +15,6 @@ import './courses.css';
 
 const Courses = () => {
 	const coursesList = useSelector(getCoursesAll);
-	const authorsList = useSelector(getAuthorsAll);
-	console.log('authorsList in CoursesComponent', authorsList);
 	const [filteredCourses, setFilteredCourses] =
 		React.useState<any>(coursesList);
 	const [searchText, setSearchText] = useState('');

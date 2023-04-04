@@ -7,8 +7,6 @@ import CourseInfo from './components/CourseInfo/CourseInfo';
 import CreateCourse from './components/CreateCourse/CreateCourse';
 import Root from './components/Root';
 import { store } from './store';
-import { courses } from './store/courses/actionCreators';
-import { authors } from './store/author/actionCreators';
 
 const isLogedIn = () => {
 	return store.getState().user.isAuth;
@@ -36,11 +34,7 @@ export const router = createBrowserRouter([
 			{
 				path: '/courses',
 				element: <Courses />,
-				loader: withAuth(() => {
-					store.dispatch<any>(courses());
-					store.dispatch<any>(authors());
-					return null;
-				}),
+				loader: withAuth(),
 			},
 			{
 				path: '/courses/:courseId',
@@ -50,7 +44,11 @@ export const router = createBrowserRouter([
 			{ path: '/registration', element: <Registration />, loader: withoutAuth },
 			{ path: '/login', element: <Login />, loader: withoutAuth },
 			{ path: '/', element: <Login />, loader: withoutAuth },
-			{ path: '/add', element: <CreateCourse />, loader: withAuth() },
+			{
+				path: '/add',
+				element: <CreateCourse />,
+				loader: withAuth(),
+			},
 		],
 	},
 

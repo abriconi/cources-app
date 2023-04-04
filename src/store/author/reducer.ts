@@ -1,6 +1,7 @@
 import { Author } from '../../interfaces';
 
 import {
+	ADD_AUTHORS_SUCCESS,
 	AuthorsActionTypes,
 	GET_AUTHORS_FAILURE,
 	GET_AUTHORS_SUCCESS,
@@ -31,8 +32,12 @@ export function authorsReduser(
 				...state,
 				error: action.error,
 			};
+		case ADD_AUTHORS_SUCCESS:
+			return {
+				...state,
+				all: [...state.all, action.author],
+			};
 		default:
-			console.log('state', state);
 			return state;
 	}
 }

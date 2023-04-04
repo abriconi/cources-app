@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from '../../store';
+import { createCourse } from '../../store/courses/actionCreators';
+
 import { useNavigate } from 'react-router-dom';
 import CreateTitle from './components/CreateTitle/CreateTitle';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
@@ -8,19 +14,17 @@ import AutorsList from './components/AutorsList/AutorsList';
 
 import { generateUUID } from '../../helpers/generateUUID';
 import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
-import { Course, Author } from '../../interfaces/index';
+import { Course } from '../../interfaces/index';
 
 import './createCourse.css';
-import { mockedCoursesList } from '../../constans';
-import { mockedAuthorsList } from '../../constans';
 
 const CreateCourse = () => {
+	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const navigate = useNavigate();
 	const [authors, setAuthors] = useState<string[]>([]);
 	const [titleValue, setTitleValue] = useState('');
 	const [descriptionValue, setDescriptionValue] = useState('');
 	const [duration, setDuration] = useState('');
-	const [authorsList, setAuthorsList] = useState<Author[]>(mockedAuthorsList);
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
@@ -38,7 +42,7 @@ const CreateCourse = () => {
 			alert('Fill all the fieldes');
 			return;
 		} else {
-			mockedCoursesList.push(newCourse);
+			dispatch(createCourse(newCourse));
 			navigate('/courses');
 		}
 	}
@@ -65,20 +69,15 @@ const CreateCourse = () => {
 
 			<div className='createCourseBody'>
 				<div className='columnLayout'>
-					<CreateAuthor
-						authorsList={authorsList}
-						setAuthorsList={setAuthorsList}
-					/>
+					<CreateAuthor />
 					<AddDurationNewCourse duration={duration} setDuration={setDuration} />
 				</div>
 				<div className='columnLayout'>
 					<AutorsList
-						authors={authorsList}
 						onAddAuthor={addAuthorToCourse}
 						authorsToExclude={authors}
 					/>
 					<AddedAuthorsToCourse
-						authors={authorsList}
 						authorsInCourse={authors}
 						onDeleteAuthor={deleteAuthorFromCourse}
 					/>

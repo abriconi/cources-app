@@ -4,6 +4,8 @@ import thunk from 'redux-thunk';
 import { userReducer, UserState } from './user/reducer';
 import { coursesReduser, CourseState } from './courses/reducer';
 import { authorsReduser, AuthorState } from './author/reducer';
+import { courses } from './courses/actionCreators';
+import { authors } from './author/actionCreators';
 
 export interface RootState {
 	user: UserState;
@@ -22,3 +24,8 @@ export const store = createStore(
 	rootReducer,
 	composeWithDevTools(applyMiddleware(thunk))
 );
+
+if (store.getState()?.user?.isAuth) {
+	store.dispatch<any>(courses());
+	store.dispatch<any>(authors());
+}

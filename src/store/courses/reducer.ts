@@ -1,6 +1,7 @@
 import { Course } from '../../interfaces';
 import {
 	CoursesActionTypes,
+	CREATE_COURSE_SUCCSESS,
 	DELETE_COURSE_FAILURE,
 	DELETE_COURSE_SUCCSESS,
 	GET_COURSES_FAILURE,
@@ -10,7 +11,6 @@ import {
 export interface CourseState {
 	all: Course[];
 	error?: string;
-	// loading?: boolean;
 }
 
 const initialState: CourseState = {
@@ -40,6 +40,11 @@ export function coursesReduser(
 			return {
 				...state,
 				error: action.error,
+			};
+		case CREATE_COURSE_SUCCSESS:
+			return {
+				...state,
+				all: [...state.all, action.course],
 			};
 		default:
 			return state;

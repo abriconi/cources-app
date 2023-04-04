@@ -1,21 +1,22 @@
 import React, { useMemo } from 'react';
 import AddAuthor from '../AddAuthor/AddAuthor';
+import { useSelector } from 'react-redux';
+import { getAuthorsAll } from '../../../../store/selectors';
 
 import { Author } from '../../../../interfaces';
 
 import './addedAuthorsToCourse.css';
 
 interface Props {
-	authors: Author[];
 	authorsInCourse: string[];
 	onDeleteAuthor: (authorID: string) => void;
 }
 
 const AddingAuthorsToCourse: React.FC<Props> = ({
-	authors,
 	authorsInCourse,
 	onDeleteAuthor,
 }) => {
+	const authors: Author[] = useSelector(getAuthorsAll);
 	const isExistAuthorsList = useMemo(() => {
 		return authorsInCourse && authorsInCourse.length > 0;
 	}, [authorsInCourse]);
