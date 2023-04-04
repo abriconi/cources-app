@@ -45,3 +45,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.navBtnContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+.btnEdit {
+    padding: 0;
+}
