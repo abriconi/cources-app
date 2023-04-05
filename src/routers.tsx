@@ -6,17 +6,19 @@ import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 import CreateCourse from './components/CreateCourse/CreateCourse';
 import Root from './components/Root';
+import { store } from './store';
 
 const isLogedIn = () => {
-	return Boolean(localStorage.getItem('token'));
+	return store.getState().user.isAuth;
 };
 
-function withAuth() {
+const withAuth = (loaderFunc?: () => any) => async () => {
 	if (!isLogedIn()) {
 		return redirect('/login');
 	}
-	return null;
-}
+
+	return loaderFunc ? await loaderFunc() : null;
+};
 function withoutAuth() {
 	if (isLogedIn()) {
 		return redirect('/courses');
@@ -29,12 +31,24 @@ export const router = createBrowserRouter([
 		path: '/',
 		element: <Root />,
 		children: [
-			{ path: '/courses', element: <Courses />, loader: withAuth },
-			{ path: '/courses/:courseId', element: <CourseInfo />, loader: withAuth },
+			{
+				path: '/courses',
+				element: <Courses />,
+				loader: withAuth(),
+			},
+			{
+				path: '/courses/:courseId',
+				element: <CourseInfo />,
+				loader: withAuth(),
+			},
 			{ path: '/registration', element: <Registration />, loader: withoutAuth },
 			{ path: '/login', element: <Login />, loader: withoutAuth },
 			{ path: '/', element: <Login />, loader: withoutAuth },
-			{ path: '/add', element: <CreateCourse />, loader: withAuth },
+			{
+				path: '/add',
+				element: <CreateCourse />,
+				loader: withAuth(),
+			},
 		],
 	},
 

@@ -5,14 +5,16 @@ interface Props {
 	className?: string;
 	btnSize?: string;
 	type: 'submit' | 'button';
-	buttonText: string;
+	buttonText?: string;
 	onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	children?: React.ReactNode;
 }
 
 const Button: React.FC<Props> = ({
 	className,
 	btnSize,
 	buttonText,
+	children,
 	...restProps
 }) => (
 	<button
@@ -20,7 +22,7 @@ const Button: React.FC<Props> = ({
 		 ${className || ''}`}
 		{...restProps}
 	>
-		{buttonText}
+		{buttonText || children}
 	</button>
 );
 

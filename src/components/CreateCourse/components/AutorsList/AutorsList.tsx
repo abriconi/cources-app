@@ -1,21 +1,19 @@
 import React, { useMemo } from 'react';
 import AddAuthor from '../AddAuthor/AddAuthor';
+import { useSelector } from 'react-redux';
+import { getAuthorsAll } from '../../../../store/selectors';
 
 import { Author } from '../../../../interfaces';
 
 import './authorList.css';
 
 interface Props {
-	authors: Author[];
 	authorsToExclude: string[];
 	onAddAuthor: (authorId: string) => void;
 }
 
-const AutorsList: React.FC<Props> = ({
-	authors,
-	authorsToExclude,
-	onAddAuthor,
-}) => {
+const AutorsList: React.FC<Props> = ({ authorsToExclude, onAddAuthor }) => {
+	const authors: Author[] = useSelector(getAuthorsAll);
 	const authorsToRender = useMemo(() => {
 		return authors.filter((author) => !authorsToExclude.includes(author.id));
 	}, [authors, authorsToExclude]);

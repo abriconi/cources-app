@@ -18,7 +18,7 @@ const CourseInfo = () => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const courseData = await getCourseByID(routeParams.courseId);
+				const courseData = await getCourseByID(routeParams.courseId); //if need to fetch data from server
 				setCourse(courseData);
 			} catch (error) {
 				if (error instanceof Error) {
@@ -33,7 +33,7 @@ const CourseInfo = () => {
 
 		setLoading(true);
 		fetchData();
-	}, [routeParams.courseId]);
+	}, []);
 
 	if (loading) {
 		return <div>Loading</div>;

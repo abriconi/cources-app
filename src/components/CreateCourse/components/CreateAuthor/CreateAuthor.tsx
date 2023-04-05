@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from '../../../../store';
+import { addAuthor } from '../../../../store/author/actionCreators';
 import Input from '../../../../common/Input/Input';
 import Button from '../../../../common/Button/Button';
 
@@ -8,17 +13,9 @@ import { Author } from '../../../../interfaces';
 
 import './createAuthor.css';
 
-interface Props {
-	authorsList: Author[];
-	setAuthorsList: (authors: Author[]) => void;
-}
-
-const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
+const CreateAuthor: React.FC = () => {
+	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const [newAutorName, setNewAutorName] = useState('');
-
-	function handleOnChange(value: string) {
-		setNewAutorName(value);
-	}
 
 	function createAuthorObject(inputText: string): Author {
 		return {
@@ -27,11 +24,14 @@ const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 		};
 	}
 
+	function onChange(value: string) {
+		setNewAutorName(value);
+	}
+
 	function handleClick() {
 		if (newAutorName) {
 			const newAuthor = createAuthorObject(newAutorName);
-			setNewAutorName('');
-			setAuthorsList([...authorsList, newAuthor]);
+			dispatch(addAuthor(newAuthor));
 		} else {
 			alert(`Field 'Author name' is empty`);
 		}
@@ -44,9 +44,9 @@ const CreateAuthor: React.FC<Props> = ({ authorsList, setAuthorsList }) => {
 				<Input
 					labelText='Author name'
 					placeholder={PLACEHOLDER_TEXT.enterAuthorName}
-					onChange={handleOnChange}
 					id='authorName'
 					value={newAutorName}
+					onChange={onChange}
 				></Input>
 				<Button
 					className='btnAligningCenter'
