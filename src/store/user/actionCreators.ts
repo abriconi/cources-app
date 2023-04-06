@@ -54,6 +54,7 @@ export const usersMe = () => async (dispatch: Dispatch<UserActionTypes>) => {
 				role: response.result.role,
 			},
 		});
+		console.log(response);
 	} catch (error) {
 		dispatch({ type: USERS_ME_FAILURE, error: (error as Error).message });
 	}

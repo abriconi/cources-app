@@ -27,10 +27,12 @@ const CourseCard: React.FC<Props> = ({ courseData }) => {
 	const navigate = useNavigate();
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const userRole: any = useSelector(getUser).role;
-	console.log('user', userRole);
 
 	function handleDelete() {
 		dispatch(deleteCourse(courseData.id));
+	}
+	function handleEdit() {
+		navigate(`/courses/update/${courseData.id}`);
 	}
 	function onClick() {
 		navigate(`/courses/${courseData.id}`);
@@ -67,7 +69,7 @@ const CourseCard: React.FC<Props> = ({ courseData }) => {
 					/>
 					{userRole === 'admin' && (
 						<>
-							<Button type={'button'} className='btnEdit'>
+							<Button type={'button'} className='btnEdit' onClick={handleEdit}>
 								<LogoEdit />
 							</Button>
 							<Button

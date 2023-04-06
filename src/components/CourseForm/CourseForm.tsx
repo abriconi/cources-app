@@ -18,13 +18,19 @@ import { Course } from '../../interfaces/index';
 
 import './createCourse.css';
 
-const CreateCourse = () => {
+interface Props {
+	course?: Course;
+}
+
+const CourseForm: React.FC<Props> = ({ course }) => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const navigate = useNavigate();
-	const [authors, setAuthors] = useState<string[]>([]);
-	const [titleValue, setTitleValue] = useState('');
-	const [descriptionValue, setDescriptionValue] = useState('');
-	const [duration, setDuration] = useState('');
+	const [authors, setAuthors] = useState<string[]>(course?.authors || []);
+	const [titleValue, setTitleValue] = useState(course?.title || '');
+	const [descriptionValue, setDescriptionValue] = useState(
+		course?.description || ''
+	);
+	const [duration, setDuration] = useState(course?.duration?.toString() || '');
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
@@ -87,4 +93,4 @@ const CreateCourse = () => {
 	);
 };
 
-export default CreateCourse;
+export default CourseForm;
