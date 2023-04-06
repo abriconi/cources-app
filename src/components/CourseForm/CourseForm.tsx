@@ -17,6 +17,7 @@ import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
 import { Course } from '../../interfaces/index';
 
 import './createCourse.css';
+import { pipeDuration } from '../../helpers/pipeDuration';
 
 interface Props {
 	course?: Course;
@@ -31,6 +32,9 @@ const CourseForm: React.FC<Props> = ({ course }) => {
 		course?.description || ''
 	);
 	const [duration, setDuration] = useState(course?.duration?.toString() || '');
+	const [formattedDuration, setFormattedDuration] = useState(
+		pipeDuration(Number(duration))
+	);
 
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
@@ -76,7 +80,12 @@ const CourseForm: React.FC<Props> = ({ course }) => {
 			<div className='createCourseBody'>
 				<div className='columnLayout'>
 					<CreateAuthor />
-					<AddDurationNewCourse duration={duration} setDuration={setDuration} />
+					<AddDurationNewCourse
+						duration={duration}
+						setDuration={setDuration}
+						formattedDuration={formattedDuration}
+						setFormattedDuration={setFormattedDuration}
+					/>
 				</div>
 				<div className='columnLayout'>
 					<AutorsList

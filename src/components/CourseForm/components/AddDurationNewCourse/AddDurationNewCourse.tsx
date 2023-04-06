@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '../../../../common/Input/Input';
 
 import { pipeDuration } from '../../../../helpers/pipeDuration';
@@ -9,11 +9,16 @@ import './addDurationNewCourse.css';
 interface Props {
 	duration: string;
 	setDuration: (value: string) => void;
+	formattedDuration: string;
+	setFormattedDuration: (value: string) => void;
 }
 
-const AddDurationNewCourse: React.FC<Props> = ({ duration, setDuration }) => {
-	const [formattedDuration, setFormattedDuration] = useState(pipeDuration(0));
-
+const AddDurationNewCourse: React.FC<Props> = ({
+	duration,
+	setDuration,
+	formattedDuration,
+	setFormattedDuration,
+}) => {
 	function getDurationFormatted(value: string) {
 		const duration: number = parseInt(value);
 		if (!isNaN(duration) && duration > 0) {
@@ -23,6 +28,7 @@ const AddDurationNewCourse: React.FC<Props> = ({ duration, setDuration }) => {
 			setDuration('');
 			setFormattedDuration(pipeDuration(0));
 		}
+		console.log(duration);
 	}
 
 	return (

@@ -1,20 +1,14 @@
-import React, { ReactNode, ComponentType } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { UserState } from '../../store/user/reducer';
 import { getUser } from '../../store/selectors';
 
-interface PrivateRouteProps {
-	component: ComponentType<any>;
-}
-
-const PrivateRoute = ({
-	component: ComponentToRender,
-}: PrivateRouteProps): ReactNode => {
+const PrivateRoute = ({ children }: any) => {
 	const user: UserState = useSelector(getUser);
 	if (user.role === 'admin') {
-		return <ComponentToRender />;
+		return <>{children}</>;
 	} else {
 		return <Navigate to='/courses' />;
 	}
