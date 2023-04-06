@@ -32,6 +32,7 @@ const CreateAuthor: React.FC = () => {
 		if (newAutorName) {
 			const newAuthor = createAuthorObject(newAutorName);
 			dispatch(addAuthor(newAuthor));
+			setNewAutorName('');
 		} else {
 			alert(`Field 'Author name' is empty`);
 		}

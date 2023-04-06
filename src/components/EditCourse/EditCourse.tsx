@@ -17,12 +17,21 @@ const EditCourse: React.FC = () => {
 		fetchCourse();
 	}, [routeParams.courseId]);
 
+	const handleCourseSubmit = (course: Course): void => {
+		console.log(course);
+	};
+
 	if (!course) {
 		return <div>Loading...</div>;
 	}
 	console.log(course);
 
-	return <CourseForm course={course} />;
+	return (
+		<CourseForm
+			course={course}
+			handleCourseSubmit={() => handleCourseSubmit(course)}
+		/>
+	);
 };
 
 export default EditCourse;

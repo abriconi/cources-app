@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { useDispatch } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { RootState } from '../../store';
-import { createCourse } from '../../store/courses/actionCreators';
+// import { useDispatch } from 'react-redux';
+// import { ThunkDispatch } from 'redux-thunk';
+// import { RootState } from '../../store';
+// import { createCourse } from '../../store/courses/actionCreators';
 
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import CreateTitle from './components/CreateTitle/CreateTitle';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationNewCourse';
@@ -21,11 +21,12 @@ import { pipeDuration } from '../../helpers/pipeDuration';
 
 interface Props {
 	course?: Course;
+	handleCourseSubmit: (course: Course) => void;
 }
 
-const CourseForm: React.FC<Props> = ({ course }) => {
-	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
-	const navigate = useNavigate();
+const CourseForm: React.FC<Props> = ({ course, handleCourseSubmit }) => {
+	// const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
+	// const navigate = useNavigate();
 	const [authors, setAuthors] = useState<string[]>(course?.authors || []);
 	const [titleValue, setTitleValue] = useState(course?.title || '');
 	const [descriptionValue, setDescriptionValue] = useState(
@@ -52,8 +53,7 @@ const CourseForm: React.FC<Props> = ({ course }) => {
 			alert('Fill all the fieldes');
 			return;
 		} else {
-			dispatch(createCourse(newCourse));
-			navigate('/courses');
+			handleCourseSubmit(newCourse);
 		}
 	}
 
