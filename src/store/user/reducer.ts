@@ -5,13 +5,16 @@ import {
 	LOGOUT,
 	UserActionTypes,
 	LoginSuccessActionPayload,
+	USERS_ME_SUCCESS,
+	USERS_ME_FAILURE,
 } from './actionTypes';
 
 export interface UserState {
 	isAuth: boolean;
-	name: string;
+	name: string | null;
 	email: string;
 	token: string;
+	role?: string;
 	error?: string;
 	loading?: boolean;
 }
@@ -25,15 +28,15 @@ const initialState: UserState = {
 	name: user?.name ?? '',
 	email: user?.email ?? '',
 	token,
+	role: '',
 };
 
 const clearAuthData = () => {
 	localStorage.removeItem('token');
 	localStorage.removeItem('user');
 };
-const saveAuthData = ({ token, name, email }: LoginSuccessActionPayload) => {
+const saveAuthData = ({ token }: LoginSuccessActionPayload) => {
 	localStorage.setItem('token', token);
-	localStorage.setItem('user', JSON.stringify({ name, email }));
 };
 
 export function userReducer(
@@ -70,6 +73,13 @@ export function userReducer(
 		case LOGIN_FAILURE:
 			clearAuthData();
 			return { ...state, error: action.error, loading: false };
+		case USERS_ME_SUCCESS:
+			return {
+				...state,
+				...action.payload,
+			};
+		case USERS_ME_FAILURE:
+			return { ...state, error: action.error };
 		default:
 			return state;
 	}

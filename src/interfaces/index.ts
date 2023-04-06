@@ -35,3 +35,14 @@ export type loginResponce = {
 		name: string;
 	};
 };
+
+export type usersMeResponce = {
+	successful: boolean;
+	result: {
+		name: string | null;
+		email: string;
+		password: string;
+		role: string;
+		id: string;
+	};
+};

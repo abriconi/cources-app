@@ -17,8 +17,8 @@ const Header = () => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const { isAuth, name } = useSelector(getUser);
 
-	function onClick() {
-		dispatch(logout);
+	async function onClick() {
+		await dispatch(logout());
 		navigate('/login');
 	}
 

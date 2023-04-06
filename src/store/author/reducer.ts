@@ -10,7 +10,6 @@ import {
 export interface AuthorState {
 	all: Author[];
 	error?: string;
-	// loading?: boolean;
 }
 
 const initialState: AuthorState = {

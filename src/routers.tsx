@@ -4,7 +4,7 @@ import Courses from './components/Courses/Courses';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
-import CreateCourse from './components/CreateCourse/CreateCourse';
+import CreateCourse from './components/CourseForm/CourseForm';
 import Root from './components/Root';
 import { store } from './store';
 
