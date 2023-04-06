@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getCourseByID } from '../../api/getCourseByID';
 import CourseForm from '../../common/CourseForm/CourseForm';
+import { useParams } from 'react-router-dom';
 import { Course } from '../../interfaces';
 
-const courseTest: Course = {
-	id: 'b5630fdd-7bf7-4d39-b75a-2b5906fd046464',
-	title: 'Angular-test',
-	description: 'description',
-	creationDate: '10/11/2020',
-	duration: 210,
-	authors: [
-		'df32994e-b23d-497c-9e4d-84e4dc02882f',
-		'095a1817-d45b-4ed7-9cf7-b2417bcbf748',
-	],
-};
-
 const EditCourse: React.FC = () => {
-	return <CourseForm course={courseTest} />;
+	const routeParams = useParams();
+	const [course, setCourse] = useState<Course | null>(null);
+
+	useEffect(() => {
+		const fetchCourse = async () => {
+			const courseData = await getCourseByID(routeParams.courseId);
+			setCourse(courseData);
+		};
+
+		fetchCourse();
+	}, [routeParams.courseId]);
+
+	if (!course) {
+		return <div>Loading...</div>;
+	}
+	console.log(course);
+
+	return <CourseForm course={course} />;
 };
 
 export default EditCourse;
