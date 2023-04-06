@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../../store';
 import { addAuthor } from '../../../../store/author/actionCreators';
-import Input from '../../../../common/Input/Input';
-import Button from '../../../../common/Button/Button';
+import Input from '../../../Input/Input';
+import Button from '../../../Button/Button';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
 import { generateUUID } from '../../../../helpers/generateUUID';

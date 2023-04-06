@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../../../common/Input/Input';
+import Input from '../../../Input/Input';
 
 import { pipeDuration } from '../../../../helpers/pipeDuration';
 import { PLACEHOLDER_TEXT } from '../../../../constans';
