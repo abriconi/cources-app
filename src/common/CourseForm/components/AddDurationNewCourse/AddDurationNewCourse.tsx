@@ -28,7 +28,6 @@ const AddDurationNewCourse: React.FC<Props> = ({
 			setDuration('');
 			setFormattedDuration(pipeDuration(0));
 		}
-		console.log(duration);
 	}
 
 	return (

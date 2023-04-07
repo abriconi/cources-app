@@ -1,19 +1,29 @@
-export {};
-// import { Course } from "../interfaces";
+import { CoursePayload } from '../interfaces';
 
-// export async function putCourseById(course: Course): Promise<loginResponce> {
-// 	const response = await fetch('http://localhost:4000/login', {
-// 		method: 'POST',
-// 		body: JSON.stringify(user),
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 	});
+export async function putCourseToServer(
+	id: string,
+	course: CoursePayload
+): Promise<void> {
+	const updatedCourse = {
+		title: course.title,
+		description: course.description,
+		creationDate: course.description,
+		duration: course.duration,
+		authors: course.authors,
+	};
 
-// 	if (!response.ok) {
-// 		throw new Error('Incorrect email or password.');
-// 	}
+	const response = await fetch(`http://localhost:4000/courses/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify(updatedCourse),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
 
-// 	const result = await response.json();
-// 	return result;
-// }
+	if (!response.ok) {
+		throw new Error('Failed update course');
+	}
+
+	const result = await response.json();
+	return result;
+}

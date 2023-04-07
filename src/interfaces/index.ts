@@ -12,6 +12,8 @@ export type Course = {
 	authors: string[];
 };
 
+export type CoursePayload = Omit<Course, 'id'>;
+
 export type AuthorsListObject = {
 	[key: string]: string;
 };

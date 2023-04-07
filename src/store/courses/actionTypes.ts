@@ -9,7 +9,9 @@ export const DELETE_COURSE_FAILURE = 'DELETE_COURSE_FAILURE';
 export const CREATE_COURSE_SUCCSESS = 'CREATE_COURSE_SUCCSES';
 export const CREATE_COURSE_FAILURE = 'CREATE_COURSE_FAILURE';
 
-// export type CoursesSuccessActionPayload = Omit<UserState, 'isAuth'>;
+export const EDIT_COURSE_SUCCSESS = 'EDIT_COURSE_SUCCSES';
+export const EDIT_COURSE_FAILURE = 'EDIT_COURSE_FAILURE';
+
 export interface GetCoursesSuccessAction {
 	type: typeof GET_COURSES_SUCCESS;
 	payload: Course[];
@@ -40,10 +42,24 @@ interface CreteCourseFailureAction {
 	error: string;
 }
 
+interface EditCourseSuccsessAction {
+	type: typeof EDIT_COURSE_SUCCSESS;
+	course: Course;
+}
+
+interface EditCourseFailureAction {
+	type: typeof EDIT_COURSE_FAILURE;
+	error: string;
+}
+
 export type CoursesActionTypes =
 	| GetCoursesSuccessAction
 	| GetCoursesFailureAction
 	| DeleteCourseSuccsessAction
 	| DeleteCourseFailureAction
 	| CreateCourseSuccsessAction
-	| CreteCourseFailureAction;
+	| CreteCourseFailureAction
+	| EditCourseSuccsessAction
+	| EditCourseFailureAction;
+// TODO Create all that connect with edit courses and states, get "await
+//putCourseToServer(course)" from actionCreator createCourse" and put into new actionCreator

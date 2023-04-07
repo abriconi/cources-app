@@ -10,8 +10,11 @@ import {
 	DELETE_COURSE_FAILURE,
 	CREATE_COURSE_FAILURE,
 	CREATE_COURSE_SUCCSESS,
+	EDIT_COURSE_SUCCSESS,
+	EDIT_COURSE_FAILURE,
 } from './actionTypes';
-import { Course } from '../../interfaces';
+import { Course, CoursePayload } from '../../interfaces';
+import { putCourseToServer } from '../../api/putCourseById';
 // import { deleteCourseByID } from '../../api/deleteCourseById';
 
 export const courses =
@@ -34,8 +37,6 @@ export const deleteCourse =
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
 		try {
-			// await deleteCourseByID(id);
-
 			dispatch({
 				type: DELETE_COURSE_SUCCSESS,
 				id,
@@ -49,17 +50,41 @@ export const deleteCourse =
 	};
 export const createCourse =
 	(
-		course: Course
+		course: CoursePayload
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
+		// await deleteCourseByID(id);
+
 		try {
 			dispatch({
 				type: CREATE_COURSE_SUCCSESS,
-				course,
+				course: course as Course,
 			});
 		} catch (error) {
 			dispatch({
 				type: CREATE_COURSE_FAILURE,
+				error: "Can't update course",
+			});
+		}
+	};
+export const editCourse =
+	(
+		id: string,
+		course: CoursePayload
+	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
+	async (dispatch: Dispatch<CoursesActionTypes>) => {
+		const response = await putCourseToServer(id, course);
+
+		console.log(response);
+
+		try {
+			dispatch({
+				type: EDIT_COURSE_SUCCSESS,
+				course: course as Course,
+			});
+		} catch (error) {
+			dispatch({
+				type: EDIT_COURSE_FAILURE,
 				error: "Can't create course",
 			});
 		}

@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
-import { Course } from '../../interfaces';
+import { CoursePayload } from '../../interfaces';
 import { createCourse } from '../../store/courses/actionCreators';
 
 const CreateCourse: React.FC = () => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const navigate = useNavigate();
-	const handleCourseSubmit = (course: Course) => {
+	const handleCourseSubmit = (course: CoursePayload) => {
 		dispatch(createCourse(course));
 		navigate('/courses');
 	};

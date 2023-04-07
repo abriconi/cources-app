@@ -1,32 +1,24 @@
 import React, { useState } from 'react';
 
-// import { useDispatch } from 'react-redux';
-// import { ThunkDispatch } from 'redux-thunk';
-// import { RootState } from '../../store';
-// import { createCourse } from '../../store/courses/actionCreators';
-
-// import { useNavigate } from 'react-router-dom';
 import CreateTitle from './components/CreateTitle/CreateTitle';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationNewCourse';
 import AddedAuthorsToCourse from './components/AddedAuthorsToCourse/AddedAuthorsToCourse';
 import AutorsList from './components/AutorsList/AutorsList';
 
-import { generateUUID } from '../../helpers/generateUUID';
+// import { generateUUID } from '../../helpers/generateUUID';
 import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
-import { Course } from '../../interfaces/index';
+import { Course, CoursePayload } from '../../interfaces/index';
 
 import './createCourse.css';
 import { pipeDuration } from '../../helpers/pipeDuration';
 
 interface Props {
 	course?: Course;
-	handleCourseSubmit: (course: Course) => void;
+	handleCourseSubmit: (course: CoursePayload) => void;
 }
 
 const CourseForm: React.FC<Props> = ({ course, handleCourseSubmit }) => {
-	// const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
-	// const navigate = useNavigate();
 	const [authors, setAuthors] = useState<string[]>(course?.authors || []);
 	const [titleValue, setTitleValue] = useState(course?.title || '');
 	const [descriptionValue, setDescriptionValue] = useState(
@@ -40,8 +32,8 @@ const CourseForm: React.FC<Props> = ({ course, handleCourseSubmit }) => {
 	function submitHandler(e: React.SyntheticEvent) {
 		e.preventDefault();
 
-		const newCourse: Course = {
-			id: generateUUID(),
+		const newCourse: CoursePayload = {
+			// id: generateUUID(),
 			title: titleValue,
 			description: descriptionValue,
 			creationDate: new Date().toLocaleDateString('en-GB'),
