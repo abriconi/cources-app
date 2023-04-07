@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getAuthorsAll } from '../../store/selectors';
 
 import { getAuthorNamesById } from '../../helpers/getAuthorNamesById';
 import { pipeDuration } from '../../helpers/pipeDuration';
 import { dateGenerator } from '../../helpers/dateGeneratop';
-import { mockedAuthorsList } from '../../constans';
-import { Course } from '../../interfaces/index';
+import { Author, Course } from '../../interfaces/index';
 import { getCourseByID } from '../../api/getCourseByID';
 import './courseInfo.css';
 
@@ -14,6 +15,7 @@ const CourseInfo = () => {
 	const [course, setCourse] = useState<Course>();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string>();
+	const authors: Author[] = useSelector(getAuthorsAll);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -74,10 +76,7 @@ const CourseInfo = () => {
 								<div className='courseAuthors'>
 									<p className='infoTitle'>Autors:</p>
 									<p className='infoData'>
-										{getAuthorNamesById(
-											mockedAuthorsList,
-											course?.authors || []
-										)}
+										{getAuthorNamesById(authors, course?.authors || [])}
 									</p>
 								</div>
 							</div>

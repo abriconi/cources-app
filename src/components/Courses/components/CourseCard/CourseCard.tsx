@@ -7,17 +7,17 @@ import { RootState } from '../../../../store';
 import { deleteCourse } from '../../../../store/courses/actionCreators';
 import Button from '../../../../common/Button/Button';
 
-import { BUTTON_TEXT, mockedAuthorsList } from '../../../../constans';
+import { BUTTON_TEXT } from '../../../../constans';
 import { pipeDuration } from '../../../../helpers/pipeDuration';
 import { dateGenerator } from '../../../../helpers/dateGeneratop';
 import { getAuthorNamesById } from '../../../../helpers/getAuthorNamesById';
-import { Course } from '../../../../interfaces';
+import { Author, Course } from '../../../../interfaces';
 
 import LogoEdit from './components/LogoEdit/LogoEdit';
 import LogoRemove from './components/LogoRemove/LogoRemove';
 
 import './courseCard.css';
-import { getUser } from '../../../../store/selectors';
+import { getUser, getAuthorsAll } from '../../../../store/selectors';
 
 interface Props {
 	courseData: Course;
@@ -27,6 +27,7 @@ const CourseCard: React.FC<Props> = ({ courseData }) => {
 	const navigate = useNavigate();
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const userRole: any = useSelector(getUser).role;
+	const authors: Author[] = useSelector(getAuthorsAll);
 
 	function handleDelete() {
 		dispatch(deleteCourse(courseData.id));
@@ -48,7 +49,7 @@ const CourseCard: React.FC<Props> = ({ courseData }) => {
 				<div className='courseAdditionalInfoSection'>
 					<p className='infoTitle'>Authors:</p>
 					<p className='infoData authorsStyle'>
-						{getAuthorNamesById(mockedAuthorsList, courseData.authors)}
+						{getAuthorNamesById(authors, courseData.authors)}
 					</p>
 				</div>
 				<div className='courseAdditionalInfoSection'>

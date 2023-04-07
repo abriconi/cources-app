@@ -8,8 +8,8 @@ import Input from '../../../Input/Input';
 import Button from '../../../Button/Button';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
-import { generateUUID } from '../../../../helpers/generateUUID';
-import { Author } from '../../../../interfaces';
+// import { generateUUID } from '../../../../helpers/generateUUID';
+import { AuthorPayload } from '../../../../interfaces';
 
 import './createAuthor.css';
 
@@ -17,9 +17,8 @@ const CreateAuthor: React.FC = () => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const [newAutorName, setNewAutorName] = useState('');
 
-	function createAuthorObject(inputText: string): Author {
+	function createAuthorObject(inputText: string): AuthorPayload {
 		return {
-			id: generateUUID(),
 			name: inputText,
 		};
 	}

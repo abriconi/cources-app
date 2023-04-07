@@ -6,7 +6,6 @@ import AddDurationNewCourse from './components/AddDurationNewCourse/AddDurationN
 import AddedAuthorsToCourse from './components/AddedAuthorsToCourse/AddedAuthorsToCourse';
 import AutorsList from './components/AutorsList/AutorsList';
 
-// import { generateUUID } from '../../helpers/generateUUID';
 import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
 import { Course, CoursePayload } from '../../interfaces/index';
 
@@ -33,7 +32,6 @@ const CourseForm: React.FC<Props> = ({ course, handleCourseSubmit }) => {
 		e.preventDefault();
 
 		const newCourse: CoursePayload = {
-			// id: generateUUID(),
 			title: titleValue,
 			description: descriptionValue,
 			creationDate: new Date().toLocaleDateString('en-GB'),

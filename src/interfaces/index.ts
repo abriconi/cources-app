@@ -3,6 +3,8 @@ export type Author = {
 	name: string;
 };
 
+export type AuthorPayload = Omit<Author, 'id'>;
+
 export type Course = {
 	id: string;
 	title: string;

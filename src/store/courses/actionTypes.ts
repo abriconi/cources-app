@@ -61,5 +61,3 @@ export type CoursesActionTypes =
 	| CreteCourseFailureAction
 	| EditCourseSuccsessAction
 	| EditCourseFailureAction;
-// TODO Create all that connect with edit courses and states, get "await
-//putCourseToServer(course)" from actionCreator createCourse" and put into new actionCreator
