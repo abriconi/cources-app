@@ -1,8 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 import { RootState } from '..';
-import { getCourses } from '../../api/getCourses';
-import { postCourse } from '../../api/postCourse';
 import {
 	GET_COURSES_SUCCESS,
 	GET_COURSES_FAILURE,
@@ -15,13 +13,13 @@ import {
 	EDIT_COURSE_FAILURE,
 } from './actionTypes';
 import { Course, CoursePayload } from '../../interfaces';
-import { putCourseToServer } from '../../api/putCourseById';
+import { coursesApi } from '../../api';
 
 export const courses =
 	(): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
 		try {
-			const courses = await getCourses();
+			const courses = await coursesApi.getCourses();
 
 			dispatch({
 				type: GET_COURSES_SUCCESS,
@@ -31,6 +29,7 @@ export const courses =
 			dispatch({ type: GET_COURSES_FAILURE, error: (error as Error).message });
 		}
 	};
+
 export const deleteCourse =
 	(
 		id: string
@@ -48,13 +47,14 @@ export const deleteCourse =
 			});
 		}
 	};
+
 export const createCourse =
 	(
 		course: CoursePayload
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
 		try {
-			await postCourse(course);
+			await coursesApi.createCourse(course);
 		} catch (error) {
 			console.log(error);
 		}
@@ -70,13 +70,14 @@ export const createCourse =
 			});
 		}
 	};
+
 export const editCourse =
 	(
 		id: string,
 		course: CoursePayload
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
-		const response = await putCourseToServer(id, course);
+		const response = await coursesApi.updateCourse(id, course);
 
 		console.log(response);
 

@@ -7,8 +7,8 @@ import { RootState } from '../../store';
 
 import CourseForm from '../../common/CourseForm/CourseForm';
 
-import { getCourseByID } from '../../api/getCourseByID';
 import { Course, CoursePayload } from '../../interfaces';
+import { coursesApi } from '../../api';
 
 const EditCourse: React.FC = () => {
 	const routeParams = useParams();
@@ -17,8 +17,14 @@ const EditCourse: React.FC = () => {
 	const [course, setCourse] = useState<Course | null>(null);
 
 	useEffect(() => {
+		if (!routeParams.courseId) {
+			return;
+		}
+
 		const fetchCourse = async () => {
-			const courseData = await getCourseByID(routeParams.courseId);
+			const courseData = await await coursesApi.getCourse(
+				routeParams.courseId as string
+			);
 			setCourse(courseData);
 		};
 

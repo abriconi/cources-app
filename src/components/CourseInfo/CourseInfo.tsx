@@ -7,9 +7,9 @@ import { getAuthorNamesById } from '../../helpers/getAuthorNamesById';
 import { pipeDuration } from '../../helpers/pipeDuration';
 import { dateGenerator } from '../../helpers/dateGeneratop';
 import { Author, Course } from '../../interfaces/index';
-import { getCourseByID } from '../../api/getCourseByID';
 
 import './courseInfo.css';
+import { coursesApi } from '../../api';
 
 const CourseInfo = () => {
 	const routeParams = useParams();
@@ -19,9 +19,15 @@ const CourseInfo = () => {
 	const authors: Author[] = useSelector(getAuthorsAll);
 
 	useEffect(() => {
+		if (!routeParams.courseId) {
+			return;
+		}
+
 		async function fetchData() {
 			try {
-				const courseData = await getCourseByID(routeParams.courseId);
+				const courseData = await coursesApi.getCourse(
+					routeParams.courseId as string
+				);
 				setCourse(courseData);
 			} catch (error) {
 				if (error instanceof Error) {
@@ -36,7 +42,7 @@ const CourseInfo = () => {
 
 		setLoading(true);
 		fetchData();
-	}, []);
+	}, [routeParams.courseId]);
 
 	if (loading) {
 		return <div>Loading</div>;
