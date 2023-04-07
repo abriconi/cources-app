@@ -51,6 +51,9 @@ export function coursesReduser(
 		case EDIT_COURSE_SUCCSESS:
 			return {
 				...state,
+				all: state.all.map((c) =>
+					c.id === action.course.id ? action.course : c
+				),
 			};
 		case EDIT_COURSE_FAILURE:
 			return {

@@ -79,12 +79,10 @@ export const editCourse =
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
 		const response = await coursesApi.updateCourse(id, course);
 
-		console.log(response);
-
 		try {
 			dispatch({
 				type: EDIT_COURSE_SUCCSESS,
-				course: course as Course,
+				course: response,
 			});
 		} catch (error) {
 			dispatch({
