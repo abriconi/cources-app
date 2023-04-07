@@ -6,7 +6,6 @@ import { RootState } from '../../store';
 import { useNavigate } from 'react-router-dom';
 import { CoursePayload } from '../../interfaces';
 import { createCourse } from '../../store/courses/actionCreators';
-import './createCourse.css';
 
 const CreateCourse: React.FC = () => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();

@@ -2,6 +2,7 @@ import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 import { RootState } from '..';
 import { getCourses } from '../../api/getCourses';
+import { postCourse } from '../../api/postCourse';
 import {
 	GET_COURSES_SUCCESS,
 	GET_COURSES_FAILURE,
@@ -15,7 +16,6 @@ import {
 } from './actionTypes';
 import { Course, CoursePayload } from '../../interfaces';
 import { putCourseToServer } from '../../api/putCourseById';
-// import { deleteCourseByID } from '../../api/deleteCourseById';
 
 export const courses =
 	(): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
@@ -53,8 +53,11 @@ export const createCourse =
 		course: CoursePayload
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
-		// await deleteCourseByID(id);
-
+		try {
+			await postCourse(course);
+		} catch (error) {
+			console.log(error);
+		}
 		try {
 			dispatch({
 				type: CREATE_COURSE_SUCCSESS,
