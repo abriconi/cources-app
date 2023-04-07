@@ -37,9 +37,7 @@ export type LoginSuccessActionPayload = Omit<UserState, 'isAuth'>;
 export type UsersMeSuccessActionPayload = {
 	name: string | null;
 	email: string;
-	// password: string;
 	role: string;
-	// id: string;
 };
 export type UserActionTypes =
 	| LogoutAction

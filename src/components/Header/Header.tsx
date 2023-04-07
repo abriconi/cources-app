@@ -2,15 +2,16 @@ import React from 'react';
 import { ThunkDispatch } from 'redux-thunk';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getUser } from '../../store/selectors';
+import { logout } from '../../store/user/actionCreators';
+import { RootState } from '../../store';
+
 import Logo from './components/Logo/Logo';
 import Button from '../../common/Button/Button';
 
 import { BUTTON_TEXT } from '../../constans';
 
 import './header.css';
-import { getUser } from '../../store/selectors';
-import { logout } from '../../store/user/actionCreators';
-import { RootState } from '../../store';
 
 const Header = () => {
 	const navigate = useNavigate();

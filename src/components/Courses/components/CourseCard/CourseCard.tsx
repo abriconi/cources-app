@@ -5,16 +5,16 @@ import { ThunkDispatch } from 'redux-thunk';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../store';
 import { deleteCourse } from '../../../../store/courses/actionCreators';
+
 import Button from '../../../../common/Button/Button';
+import LogoEdit from './components/LogoEdit/LogoEdit';
+import LogoRemove from './components/LogoRemove/LogoRemove';
 
 import { BUTTON_TEXT } from '../../../../constans';
 import { pipeDuration } from '../../../../helpers/pipeDuration';
 import { dateGenerator } from '../../../../helpers/dateGeneratop';
 import { getAuthorNamesById } from '../../../../helpers/getAuthorNamesById';
 import { Author, Course } from '../../../../interfaces';
-
-import LogoEdit from './components/LogoEdit/LogoEdit';
-import LogoRemove from './components/LogoRemove/LogoRemove';
 
 import './courseCard.css';
 import { getUser, getAuthorsAll } from '../../../../store/selectors';

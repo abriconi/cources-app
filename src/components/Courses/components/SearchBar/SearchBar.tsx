@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import React from 'react';
 import Button from '../../../../common/Button/Button';
 import Input from '../../../../common/Input/Input';

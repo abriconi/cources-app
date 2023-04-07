@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../../store';
 import { addAuthor } from '../../../../store/author/actionCreators';
+
 import Input from '../../../Input/Input';
 import Button from '../../../Button/Button';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
-// import { generateUUID } from '../../../../helpers/generateUUID';
 import { AuthorPayload } from '../../../../interfaces';
 
 import './createAuthor.css';

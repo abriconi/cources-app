@@ -6,7 +6,6 @@ import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 import CreateCourse from './components/CreateCourse/CreateCourse';
 import EditCourse from './components/EditCourse/EditCourse';
-// import CourseForm from './common/CourseForm/CourseForm';
 import PrivateRoute from './components/PrivateRouter/PrivateRouter';
 import Root from './components/Root';
 import { store } from './store';

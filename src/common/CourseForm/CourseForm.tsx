@@ -7,10 +7,10 @@ import AddedAuthorsToCourse from './components/AddedAuthorsToCourse/AddedAuthors
 import AutorsList from './components/AutorsList/AutorsList';
 
 import { isAllFieldesFilled } from '../../helpers/isAllFieldsFilled';
+import { pipeDuration } from '../../helpers/pipeDuration';
 import { Course, CoursePayload } from '../../interfaces/index';
 
 import './createCourse.css';
-import { pipeDuration } from '../../helpers/pipeDuration';
 
 interface Props {
 	course?: Course;

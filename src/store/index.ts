@@ -15,7 +15,6 @@ export interface RootState {
 }
 
 const rootReducer = combineReducers<RootState>({
-	// combining all the reducers in 1 as an object, for that need to import them
 	user: userReducer,
 	courses: coursesReduser,
 	authors: authorsReduser,

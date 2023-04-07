@@ -8,6 +8,7 @@ import { pipeDuration } from '../../helpers/pipeDuration';
 import { dateGenerator } from '../../helpers/dateGeneratop';
 import { Author, Course } from '../../interfaces/index';
 import { getCourseByID } from '../../api/getCourseByID';
+
 import './courseInfo.css';
 
 const CourseInfo = () => {
@@ -20,7 +21,7 @@ const CourseInfo = () => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const courseData = await getCourseByID(routeParams.courseId); //if need to fetch data from server
+				const courseData = await getCourseByID(routeParams.courseId);
 				setCourse(courseData);
 			} catch (error) {
 				if (error instanceof Error) {

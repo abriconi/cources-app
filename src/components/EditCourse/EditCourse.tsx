@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { getCourseByID } from '../../api/getCourseByID';
-import CourseForm from '../../common/CourseForm/CourseForm';
-import { useParams } from 'react-router-dom';
-import { Course, CoursePayload } from '../../interfaces';
-import { editCourse } from '../../store/courses/actionCreators';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
+import { editCourse } from '../../store/courses/actionCreators';
 import { RootState } from '../../store';
-import { useNavigate } from 'react-router-dom';
+
+import CourseForm from '../../common/CourseForm/CourseForm';
+
+import { getCourseByID } from '../../api/getCourseByID';
+import { Course, CoursePayload } from '../../interfaces';
 
 const EditCourse: React.FC = () => {
 	const routeParams = useParams();
