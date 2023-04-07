@@ -46,7 +46,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/add',
-				element: <CreateCourse />,
+				element: (
+					<PrivateRoute>
+						<CreateCourse />
+					</PrivateRoute>
+				),
 				loader: withAuth(),
 			},
 			{ path: '/registration', element: <Registration />, loader: withoutAuth },
