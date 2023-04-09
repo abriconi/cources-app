@@ -33,6 +33,7 @@ const SearchBar: React.FC<Props> = ({
 				placeholder={PLACEHOLDER_TEXT.enterCourseName}
 				value={searchText}
 				onChange={onChange}
+				labelText='Enter course name'
 			/>
 			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>

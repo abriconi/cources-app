@@ -16,7 +16,6 @@ export const authors =
 	async (dispatch: Dispatch<AuthorsActionTypes>) => {
 		try {
 			const authors: Author[] = await authorsApi.getAuthors();
-			console.log(authors);
 
 			dispatch({
 				type: GET_AUTHORS_SUCCESS,
@@ -31,11 +30,7 @@ export const addAuthor =
 		author: AuthorPayload
 	): ThunkAction<Promise<void>, RootState, null, AuthorsActionTypes> =>
 	async (dispatch: Dispatch<AuthorsActionTypes>) => {
-		try {
-			await authorsApi.postAuthor(author);
-		} catch (error) {
-			console.log(error);
-		}
+		await authorsApi.postAuthor(author);
 
 		try {
 			dispatch({

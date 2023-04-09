@@ -35,6 +35,7 @@ export const deleteCourse =
 		id: string
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
+		await coursesApi.deleteCourse(id);
 		try {
 			dispatch({
 				type: DELETE_COURSE_SUCCSESS,
@@ -53,11 +54,7 @@ export const createCourse =
 		course: CoursePayload
 	): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>
 	async (dispatch: Dispatch<CoursesActionTypes>) => {
-		try {
-			await coursesApi.createCourse(course);
-		} catch (error) {
-			console.log(error);
-		}
+		await coursesApi.createCourse(course);
 		try {
 			dispatch({
 				type: CREATE_COURSE_SUCCSESS,

@@ -44,7 +44,15 @@ const EditCourse: React.FC = () => {
 		return <div>Loading...</div>;
 	}
 
-	return <CourseForm course={course} handleCourseSubmit={handleCourseSubmit} />;
+	return (
+		<div className='coursesWrapper'>
+			<CourseForm
+				course={course}
+				handleCourseSubmit={handleCourseSubmit}
+				mainBtnText='UpdateCourse'
+			/>
+		</div>
+	);
 };
 
 export default EditCourse;

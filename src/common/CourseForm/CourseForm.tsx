@@ -15,9 +15,14 @@ import './createCourse.css';
 interface Props {
 	course?: Course;
 	handleCourseSubmit: (course: CoursePayload) => void;
+	mainBtnText: string;
 }
 
-const CourseForm: React.FC<Props> = ({ course, handleCourseSubmit }) => {
+const CourseForm: React.FC<Props> = ({
+	course,
+	handleCourseSubmit,
+	mainBtnText,
+}) => {
 	const [authors, setAuthors] = useState<string[]>(course?.authors || []);
 	const [titleValue, setTitleValue] = useState(course?.title || '');
 	const [descriptionValue, setDescriptionValue] = useState(
@@ -62,6 +67,7 @@ const CourseForm: React.FC<Props> = ({ course, handleCourseSubmit }) => {
 		<form className='createCourseForm' onSubmit={submitHandler}>
 			<CreateTitle
 				titleValue={titleValue}
+				mainBtnText={mainBtnText}
 				setTitleValue={setTitleValue}
 				descriptionValue={descriptionValue}
 				setDescriptionValue={setDescriptionValue}

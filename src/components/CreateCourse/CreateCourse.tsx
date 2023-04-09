@@ -16,7 +16,14 @@ const CreateCourse: React.FC = () => {
 		navigate('/courses');
 	};
 
-	return <CourseForm handleCourseSubmit={handleCourseSubmit} />;
+	return (
+		<div className='coursesWrapper'>
+			<CourseForm
+				handleCourseSubmit={handleCourseSubmit}
+				mainBtnText='Add new Course'
+			/>
+		</div>
+	);
 };
 
 export default CreateCourse;
