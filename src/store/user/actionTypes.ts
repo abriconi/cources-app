@@ -26,19 +26,14 @@ interface LoginFailureAction {
 
 interface UsersMeSuccessAction {
 	type: typeof USERS_ME_SUCCESS;
-	payload: UsersMeSuccessActionPayload;
+	payload: Omit<UserState, 'isAuth' | 'token'>;
 }
 interface UsersMeFailureAction {
 	type: typeof USERS_ME_FAILURE;
 	error: string;
 }
-export type LoginSuccessActionPayload = Omit<UserState, 'isAuth'>;
+export type LoginSuccessActionPayload = { token: string };
 
-export type UsersMeSuccessActionPayload = {
-	name: string | null;
-	email: string;
-	role: string;
-};
 export type UserActionTypes =
 	| LogoutAction
 	| LoginStartAction

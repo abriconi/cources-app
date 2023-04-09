@@ -13,7 +13,7 @@ import {
 	EDIT_COURSE_FAILURE,
 } from './actionTypes';
 import { Course, CoursePayload } from '../../interfaces';
-import { coursesApi } from '../../api';
+import coursesApi from '../../api/Courses';
 
 export const courses =
 	(): ThunkAction<Promise<void>, RootState, null, CoursesActionTypes> =>

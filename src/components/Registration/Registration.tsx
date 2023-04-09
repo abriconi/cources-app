@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { userRegistration } from '../../api/userRegistration';
+import userApi from '../../api/User';
+// import { userRegistration } from '../../api/userRegistration';
 import { useNavigate } from 'react-router-dom';
 
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../constans';
-import { newUser } from '../../interfaces';
+import { NewUser } from '../../interfaces';
 
 import './registration.css';
 
@@ -31,13 +32,13 @@ const Registration: React.FC = () => {
 	): Promise<void> {
 		event.preventDefault();
 
-		const newUser: newUser = {
+		const newUser: NewUser = {
 			name: userName,
 			password: userPassword,
 			email: userEmail,
 		};
 		navigate('/login');
-		await userRegistration(newUser);
+		await userApi.userRegistration(newUser);
 	}
 	return (
 		<div className='registrationWrapper'>

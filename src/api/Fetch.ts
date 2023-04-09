@@ -1,5 +1,3 @@
-import { store } from '../store';
-
 type FetchMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 type FetchResponse<T> =
@@ -20,7 +18,7 @@ export class Fetch {
 		method: FetchMethod = 'GET',
 		body?: any
 	): Promise<R> {
-		const token: string = store.getState()?.user?.token;
+		const token = localStorage.getItem('token');
 
 		const response = await fetch(`${this.host}${url}`, {
 			method,
@@ -35,7 +33,12 @@ export class Fetch {
 			throw new Error('Failed request');
 		}
 
-		const result: FetchResponse<R> = await response.json();
+		const payload = await response.text();
+		if (!payload) {
+			return true as any;
+		}
+
+		const result: FetchResponse<R> = JSON.parse(payload);
 
 		if (!result.successful) {
 			throw new Error(result.errors[0]);

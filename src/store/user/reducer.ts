@@ -20,20 +20,18 @@ export interface UserState {
 }
 
 const token = localStorage.getItem('token') ?? '';
-const user = JSON.parse(localStorage.getItem('user') ?? '{}');
 
 const initialState: UserState = {
 	loading: false,
 	isAuth: Boolean(token),
-	name: user?.name ?? '',
-	email: user?.email ?? '',
+	name: '',
+	email: '',
 	token,
 	role: '',
 };
 
 const clearAuthData = () => {
 	localStorage.removeItem('token');
-	localStorage.removeItem('user');
 };
 const saveAuthData = ({ token }: LoginSuccessActionPayload) => {
 	localStorage.setItem('token', token);

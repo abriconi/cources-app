@@ -11,7 +11,7 @@ import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../constans';
-import { User } from '../../interfaces';
+import { UserDataAuth } from '../../interfaces';
 
 import './login.css';
 
@@ -33,7 +33,7 @@ const Login = () => {
 		event: React.FormEvent<HTMLFormElement>
 	): Promise<void> {
 		event.preventDefault();
-		const user: User = {
+		const user: UserDataAuth = {
 			password: userPassword,
 			email: userEmail,
 		};

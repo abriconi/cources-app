@@ -20,13 +20,13 @@ export type AuthorsListObject = {
 	[key: string]: string;
 };
 
-export type newUser = {
+export type NewUser = {
 	name: string;
 	password: string;
 	email: string;
 };
 
-export type User = {
+export type UserDataAuth = {
 	password: string;
 	email: string;
 };
@@ -41,12 +41,11 @@ export type loginResponce = {
 };
 
 export type usersMeResponce = {
-	successful: boolean;
-	result: {
-		name: string | null;
-		email: string;
-		password: string;
-		role: string;
-		id: string;
-	};
+	// successful: boolean;
+	// result: {
+	name: string | null;
+	email: string;
+	role: string;
+	id: string;
+	// 	};
 };

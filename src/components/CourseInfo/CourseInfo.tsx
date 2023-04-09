@@ -3,13 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getAuthorsAll } from '../../store/selectors';
 
+import coursesApi from '../../api/Courses';
 import { getAuthorNamesById } from '../../helpers/getAuthorNamesById';
 import { pipeDuration } from '../../helpers/pipeDuration';
 import { dateGenerator } from '../../helpers/dateGeneratop';
 import { Author, Course } from '../../interfaces/index';
 
 import './courseInfo.css';
-import { coursesApi } from '../../api';
 
 const CourseInfo = () => {
 	const routeParams = useParams();

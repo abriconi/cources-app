@@ -1,10 +1,8 @@
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 import { RootState } from '..';
-import { userLogin } from '../../api/userLogin';
-import { userLogout } from '../../api/userLogout';
-import { usersMefromServer } from '../../api/usersMe';
-import { User } from '../../interfaces';
+import userApi from '../../api/User';
+import { UserDataAuth } from '../../interfaces';
 import {
 	LOGIN_FAILURE,
 	LOGIN,
@@ -16,20 +14,18 @@ import {
 } from './actionTypes';
 
 export const login =
-	(user: User): ThunkAction<Promise<void>, RootState, null, UserActionTypes> =>
+	(
+		user: UserDataAuth
+	): ThunkAction<Promise<void>, RootState, null, UserActionTypes> =>
 	async (dispatch: Dispatch<UserActionTypes>) => {
 		dispatch({ type: LOGIN });
 
 		try {
-			const response = await userLogin(user);
+			const token = await userApi.userLogin(user);
 
 			dispatch({
 				type: LOGIN_SUCCESS,
-				payload: {
-					token: response.result,
-					name: response.user.name,
-					email: response.user.email,
-				},
+				payload: { token },
 			});
 		} catch (error) {
 			dispatch({ type: LOGIN_FAILURE, error: (error as Error).message });
@@ -38,20 +34,20 @@ export const login =
 
 export const logout =
 	(): any => async (dispatch: Dispatch<UserActionTypes>) => {
-		await userLogout();
+		await userApi.userLogout();
 		dispatch({ type: LOGOUT });
 	};
 
 export const usersMe = () => async (dispatch: Dispatch<UserActionTypes>) => {
 	try {
-		const response = await usersMefromServer();
+		const response = await userApi.usersMe();
 
 		dispatch({
 			type: USERS_ME_SUCCESS,
 			payload: {
-				name: response.result.name,
-				email: response.result.email,
-				role: response.result.role,
+				name: response.name,
+				email: response.email,
+				role: response.role,
 			},
 		});
 	} catch (error) {

@@ -8,7 +8,7 @@ import { RootState } from '../../store';
 import CourseForm from '../../common/CourseForm/CourseForm';
 
 import { Course, CoursePayload } from '../../interfaces';
-import { coursesApi } from '../../api';
+import coursesApi from '../../api/Courses';
 
 const EditCourse: React.FC = () => {
 	const routeParams = useParams();
@@ -22,7 +22,7 @@ const EditCourse: React.FC = () => {
 		}
 
 		const fetchCourse = async () => {
-			const courseData = await await coursesApi.getCourse(
+			const courseData = await coursesApi.getCourse(
 				routeParams.courseId as string
 			);
 			setCourse(courseData);
