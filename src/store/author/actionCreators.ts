@@ -1,8 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 import { RootState } from '..';
-import { getAuthors } from '../../api/getAuthors';
-import { postAuthor } from '../../api/postAuthor';
+import authorsApi from '../../api/Authors';
 import {
 	GET_AUTHORS_SUCCESS,
 	GET_AUTHORS_FAILURE,
@@ -16,7 +15,8 @@ export const authors =
 	(): ThunkAction<Promise<void>, RootState, null, AuthorsActionTypes> =>
 	async (dispatch: Dispatch<AuthorsActionTypes>) => {
 		try {
-			const authors: Author[] = await getAuthors();
+			const authors: Author[] = await authorsApi.getAuthors();
+			console.log(authors);
 
 			dispatch({
 				type: GET_AUTHORS_SUCCESS,
@@ -32,8 +32,7 @@ export const addAuthor =
 	): ThunkAction<Promise<void>, RootState, null, AuthorsActionTypes> =>
 	async (dispatch: Dispatch<AuthorsActionTypes>) => {
 		try {
-			const result = await postAuthor(author);
-			console.log('result author', result);
+			await authorsApi.postAuthor(author);
 		} catch (error) {
 			console.log(error);
 		}

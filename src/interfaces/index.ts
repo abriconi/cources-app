@@ -41,11 +41,8 @@ export type loginResponce = {
 };
 
 export type usersMeResponce = {
-	// successful: boolean;
-	// result: {
 	name: string | null;
 	email: string;
 	role: string;
 	id: string;
-	// 	};
 };

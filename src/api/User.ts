@@ -18,10 +18,6 @@ class UserApi extends Fetch {
 	async usersMe(): Promise<usersMeResponce> {
 		return this.fetch<usersMeResponce>(`/users/me`);
 	}
-
-	// async deleteCourse(id: string): Promise<void> {
-	// 	return this.fetch<void>(`/courses/${id}`, 'DELETE');
-	// }
 }
 
 const userApi = new UserApi();
