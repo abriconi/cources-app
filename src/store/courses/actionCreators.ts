@@ -5,11 +5,11 @@ import {
 	GET_COURSES_SUCCESS,
 	GET_COURSES_FAILURE,
 	CoursesActionTypes,
-	DELETE_COURSE_SUCCSESS,
+	DELETE_COURSE_SUCCESS,
 	DELETE_COURSE_FAILURE,
 	CREATE_COURSE_FAILURE,
-	CREATE_COURSE_SUCCSESS,
-	EDIT_COURSE_SUCCSESS,
+	CREATE_COURSE_SUCCESS,
+	EDIT_COURSE_SUCCESS,
 	EDIT_COURSE_FAILURE,
 } from './actionTypes';
 import { Course, CoursePayload } from '../../interfaces';
@@ -38,7 +38,7 @@ export const deleteCourse =
 		await coursesApi.deleteCourse(id);
 		try {
 			dispatch({
-				type: DELETE_COURSE_SUCCSESS,
+				type: DELETE_COURSE_SUCCESS,
 				id,
 			});
 		} catch (error) {
@@ -57,7 +57,7 @@ export const createCourse =
 		await coursesApi.createCourse(course);
 		try {
 			dispatch({
-				type: CREATE_COURSE_SUCCSESS,
+				type: CREATE_COURSE_SUCCESS,
 				course: course as Course,
 			});
 		} catch (error) {
@@ -78,7 +78,7 @@ export const editCourse =
 
 		try {
 			dispatch({
-				type: EDIT_COURSE_SUCCSESS,
+				type: EDIT_COURSE_SUCCESS,
 				course: response,
 			});
 		} catch (error) {

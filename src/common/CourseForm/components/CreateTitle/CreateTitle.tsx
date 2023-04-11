@@ -4,7 +4,6 @@ import Input from '../../../Input/Input';
 import Textarea from '../../../Textarea/Textrarea';
 import Button from '../../../Button/Button';
 
-// import { BUTTON_TEXT } from '../../../../constans';
 import { PLACEHOLDER_TEXT } from '../../../../constans';
 
 import './createTitle.css';
