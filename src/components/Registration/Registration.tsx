@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import userApi from '../../api/User';
-// import { userRegistration } from '../../api/userRegistration';
 import { useNavigate } from 'react-router-dom';
 
 import Input from '../../common/Input/Input';
