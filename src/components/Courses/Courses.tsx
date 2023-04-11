@@ -47,11 +47,16 @@ const Courses = () => {
 					buttonText={BUTTON_TEXT.addNewCourse}
 					type={'button'}
 					onClick={onClickHandler}
+					data-testid='addNewCourse'
 				></Button>
 			</div>
-			{filteredCourses.map((course: Course) => (
-				<CourseCard key={course.title} courseData={course}></CourseCard>
-			))}
+			{filteredCourses.length === 0 ? (
+				<div data-testid='empty-container'>No courses available</div>
+			) : (
+				filteredCourses.map((course: Course) => (
+					<CourseCard key={course.title} courseData={course} />
+				))
+			)}
 		</div>
 	);
 };
