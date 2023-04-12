@@ -8,6 +8,7 @@ import { RootState } from '../../store';
 import CourseForm from '../../common/CourseForm/CourseForm';
 
 import { Course, CoursePayload } from '../../interfaces';
+import { BUTTON_TEXT } from '../../constans';
 import coursesApi from '../../api/Courses';
 
 const EditCourse: React.FC = () => {
@@ -49,7 +50,7 @@ const EditCourse: React.FC = () => {
 			<CourseForm
 				course={course}
 				handleCourseSubmit={handleCourseSubmit}
-				mainBtnText='UpdateCourse'
+				mainBtnText={BUTTON_TEXT.updateCourse}
 			/>
 		</div>
 	);

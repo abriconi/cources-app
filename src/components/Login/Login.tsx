@@ -14,6 +14,7 @@ import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../constans';
 import { UserDataAuth } from '../../interfaces';
 
 import './login.css';
+import { authors } from '../../store/author/actionCreators';
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -41,6 +42,7 @@ const Login = () => {
 		await dispatch(login(user));
 		await dispatch(usersMe());
 		await dispatch(courses());
+		await dispatch(authors());
 		navigate('/courses');
 	}
 
