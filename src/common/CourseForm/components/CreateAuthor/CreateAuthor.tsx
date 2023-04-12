@@ -46,12 +46,14 @@ const CreateAuthor: React.FC = () => {
 					id='authorName'
 					value={newAutorName}
 					onChange={onChange}
+					data-testid='create-author-input'
 				></Input>
 				<Button
 					className='btnAligningCenter'
 					type='button'
 					buttonText={BUTTON_TEXT.createAuthor}
 					onClick={handleClick}
+					data-testid='create-author'
 				></Button>
 			</div>
 		</div>

@@ -21,7 +21,7 @@ const AutorsList: React.FC<Props> = ({ authorsToExclude, onAddAuthor }) => {
 	return (
 		<div className='authorListWrapper'>
 			<h3>Authors</h3>
-			<ul className='authorlist'>
+			<ul className='authorlist' data-testid='authors-list'>
 				{authorsToRender.map((author) => (
 					<AddAuthor
 						key={author.name}

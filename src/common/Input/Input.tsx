@@ -20,6 +20,7 @@ const Input: React.FC<Props> = ({
 	onChange,
 	id,
 	minLength,
+	...restProps
 }) => {
 	return (
 		<label className='labelWrapper'>
@@ -32,6 +33,7 @@ const Input: React.FC<Props> = ({
 				placeholder={placeholder}
 				onChange={onChange && ((event) => onChange(event.target.value))}
 				id={id}
+				{...restProps}
 			></input>
 		</label>
 	);
