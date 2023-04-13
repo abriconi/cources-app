@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import React from 'react';
 import Button from '../../../../common/Button/Button';
 import Input from '../../../../common/Input/Input';
@@ -34,6 +33,7 @@ const SearchBar: React.FC<Props> = ({
 				placeholder={PLACEHOLDER_TEXT.enterCourseName}
 				value={searchText}
 				onChange={onChange}
+				labelText='Enter course name'
 			/>
 			<Button buttonText={BUTTON_TEXT.search} type='submit' />
 		</form>

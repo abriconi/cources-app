@@ -30,7 +30,7 @@ const Courses = () => {
 		const filteredCoursesArr: Course[] = filterCourses(coursesList, searchText);
 		setFilteredCourses(filteredCoursesArr);
 	}
-	function onClickHandler() {
+	async function onClickHandler() {
 		navigate('/add');
 	}
 

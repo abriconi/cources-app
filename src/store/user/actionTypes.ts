@@ -4,6 +4,8 @@ export const LOGOUT = 'LOGOUT';
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const USERS_ME_SUCCESS = 'USERS_ME_SUCCESS';
+export const USERS_ME_FAILURE = 'USERS_ME_FAILURE';
 
 export interface LogoutAction {
 	type: typeof LOGOUT;
@@ -11,7 +13,7 @@ export interface LogoutAction {
 interface LoginStartAction {
 	type: typeof LOGIN;
 }
-export type LoginSuccessActionPayload = Omit<UserState, 'isAuth'>;
+
 interface LoginSuccessAction {
 	type: typeof LOGIN_SUCCESS;
 	payload: LoginSuccessActionPayload;
@@ -22,8 +24,20 @@ interface LoginFailureAction {
 	error: string;
 }
 
+interface UsersMeSuccessAction {
+	type: typeof USERS_ME_SUCCESS;
+	payload: Omit<UserState, 'isAuth' | 'token'>;
+}
+interface UsersMeFailureAction {
+	type: typeof USERS_ME_FAILURE;
+	error: string;
+}
+export type LoginSuccessActionPayload = { token: string };
+
 export type UserActionTypes =
 	| LogoutAction
 	| LoginStartAction
 	| LoginSuccessAction
-	| LoginFailureAction;
+	| LoginFailureAction
+	| UsersMeSuccessAction
+	| UsersMeFailureAction;

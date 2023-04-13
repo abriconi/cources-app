@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getAuthorsAll } from '../../store/selectors';
 
+import coursesApi from '../../api/Courses';
 import { getAuthorNamesById } from '../../helpers/getAuthorNamesById';
 import { pipeDuration } from '../../helpers/pipeDuration';
 import { dateGenerator } from '../../helpers/dateGeneratop';
-import { mockedAuthorsList } from '../../constans';
-import { Course } from '../../interfaces/index';
-import { getCourseByID } from '../../api/getCourseByID';
+import { Author, Course } from '../../interfaces/index';
+
 import './courseInfo.css';
 
 const CourseInfo = () => {
@@ -14,11 +16,18 @@ const CourseInfo = () => {
 	const [course, setCourse] = useState<Course>();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string>();
+	const authors: Author[] = useSelector(getAuthorsAll);
 
 	useEffect(() => {
+		if (!routeParams.courseId) {
+			return;
+		}
+
 		async function fetchData() {
 			try {
-				const courseData = await getCourseByID(routeParams.courseId); //if need to fetch data from server
+				const courseData = await coursesApi.getCourse(
+					routeParams.courseId as string
+				);
 				setCourse(courseData);
 			} catch (error) {
 				if (error instanceof Error) {
@@ -33,7 +42,7 @@ const CourseInfo = () => {
 
 		setLoading(true);
 		fetchData();
-	}, []);
+	}, [routeParams.courseId]);
 
 	if (loading) {
 		return <div>Loading</div>;
@@ -74,10 +83,7 @@ const CourseInfo = () => {
 								<div className='courseAuthors'>
 									<p className='infoTitle'>Autors:</p>
 									<p className='infoData'>
-										{getAuthorNamesById(
-											mockedAuthorsList,
-											course?.authors || []
-										)}
+										{getAuthorNamesById(authors, course?.authors || [])}
 									</p>
 								</div>
 							</div>

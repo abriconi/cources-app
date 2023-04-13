@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../../../../common/Input/Input';
-import Textarea from '../../../../common/Textarea/Textrarea';
-import Button from '../../../../common/Button/Button';
-import { BUTTON_TEXT } from '../../../../constans';
+
+import Input from '../../../Input/Input';
+import Textarea from '../../../Textarea/Textrarea';
+import Button from '../../../Button/Button';
 
 import { PLACEHOLDER_TEXT } from '../../../../constans';
 
@@ -13,6 +13,7 @@ interface Props {
 	setTitleValue: (value: string) => void;
 	descriptionValue: string;
 	setDescriptionValue: (value: string) => void;
+	mainBtnText: string;
 }
 
 const CreateTitle: React.FC<Props> = ({
@@ -20,6 +21,7 @@ const CreateTitle: React.FC<Props> = ({
 	setTitleValue,
 	descriptionValue,
 	setDescriptionValue,
+	mainBtnText,
 }) => {
 	const onChangeTitle = (value: string) => {
 		setTitleValue(value);
@@ -36,11 +38,7 @@ const CreateTitle: React.FC<Props> = ({
 					onChange={onChangeTitle}
 					placeholder={PLACEHOLDER_TEXT.enterTitle}
 				/>
-				<Button
-					buttonText={BUTTON_TEXT.createCourse}
-					type='submit'
-					className='btnTitle'
-				/>
+				<Button buttonText={mainBtnText} type='submit' className='btnTitle' />
 			</div>
 
 			<Textarea

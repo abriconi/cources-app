@@ -6,6 +6,7 @@ import { coursesReduser, CourseState } from './courses/reducer';
 import { authorsReduser, AuthorState } from './author/reducer';
 import { courses } from './courses/actionCreators';
 import { authors } from './author/actionCreators';
+import { usersMe } from './user/actionCreators';
 
 export interface RootState {
 	user: UserState;
@@ -14,7 +15,6 @@ export interface RootState {
 }
 
 const rootReducer = combineReducers<RootState>({
-	// combining all the reducers in 1 as an object, for that need to import them
 	user: userReducer,
 	courses: coursesReduser,
 	authors: authorsReduser,
@@ -25,7 +25,10 @@ export const store = createStore(
 	composeWithDevTools(applyMiddleware(thunk))
 );
 
-if (store.getState()?.user?.isAuth) {
-	store.dispatch<any>(courses());
-	store.dispatch<any>(authors());
-}
+setTimeout(() => {
+	if (store.getState()?.user?.isAuth) {
+		store.dispatch<any>(courses());
+		store.dispatch<any>(authors());
+		store.dispatch<any>(usersMe());
+	}
+});

@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../../../store';
 import { addAuthor } from '../../../../store/author/actionCreators';
-import Input from '../../../../common/Input/Input';
-import Button from '../../../../common/Button/Button';
+
+import Input from '../../../Input/Input';
+import Button from '../../../Button/Button';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../../../constans';
-import { generateUUID } from '../../../../helpers/generateUUID';
-import { Author } from '../../../../interfaces';
+import { AuthorPayload } from '../../../../interfaces';
 
 import './createAuthor.css';
 
@@ -17,9 +16,8 @@ const CreateAuthor: React.FC = () => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
 	const [newAutorName, setNewAutorName] = useState('');
 
-	function createAuthorObject(inputText: string): Author {
+	function createAuthorObject(inputText: string): AuthorPayload {
 		return {
-			id: generateUUID(),
 			name: inputText,
 		};
 	}
@@ -32,6 +30,7 @@ const CreateAuthor: React.FC = () => {
 		if (newAutorName) {
 			const newAuthor = createAuthorObject(newAutorName);
 			dispatch(addAuthor(newAuthor));
+			setNewAutorName('');
 		} else {
 			alert(`Field 'Author name' is empty`);
 		}

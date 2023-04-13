@@ -1,7 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 import { RootState } from '..';
-import { getAuthors } from '../../api/getAuthors';
+import authorsApi from '../../api/Authors';
 import {
 	GET_AUTHORS_SUCCESS,
 	GET_AUTHORS_FAILURE,
@@ -9,13 +9,13 @@ import {
 	ADD_AUTHORS_SUCCESS,
 	AuthorsActionTypes,
 } from './actionTypes';
-import { Author } from '../../interfaces';
+import { Author, AuthorPayload } from '../../interfaces';
 
 export const authors =
 	(): ThunkAction<Promise<void>, RootState, null, AuthorsActionTypes> =>
 	async (dispatch: Dispatch<AuthorsActionTypes>) => {
 		try {
-			const authors = await getAuthors();
+			const authors: Author[] = await authorsApi.getAuthors();
 
 			dispatch({
 				type: GET_AUTHORS_SUCCESS,
@@ -27,13 +27,15 @@ export const authors =
 	};
 export const addAuthor =
 	(
-		author: Author
+		author: AuthorPayload
 	): ThunkAction<Promise<void>, RootState, null, AuthorsActionTypes> =>
 	async (dispatch: Dispatch<AuthorsActionTypes>) => {
+		await authorsApi.postAuthor(author);
+
 		try {
 			dispatch({
 				type: ADD_AUTHORS_SUCCESS,
-				author,
+				author: author as Author,
 			});
 		} catch (error) {
 			dispatch({ type: ADD_AUTHORS_FAILURE, error: "Can't add the author" });

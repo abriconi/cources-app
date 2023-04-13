@@ -4,6 +4,8 @@ import {
 	CREATE_COURSE_SUCCSESS,
 	DELETE_COURSE_FAILURE,
 	DELETE_COURSE_SUCCSESS,
+	EDIT_COURSE_FAILURE,
+	EDIT_COURSE_SUCCSESS,
 	GET_COURSES_FAILURE,
 	GET_COURSES_SUCCESS,
 } from './actionTypes';
@@ -45,6 +47,18 @@ export function coursesReduser(
 			return {
 				...state,
 				all: [...state.all, action.course],
+			};
+		case EDIT_COURSE_SUCCSESS:
+			return {
+				...state,
+				all: state.all.map((c) =>
+					c.id === action.course.id ? action.course : c
+				),
+			};
+		case EDIT_COURSE_FAILURE:
+			return {
+				...state,
+				error: action.error,
 			};
 		default:
 			return state;

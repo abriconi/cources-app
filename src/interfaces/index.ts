@@ -3,6 +3,8 @@ export type Author = {
 	name: string;
 };
 
+export type AuthorPayload = Omit<Author, 'id'>;
+
 export type Course = {
 	id: string;
 	title: string;
@@ -12,17 +14,19 @@ export type Course = {
 	authors: string[];
 };
 
+export type CoursePayload = Omit<Course, 'id'>;
+
 export type AuthorsListObject = {
 	[key: string]: string;
 };
 
-export type newUser = {
+export type NewUser = {
 	name: string;
 	password: string;
 	email: string;
 };
 
-export type User = {
+export type UserDataAuth = {
 	password: string;
 	email: string;
 };
@@ -34,4 +38,11 @@ export type loginResponce = {
 		email: string;
 		name: string;
 	};
+};
+
+export type usersMeResponce = {
+	name: string | null;
+	email: string;
+	role: string;
+	id: string;
 };

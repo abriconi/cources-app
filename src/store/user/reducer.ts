@@ -5,35 +5,36 @@ import {
 	LOGOUT,
 	UserActionTypes,
 	LoginSuccessActionPayload,
+	USERS_ME_SUCCESS,
+	USERS_ME_FAILURE,
 } from './actionTypes';
 
 export interface UserState {
 	isAuth: boolean;
-	name: string;
+	name: string | null;
 	email: string;
 	token: string;
+	role?: string;
 	error?: string;
 	loading?: boolean;
 }
 
 const token = localStorage.getItem('token') ?? '';
-const user = JSON.parse(localStorage.getItem('user') ?? '{}');
 
 const initialState: UserState = {
 	loading: false,
 	isAuth: Boolean(token),
-	name: user?.name ?? '',
-	email: user?.email ?? '',
+	name: '',
+	email: '',
 	token,
+	role: '',
 };
 
 const clearAuthData = () => {
 	localStorage.removeItem('token');
-	localStorage.removeItem('user');
 };
-const saveAuthData = ({ token, name, email }: LoginSuccessActionPayload) => {
+const saveAuthData = ({ token }: LoginSuccessActionPayload) => {
 	localStorage.setItem('token', token);
-	localStorage.setItem('user', JSON.stringify({ name, email }));
 };
 
 export function userReducer(
@@ -70,6 +71,13 @@ export function userReducer(
 		case LOGIN_FAILURE:
 			clearAuthData();
 			return { ...state, error: action.error, loading: false };
+		case USERS_ME_SUCCESS:
+			return {
+				...state,
+				...action.payload,
+			};
+		case USERS_ME_FAILURE:
+			return { ...state, error: action.error };
 		default:
 			return state;
 	}

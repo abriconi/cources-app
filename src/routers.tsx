@@ -5,6 +5,8 @@ import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
 import CourseInfo from './components/CourseInfo/CourseInfo';
 import CreateCourse from './components/CreateCourse/CreateCourse';
+import EditCourse from './components/EditCourse/EditCourse';
+import PrivateRoute from './components/PrivateRouter/PrivateRouter';
 import Root from './components/Root';
 import { store } from './store';
 
@@ -41,12 +43,25 @@ export const router = createBrowserRouter([
 				element: <CourseInfo />,
 				loader: withAuth(),
 			},
+			{
+				path: '/add',
+				element: (
+					<PrivateRoute>
+						<CreateCourse />
+					</PrivateRoute>
+				),
+				loader: withAuth(),
+			},
 			{ path: '/registration', element: <Registration />, loader: withoutAuth },
 			{ path: '/login', element: <Login />, loader: withoutAuth },
 			{ path: '/', element: <Login />, loader: withoutAuth },
 			{
-				path: '/add',
-				element: <CreateCourse />,
+				path: '/courses/update/:courseId',
+				element: (
+					<PrivateRoute>
+						<EditCourse />
+					</PrivateRoute>
+				),
 				loader: withAuth(),
 			},
 		],

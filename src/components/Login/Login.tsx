@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { ThunkDispatch } from 'redux-thunk';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { RootState } from '../../store';
+import { getUser } from '../../store/selectors';
+import { login, usersMe } from '../../store/user/actionCreators';
+import { courses } from '../../store/courses/actionCreators';
 
 import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
 
 import { BUTTON_TEXT, PLACEHOLDER_TEXT } from '../../constans';
-import { User } from '../../interfaces';
-import { RootState } from '../../store';
-import { getUser } from '../../store/selectors';
-import { login } from '../../store/user/actionCreators';
+import { UserDataAuth } from '../../interfaces';
 
 import './login.css';
 
@@ -32,12 +33,14 @@ const Login = () => {
 		event: React.FormEvent<HTMLFormElement>
 	): Promise<void> {
 		event.preventDefault();
-		const user: User = {
+		const user: UserDataAuth = {
 			password: userPassword,
 			email: userEmail,
 		};
 
 		await dispatch(login(user));
+		await dispatch(usersMe());
+		await dispatch(courses());
 		navigate('/courses');
 	}
 
