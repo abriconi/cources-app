@@ -1,11 +1,11 @@
 import { Course } from '../../interfaces';
 import {
 	CoursesActionTypes,
-	CREATE_COURSE_SUCCSESS,
+	CREATE_COURSE_SUCCESS,
 	DELETE_COURSE_FAILURE,
-	DELETE_COURSE_SUCCSESS,
+	DELETE_COURSE_SUCCESS,
 	EDIT_COURSE_FAILURE,
-	EDIT_COURSE_SUCCSESS,
+	EDIT_COURSE_SUCCESS,
 	GET_COURSES_FAILURE,
 	GET_COURSES_SUCCESS,
 } from './actionTypes';
@@ -33,7 +33,7 @@ export function coursesReduser(
 				...state,
 				error: action.error,
 			};
-		case DELETE_COURSE_SUCCSESS:
+		case DELETE_COURSE_SUCCESS:
 			return {
 				...state,
 				all: state.all.filter((course) => course.id !== action.id),
@@ -43,12 +43,12 @@ export function coursesReduser(
 				...state,
 				error: action.error,
 			};
-		case CREATE_COURSE_SUCCSESS:
+		case CREATE_COURSE_SUCCESS:
 			return {
 				...state,
 				all: [...state.all, action.course],
 			};
-		case EDIT_COURSE_SUCCSESS:
+		case EDIT_COURSE_SUCCESS:
 			return {
 				...state,
 				all: state.all.map((c) =>

@@ -10,7 +10,7 @@ interface Props {
 }
 const AddAuthor: React.FC<Props> = ({ authorsName, buttonText, onClick }) => {
 	return (
-		<div className='authorForm'>
+		<div className='authorForm' data-testid='author'>
 			<p>{authorsName}</p>
 			<Button type='button' buttonText={buttonText} onClick={onClick} />
 		</div>

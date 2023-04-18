@@ -7,6 +7,7 @@ import { createCourse } from '../../store/courses/actionCreators';
 
 import CourseForm from '../../common/CourseForm/CourseForm';
 import { CoursePayload } from '../../interfaces';
+import { BUTTON_TEXT } from '../../constans';
 
 const CreateCourse: React.FC = () => {
 	const dispatch: ThunkDispatch<RootState, null, any> = useDispatch();
@@ -20,7 +21,7 @@ const CreateCourse: React.FC = () => {
 		<div className='coursesWrapper'>
 			<CourseForm
 				handleCourseSubmit={handleCourseSubmit}
-				mainBtnText='Add new Course'
+				mainBtnText={BUTTON_TEXT.addNewCourse}
 			/>
 		</div>
 	);

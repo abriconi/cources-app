@@ -3,13 +3,13 @@ import { Course } from '../../interfaces';
 export const GET_COURSES_SUCCESS = 'GET_COURSES_SUCCESS';
 export const GET_COURSES_FAILURE = 'GET_COURSES_FAILURE';
 
-export const DELETE_COURSE_SUCCSESS = 'DELETE_COURSE_SUCCSESS';
+export const DELETE_COURSE_SUCCESS = 'DELETE_COURSE_SUCCSESS';
 export const DELETE_COURSE_FAILURE = 'DELETE_COURSE_FAILURE';
 
-export const CREATE_COURSE_SUCCSESS = 'CREATE_COURSE_SUCCSES';
+export const CREATE_COURSE_SUCCESS = 'CREATE_COURSE_SUCCSES';
 export const CREATE_COURSE_FAILURE = 'CREATE_COURSE_FAILURE';
 
-export const EDIT_COURSE_SUCCSESS = 'EDIT_COURSE_SUCCSES';
+export const EDIT_COURSE_SUCCESS = 'EDIT_COURSE_SUCCSES';
 export const EDIT_COURSE_FAILURE = 'EDIT_COURSE_FAILURE';
 
 export interface GetCoursesSuccessAction {
@@ -22,8 +22,8 @@ interface GetCoursesFailureAction {
 	error: string;
 }
 
-interface DeleteCourseSuccsessAction {
-	type: typeof DELETE_COURSE_SUCCSESS;
+interface DeleteCourseSuccessAction {
+	type: typeof DELETE_COURSE_SUCCESS;
 	id: string;
 }
 
@@ -32,8 +32,8 @@ interface DeleteCourseFailureAction {
 	error: string;
 }
 
-interface CreateCourseSuccsessAction {
-	type: typeof CREATE_COURSE_SUCCSESS;
+interface CreateCourseSuccessAction {
+	type: typeof CREATE_COURSE_SUCCESS;
 	course: Course;
 }
 
@@ -42,8 +42,8 @@ interface CreteCourseFailureAction {
 	error: string;
 }
 
-interface EditCourseSuccsessAction {
-	type: typeof EDIT_COURSE_SUCCSESS;
+interface EditCourseSuccessAction {
+	type: typeof EDIT_COURSE_SUCCESS;
 	course: Course;
 }
 
@@ -55,9 +55,9 @@ interface EditCourseFailureAction {
 export type CoursesActionTypes =
 	| GetCoursesSuccessAction
 	| GetCoursesFailureAction
-	| DeleteCourseSuccsessAction
+	| DeleteCourseSuccessAction
 	| DeleteCourseFailureAction
-	| CreateCourseSuccsessAction
+	| CreateCourseSuccessAction
 	| CreteCourseFailureAction
-	| EditCourseSuccsessAction
+	| EditCourseSuccessAction
 	| EditCourseFailureAction;

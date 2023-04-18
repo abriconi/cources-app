@@ -1,6 +1,7 @@
 export const BUTTON_TEXT = {
 	logout: 'Logout',
 	addNewCourse: 'Add new course',
+	updateCourse: 'Update course',
 	showCourse: 'Show course',
 	createCourse: 'Create course',
 	createAuthor: 'Create author',
